@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EDA60D2E17D71C1400B0A63C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D2D17D71C1400B0A63C /* UIKit.framework */; };
+		EDA60D3017D71C1400B0A63C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D2F17D71C1400B0A63C /* Foundation.framework */; };
+		EDA60D3217D71C1400B0A63C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D3117D71C1400B0A63C /* CoreGraphics.framework */; };
+		EDA60D3817D71C1400B0A63C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D3617D71C1400B0A63C /* InfoPlist.strings */; };
+		EDA60D3A17D71C1400B0A63C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D3917D71C1400B0A63C /* main.m */; };
+		EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D3D17D71C1400B0A63C /* AppDelegate.m */; };
+		EDA60D4017D71C1400B0A63C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D3F17D71C1400B0A63C /* Default.png */; };
+		EDA60D4217D71C1400B0A63C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4117D71C1400B0A63C /* Default@2x.png */; };
+		EDA60D4417D71C1400B0A63C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */; };
+		EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D4617D71C1400B0A63C /* ViewController.m */; };
+		EDA60D4A17D71C1400B0A63C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4817D71C1400B0A63C /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EDA60D2A17D71C1400B0A63C /* SmallStone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmallStone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDA60D2D17D71C1400B0A63C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EDA60D2F17D71C1400B0A63C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EDA60D3117D71C1400B0A63C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EDA60D3517D71C1400B0A63C /* SmallStone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmallStone-Info.plist"; sourceTree = "<group>"; };
+		EDA60D3717D71C1400B0A63C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EDA60D3917D71C1400B0A63C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EDA60D3B17D71C1400B0A63C /* SmallStone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmallStone-Prefix.pch"; sourceTree = "<group>"; };
+		EDA60D3C17D71C1400B0A63C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EDA60D3D17D71C1400B0A63C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EDA60D3F17D71C1400B0A63C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		EDA60D4117D71C1400B0A63C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		EDA60D4517D71C1400B0A63C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EDA60D4617D71C1400B0A63C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EDA60D4917D71C1400B0A63C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EDA60D2717D71C1400B0A63C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60D2E17D71C1400B0A63C /* UIKit.framework in Frameworks */,
+				EDA60D3017D71C1400B0A63C /* Foundation.framework in Frameworks */,
+				EDA60D3217D71C1400B0A63C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EDA60D2117D71C1400B0A63C = {
+			isa = PBXGroup;
+			children = (
+				EDA60D3317D71C1400B0A63C /* SmallStone */,
+				EDA60D2C17D71C1400B0A63C /* Frameworks */,
+				EDA60D2B17D71C1400B0A63C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EDA60D2B17D71C1400B0A63C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60D2A17D71C1400B0A63C /* SmallStone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDA60D2C17D71C1400B0A63C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60D2D17D71C1400B0A63C /* UIKit.framework */,
+				EDA60D2F17D71C1400B0A63C /* Foundation.framework */,
+				EDA60D3117D71C1400B0A63C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDA60D3317D71C1400B0A63C /* SmallStone */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
+				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
+				EDA60D4517D71C1400B0A63C /* ViewController.h */,
+				EDA60D4617D71C1400B0A63C /* ViewController.m */,
+				EDA60D4817D71C1400B0A63C /* ViewController.xib */,
+				EDA60D3417D71C1400B0A63C /* Supporting Files */,
+			);
+			path = SmallStone;
+			sourceTree = "<group>";
+		};
+		EDA60D3417D71C1400B0A63C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60D3517D71C1400B0A63C /* SmallStone-Info.plist */,
+				EDA60D3617D71C1400B0A63C /* InfoPlist.strings */,
+				EDA60D3917D71C1400B0A63C /* main.m */,
+				EDA60D3B17D71C1400B0A63C /* SmallStone-Prefix.pch */,
+				EDA60D3F17D71C1400B0A63C /* Default.png */,
+				EDA60D4117D71C1400B0A63C /* Default@2x.png */,
+				EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EDA60D2917D71C1400B0A63C /* SmallStone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDA60D4D17D71C1400B0A63C /* Build configuration list for PBXNativeTarget "SmallStone" */;
+			buildPhases = (
+				EDA60D2617D71C1400B0A63C /* Sources */,
+				EDA60D2717D71C1400B0A63C /* Frameworks */,
+				EDA60D2817D71C1400B0A63C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmallStone;
+			productName = SmallStone;
+			productReference = EDA60D2A17D71C1400B0A63C /* SmallStone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EDA60D2217D71C1400B0A63C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = tencent;
+			};
+			buildConfigurationList = EDA60D2517D71C1400B0A63C /* Build configuration list for PBXProject "SmallStone" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EDA60D2117D71C1400B0A63C;
+			productRefGroup = EDA60D2B17D71C1400B0A63C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EDA60D2917D71C1400B0A63C /* SmallStone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EDA60D2817D71C1400B0A63C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60D3817D71C1400B0A63C /* InfoPlist.strings in Resources */,
+				EDA60D4017D71C1400B0A63C /* Default.png in Resources */,
+				EDA60D4217D71C1400B0A63C /* Default@2x.png in Resources */,
+				EDA60D4417D71C1400B0A63C /* Default-568h@2x.png in Resources */,
+				EDA60D4A17D71C1400B0A63C /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EDA60D2617D71C1400B0A63C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EDA60D3A17D71C1400B0A63C /* main.m in Sources */,
+				EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */,
+				EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EDA60D3617D71C1400B0A63C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA60D3717D71C1400B0A63C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EDA60D4817D71C1400B0A63C /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EDA60D4917D71C1400B0A63C /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EDA60D4B17D71C1400B0A63C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EDA60D4C17D71C1400B0A63C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EDA60D4E17D71C1400B0A63C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
+				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EDA60D4F17D71C1400B0A63C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
+				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EDA60D2517D71C1400B0A63C /* Build configuration list for PBXProject "SmallStone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA60D4B17D71C1400B0A63C /* Debug */,
+				EDA60D4C17D71C1400B0A63C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDA60D4D17D71C1400B0A63C /* Build configuration list for PBXNativeTarget "SmallStone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EDA60D4E17D71C1400B0A63C /* Debug */,
+				EDA60D4F17D71C1400B0A63C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EDA60D2217D71C1400B0A63C /* Project object */;
+}
