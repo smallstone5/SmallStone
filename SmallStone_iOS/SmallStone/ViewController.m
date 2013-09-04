@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GameViewController.h"
 
 @interface ViewController ()
 
@@ -18,7 +19,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    NSLog(@"Hello World!\n");
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,8 +27,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction) onTest:(id)sender
+- (IBAction) newGame:(id)sender
 {
-    NSLog(@"Hello World!");
+    GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
+    gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController: gameController animated: YES completion: nil];
 }
 @end

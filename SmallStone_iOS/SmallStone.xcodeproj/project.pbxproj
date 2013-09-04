@@ -18,6 +18,11 @@
 		EDA60D4417D71C1400B0A63C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */; };
 		EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D4617D71C1400B0A63C /* ViewController.m */; };
 		EDA60D4A17D71C1400B0A63C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4817D71C1400B0A63C /* ViewController.xib */; };
+		EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D5117D7296000B0A63C /* GameViewController.m */; };
+		EDA60D5417D7296000B0A63C /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5217D7296000B0A63C /* GameViewController.xib */; };
+		EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D5517D72C0000B0A63C /* QuartzCore.framework */; };
+		EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5817D733AB00B0A63C /* Icon.png */; };
+		EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5917D733AB00B0A63C /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,12 @@
 		EDA60D4517D71C1400B0A63C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EDA60D4617D71C1400B0A63C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EDA60D4917D71C1400B0A63C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		EDA60D5017D7296000B0A63C /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		EDA60D5117D7296000B0A63C /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		EDA60D5217D7296000B0A63C /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
+		EDA60D5517D72C0000B0A63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EDA60D5817D733AB00B0A63C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = SmallStone/Icon.png; sourceTree = "<group>"; };
+		EDA60D5917D733AB00B0A63C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "SmallStone/Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */,
 				EDA60D2E17D71C1400B0A63C /* UIKit.framework in Frameworks */,
 				EDA60D3017D71C1400B0A63C /* Foundation.framework in Frameworks */,
 				EDA60D3217D71C1400B0A63C /* CoreGraphics.framework in Frameworks */,
@@ -56,6 +68,7 @@
 		EDA60D2117D71C1400B0A63C = {
 			isa = PBXGroup;
 			children = (
+				EDA60D5717D7339100B0A63C /* Resource */,
 				EDA60D3317D71C1400B0A63C /* SmallStone */,
 				EDA60D2C17D71C1400B0A63C /* Frameworks */,
 				EDA60D2B17D71C1400B0A63C /* Products */,
@@ -73,6 +86,7 @@
 		EDA60D2C17D71C1400B0A63C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EDA60D5517D72C0000B0A63C /* QuartzCore.framework */,
 				EDA60D2D17D71C1400B0A63C /* UIKit.framework */,
 				EDA60D2F17D71C1400B0A63C /* Foundation.framework */,
 				EDA60D3117D71C1400B0A63C /* CoreGraphics.framework */,
@@ -89,6 +103,9 @@
 				EDA60D4617D71C1400B0A63C /* ViewController.m */,
 				EDA60D4817D71C1400B0A63C /* ViewController.xib */,
 				EDA60D3417D71C1400B0A63C /* Supporting Files */,
+				EDA60D5017D7296000B0A63C /* GameViewController.h */,
+				EDA60D5117D7296000B0A63C /* GameViewController.m */,
+				EDA60D5217D7296000B0A63C /* GameViewController.xib */,
 			);
 			path = SmallStone;
 			sourceTree = "<group>";
@@ -105,6 +122,15 @@
 				EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EDA60D5717D7339100B0A63C /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				EDA60D5817D733AB00B0A63C /* Icon.png */,
+				EDA60D5917D733AB00B0A63C /* Icon@2x.png */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +189,9 @@
 				EDA60D4217D71C1400B0A63C /* Default@2x.png in Resources */,
 				EDA60D4417D71C1400B0A63C /* Default-568h@2x.png in Resources */,
 				EDA60D4A17D71C1400B0A63C /* ViewController.xib in Resources */,
+				EDA60D5417D7296000B0A63C /* GameViewController.xib in Resources */,
+				EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */,
+				EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +205,7 @@
 				EDA60D3A17D71C1400B0A63C /* main.m in Sources */,
 				EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */,
 				EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */,
+				EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +330,7 @@
 				EDA60D4F17D71C1400B0A63C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
