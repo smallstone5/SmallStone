@@ -10,5 +10,13 @@
 
 @interface MainViewController : UIViewController
 
-- (IBAction) onTest:(id)sender;
+
+@property (nonatomic, strong) UIImageView *     backgroupView;
+
+@property (nonatomic, strong) UIButton *        rankButton;
+@property (nonatomic, strong) UIButton *        createGameButton;
+@property (nonatomic, strong) UIButton *        continueButton;
+@property (nonatomic, strong) UIButton *        settingButton;
+@property (nonatomic, strong) UIButton *        levelButton;
+
 @end
