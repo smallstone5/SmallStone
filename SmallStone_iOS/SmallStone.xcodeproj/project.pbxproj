@@ -16,13 +16,12 @@
 		EDA60D4017D71C1400B0A63C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D3F17D71C1400B0A63C /* Default.png */; };
 		EDA60D4217D71C1400B0A63C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4117D71C1400B0A63C /* Default@2x.png */; };
 		EDA60D4417D71C1400B0A63C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */; };
-		EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D4617D71C1400B0A63C /* ViewController.m */; };
-		EDA60D4A17D71C1400B0A63C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D4817D71C1400B0A63C /* ViewController.xib */; };
 		EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D5117D7296000B0A63C /* GameViewController.m */; };
 		EDA60D5417D7296000B0A63C /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5217D7296000B0A63C /* GameViewController.xib */; };
 		EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D5517D72C0000B0A63C /* QuartzCore.framework */; };
 		EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5817D733AB00B0A63C /* Icon.png */; };
 		EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5917D733AB00B0A63C /* Icon@2x.png */; };
+		EDA60D4717D71C1400B0A63C /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDA60D4617D71C1400B0A63C /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +38,6 @@
 		EDA60D3F17D71C1400B0A63C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		EDA60D4117D71C1400B0A63C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EDA60D4317D71C1400B0A63C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		EDA60D4517D71C1400B0A63C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EDA60D4617D71C1400B0A63C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EDA60D4917D71C1400B0A63C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		EDA60D5017D7296000B0A63C /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		EDA60D5117D7296000B0A63C /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -48,6 +45,8 @@
 		EDA60D5517D72C0000B0A63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDA60D5817D733AB00B0A63C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = SmallStone/Icon.png; sourceTree = "<group>"; };
 		EDA60D5917D733AB00B0A63C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "SmallStone/Icon@2x.png"; sourceTree = "<group>"; };
+		EDA60D4517D71C1400B0A63C /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EDA60D4617D71C1400B0A63C /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +98,8 @@
 			children = (
 				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
 				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
-				EDA60D4517D71C1400B0A63C /* ViewController.h */,
-				EDA60D4617D71C1400B0A63C /* ViewController.m */,
-				EDA60D4817D71C1400B0A63C /* ViewController.xib */,
+				EDA60D4517D71C1400B0A63C /* MainViewController.h */,
+				EDA60D4617D71C1400B0A63C /* MainViewController.m */,
 				EDA60D3417D71C1400B0A63C /* Supporting Files */,
 				EDA60D5017D7296000B0A63C /* GameViewController.h */,
 				EDA60D5117D7296000B0A63C /* GameViewController.m */,
@@ -204,8 +202,8 @@
 			files = (
 				EDA60D3A17D71C1400B0A63C /* main.m in Sources */,
 				EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */,
-				EDA60D4717D71C1400B0A63C /* ViewController.m in Sources */,
 				EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */,
+				EDA60D4717D71C1400B0A63C /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,14 +216,6 @@
 				EDA60D3717D71C1400B0A63C /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		EDA60D4817D71C1400B0A63C /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EDA60D4917D71C1400B0A63C /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
