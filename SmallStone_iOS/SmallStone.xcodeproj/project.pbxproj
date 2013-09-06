@@ -27,6 +27,7 @@
 		EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D5517D72C0000B0A63C /* QuartzCore.framework */; };
 		EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5817D733AB00B0A63C /* Icon.png */; };
 		EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5917D733AB00B0A63C /* Icon@2x.png */; };
+		EDE4F6BD17D987D0004F3057 /* StoneLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,8 @@
 		EDA60D5517D72C0000B0A63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDA60D5817D733AB00B0A63C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = SmallStone/Icon.png; sourceTree = "<group>"; };
 		EDA60D5917D733AB00B0A63C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "SmallStone/Icon@2x.png"; sourceTree = "<group>"; };
+		EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneLinkView.h; sourceTree = "<group>"; };
+		EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneLinkView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				EDA60D5217D7296000B0A63C /* GameViewController.xib */,
 				EDA60D4517D71C1400B0A63C /* MainViewController.h */,
 				EDA60D4617D71C1400B0A63C /* MainViewController.m */,
+				EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */,
+				EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */,
 				ED8AA0F217D813790070BFF0 /* StoneView.h */,
 				ED8AA0F317D813790070BFF0 /* StoneView.m */,
 				ED0D70B317D8D0D4002D3353 /* StoneWallView.h */,
@@ -235,6 +240,7 @@
 				ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */,
 				ED8AA0F817D813CB0070BFF0 /* Stone.m in Sources */,
 				EDA60D3A17D71C1400B0A63C /* main.m in Sources */,
+				EDE4F6BD17D987D0004F3057 /* StoneLinkView.m in Sources */,
 				EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */,
 				EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */,
 				EDA60D4717D71C1400B0A63C /* MainViewController.m in Sources */,

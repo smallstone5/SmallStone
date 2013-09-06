@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _state = kStoneStateNormal;
+
     }
     return self;
 }
@@ -35,12 +35,17 @@
 #pragma mark - Setter
 - (void)setState:(StoneState)state
 {
-    if (state == _state) {
+    if (state == self.stone.state ) {
         return;
     }
 
-    _state = state;
+    self.stone.state = state;
     [self updateWithState:state];
+}
+
+- (StoneState)state
+{
+    return self.stone.state;
 }
 
 

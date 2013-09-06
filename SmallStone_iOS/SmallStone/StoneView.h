@@ -15,7 +15,7 @@
 
 
 @property (nonatomic, strong) Stone *       stone;
-@property (nonatomic, assign) StoneState    state;
+@property (nonatomic, readwrite) StoneState    state;
 
 
 /*

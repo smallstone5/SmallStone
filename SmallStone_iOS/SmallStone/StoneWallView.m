@@ -7,10 +7,18 @@
 //
 
 #import "StoneWallView.h"
+#import "StoneLinkView.h"
 
 
 static CGSize const kStoneSize = {44, 44};
 static CGFloat const kStoneSpacing = 4.0f;
+
+
+@interface StoneWallView()
+
+@property (nonatomic, strong) StoneLinkView *       linkView;
+
+@end
 
 @implementation StoneWallView
 
@@ -36,6 +44,10 @@ static CGFloat const kStoneSpacing = 4.0f;
     if (self) {
         _stoneWall = stoneWall;
         [self initStoneViews];
+        self.linkView = [[StoneLinkView alloc] initWithFrame:frame];
+        self.linkView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.linkView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.linkView];
     }
 
     return self;
@@ -84,9 +96,17 @@ static CGFloat const kStoneSpacing = 4.0f;
 
 
 #pragma mark - Private
-- (void)initStoneViews
+
+- (void)resetWall
 {
     self.stoneViews = [[NSMutableArray alloc] init];
+    self.connectedStoneViews = [NSMutableArray array];
+    [self.linkView clear];
+}
+
+- (void)initStoneViews
+{
+    [self resetWall];
     for (Stone * aStone in self.stoneWall.stoneList) {
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
         CGFloat originX = aStone.point.x * (kStoneSize.width + kStoneSpacing);
@@ -98,10 +118,10 @@ static CGFloat const kStoneSpacing = 4.0f;
     }
 
 
-    self.connectedStoneViews = [NSMutableArray array];
 }
 
 
+//点击到某一点，查看点击点是否有stoneView来连接
 - (void)touchStoneAtPoint:(CGPoint)point
 {
     StoneView * touchedStoneView = nil;
@@ -117,7 +137,7 @@ static CGFloat const kStoneSpacing = 4.0f;
     }
 
     if ([self.connectedStoneViews containsObject:touchedStoneView]) {
-        if (self.connectedStoneViews.count > 2) {
+        if (self.connectedStoneViews.count >= 2) {
             //回退机制，从n移回到n-1，即产生回退，将n从connectedStoneViews中清除
             StoneView * prevStoneView = [self.connectedStoneViews objectAtIndex:self.connectedStoneViews.count - 2];
             if (touchedStoneView == prevStoneView) {
@@ -129,22 +149,46 @@ static CGFloat const kStoneSpacing = 4.0f;
     }
 }
 
-
-
-- (void)connectStoneView:(StoneView *)stoneView
+//验证需要connect的stoneView，跟当前已连接的最后一个stoneView是不是相邻的
+- (BOOL)canConnectToStoneView:(StoneView *)stoneView
 {
-    [self.connectedStoneViews addObject:stoneView];
-    stoneView.state = kStoneStateShaking;
+    StoneView * lastStoneView = self.connectedStoneViews.lastObject;
+    if (nil == lastStoneView) {
+        return YES;
+    }
+
+    CGFloat connetXLength = fabs(stoneView.center.x - lastStoneView.center.x);
+    CGFloat connetYLength = fabs(stoneView.center.y - lastStoneView.center.y);
+    if (connetXLength <= kStoneSize.width + 2 * kStoneSpacing
+        && connetYLength <= kStoneSize.height + 2 * kStoneSpacing) {
+        return YES;
+    }
+
+    return NO;
+
 }
 
+//将stoneView连接起来
+- (void)connectStoneView:(StoneView *)stoneView
+{
+    if ([self canConnectToStoneView:stoneView]) {
+        [self.connectedStoneViews addObject:stoneView];
+        stoneView.state = kStoneStateShaking;
+        [self.linkView connectLinkToPoint:stoneView.center];
+    }
+}
 
+//将stoneView从连接队列清除
 - (void)unconnectStoneView:(StoneView *)stoneView
 {
     [self.connectedStoneViews removeObject:stoneView];
     stoneView.state = kStoneStateNormal;
+    [self.linkView unconnectLinkPoint:stoneView.center];
+
 }
 
 
+//消除所有连接的石子
 - (void)clearConnectedStones
 {
     for (StoneView * aStoneView in self.connectedStoneViews) {
@@ -152,6 +196,7 @@ static CGFloat const kStoneSpacing = 4.0f;
     };
 
     [self.connectedStoneViews removeAllObjects];
+    [self.linkView clear];
 }
 
 
