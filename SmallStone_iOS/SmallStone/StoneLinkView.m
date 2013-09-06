@@ -68,7 +68,7 @@
 }
 
 
-- (void)unconnectLinkPoint:(CGPoint)point
+- (void)disconnectLinkPoint:(CGPoint)point
 {
     NSValue * pointValue = [NSValue valueWithCGPoint:point];
     if (![self.pointList containsObject:pointValue]) {

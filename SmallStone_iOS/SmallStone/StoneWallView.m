@@ -8,8 +8,7 @@
 
 
 #import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
-
+#import <AudioToolbox/AudioToolbox.h>
 
 #import "StoneWallView.h"
 #import "StoneLinkView.h"
@@ -150,7 +149,7 @@ static CGFloat const kStoneSpacing = 4.0f;
             //回退机制，从n移回到n-1，即产生回退，将n从connectedStoneViews中清除
             StoneView * prevStoneView = [self.connectedStoneViews objectAtIndex:self.connectedStoneViews.count - 2];
             if (touchedStoneView == prevStoneView) {
-                [self unconnectStoneView:self.connectedStoneViews.lastObject];
+                [self disconnectStoneView:self.connectedStoneViews.lastObject];
             }
         }
     } else {
@@ -184,23 +183,17 @@ static CGFloat const kStoneSpacing = 4.0f;
         [self.connectedStoneViews addObject:stoneView];
         stoneView.state = kStoneStateShaking;
         [self.linkView connectLinkToPoint:stoneView.center];
+        [self playConnectSound];
     }
-
-    self.audioPlayer =
-    [[AVAudioPlayer alloc]
-     initWithContentsOfURL:backgroundMusicURL error:&error];
-    [_backgroundMusicPlayer prepareToPlay];
-    [_backgroundMusicPlayer play];
-
 }
 
 //将stoneView从连接队列清除
-- (void)unconnectStoneView:(StoneView *)stoneView
+- (void)disconnectStoneView:(StoneView *)stoneView
 {
     [self.connectedStoneViews removeObject:stoneView];
     stoneView.state = kStoneStateNormal;
-    [self.linkView unconnectLinkPoint:stoneView.center];
-
+    [self.linkView disconnectLinkPoint:stoneView.center];
+    [self playConnectSound];
 }
 
 
@@ -219,23 +212,45 @@ static CGFloat const kStoneSpacing = 4.0f;
 
     [self.connectedStoneViews removeAllObjects];
     [self.linkView clear];
+    [self playClearSound];
 }
 
 
-- (AVAudioPlayer *)audioPlayerWith
+- (void)playConnectSound
 {
-    if (nil == _audioPlayer) {
-        NSError * error = nil;
-        NSString * muteAudioPath = [[NSBundle mainBundle] pathForResource:@"mute" ofType:@"mp3"];
-        NSURL * muteAudioURL = [NSURL fileURLWithPath:muteAudioPath];
-        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:muteAudioURL error:&error];
-        _audioPlayer.delegate = self;
-        _audioPlayer.numberOfLoops = -1;
-    }
+    SystemSoundID soundID;
+    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:connectAudioName ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
 
-    return _audioPlayer;
+//    NSError * error = nil;
+//    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+//    NSString * audioPath = [[NSBundle mainBundle] pathForResource:connectAudioName ofType:@"mp3"];
+//    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
+//    [self.audioPlayer prepareToPlay];
+//    [self.audioPlayer play];
 }
 
+- (void)playClearSound
+{
+
+    SystemSoundID soundID;
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:@"clear" ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
+
+//    NSError * error = nil;
+////    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+//    NSString * audioPath = [[NSBundle mainBundle] pathForResource:@"clear" ofType:@"mp3"];
+//    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
+//    [self.audioPlayer prepareToPlay];
+//    [self.audioPlayer play];
+}
 
 
 @end

@@ -23,7 +23,7 @@
  * 取消连接point
  *  @param point 需要取消的point
  */
-- (void)unconnectLinkPoint:(CGPoint)point;
+- (void)disconnectLinkPoint:(CGPoint)point;
 
 
 
