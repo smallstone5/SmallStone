@@ -18,5 +18,6 @@
 @property (nonatomic, strong) UIButton *        continueButton;
 @property (nonatomic, strong) UIButton *        settingButton;
 @property (nonatomic, strong) UIButton *        levelButton;
+@property (nonatomic, strong) UIButton *        ranknewButton;
 
 @end

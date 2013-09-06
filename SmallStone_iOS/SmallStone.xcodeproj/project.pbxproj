@@ -50,6 +50,12 @@
 		EDE4F6E917D9CAE6004F3057 /* connect_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDE4F6D917D9CAE6004F3057 /* connect_9.mp3 */; };
 		EDE4F6ED17D9CC07004F3057 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4F6EC17D9CC07004F3057 /* AVFoundation.framework */; };
 		EDE4F6EF17D9D25B004F3057 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4F6EE17D9D25B004F3057 /* AudioToolbox.framework */; };
+		FDBA98FE17D9B5D90061804F /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA98FC17D9B5D90061804F /* GuideViewController.m */; };
+		FDBA990317D9B9FD0061804F /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990017D9B9FD0061804F /* 1.jpg */; };
+		FDBA990417D9B9FD0061804F /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990117D9B9FD0061804F /* 2.jpg */; };
+		FDBA990517D9B9FD0061804F /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990217D9B9FD0061804F /* 3.png */; };
+		FDBA990917D9BDC00061804F /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA990717D9BDC00061804F /* RankViewController.m */; };
+		FDBA990A17D9BDC00061804F /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990817D9BDC00061804F /* RankViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +114,14 @@
 		EDE4F6D917D9CAE6004F3057 /* connect_9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = connect_9.mp3; sourceTree = "<group>"; };
 		EDE4F6EC17D9CC07004F3057 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EDE4F6EE17D9D25B004F3057 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FDBA98FB17D9B5D90061804F /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
+		FDBA98FC17D9B5D90061804F /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		FDBA990017D9B9FD0061804F /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		FDBA990117D9B9FD0061804F /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		FDBA990217D9B9FD0061804F /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		FDBA990617D9BDC00061804F /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
+		FDBA990717D9BDC00061804F /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
+		FDBA990817D9BDC00061804F /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,11 +192,14 @@
 				EDA60D5017D7296000B0A63C /* GameViewController.h */,
 				EDA60D5117D7296000B0A63C /* GameViewController.m */,
 				EDA60D5217D7296000B0A63C /* GameViewController.xib */,
+				FDBA98FB17D9B5D90061804F /* GuideViewController.h */,
+				FDBA98FC17D9B5D90061804F /* GuideViewController.m */,
 				EDA60D4517D71C1400B0A63C /* MainViewController.h */,
 				EDA60D4617D71C1400B0A63C /* MainViewController.m */,
 				EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */,
 				EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */,
-				ED8AA0F217D813790070BFF0 /* StoneView.h */,
+				FDBA990617D9BDC00061804F /* RankViewController.h */,
+				FDBA990717D9BDC00061804F /* RankViewController.m */,
 				ED8AA0F317D813790070BFF0 /* StoneView.m */,
 				ED0D70B317D8D0D4002D3353 /* StoneWallView.h */,
 				ED0D70B417D8D0D4002D3353 /* StoneWallView.m */,
@@ -215,6 +232,9 @@
 				EDE4F6BF17D9BD53004F3057 /* stone_blue@2x.png */,
 				EDE4F6C017D9BD53004F3057 /* stone_pink.png */,
 				EDE4F6C117D9BD53004F3057 /* stone_pink@2x.png */,
+				FDBA990017D9B9FD0061804F /* 1.jpg */,
+				FDBA990117D9B9FD0061804F /* 2.jpg */,
+				FDBA990217D9B9FD0061804F /* 3.png */,
 				EDA60D5817D733AB00B0A63C /* Icon.png */,
 				EDA60D5917D733AB00B0A63C /* Icon@2x.png */,
 			);
@@ -323,6 +343,10 @@
 				EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */,
 				EDE4F6E017D9CAE6004F3057 /* connect_14.mp3 in Resources */,
 				EDE4F6C517D9BD53004F3057 /* stone_pink@2x.png in Resources */,
+				FDBA990317D9B9FD0061804F /* 1.jpg in Resources */,
+				FDBA990417D9B9FD0061804F /* 2.jpg in Resources */,
+				FDBA990517D9B9FD0061804F /* 3.png in Resources */,
+				FDBA990A17D9BDC00061804F /* RankViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +367,8 @@
 				EDA60D4717D71C1400B0A63C /* MainViewController.m in Sources */,
 				ED8AA0F117D8135C0070BFF0 /* StoneWallViewController.m in Sources */,
 				ED8AA0FB17D813DD0070BFF0 /* StoneWall.m in Sources */,
+				FDBA98FE17D9B5D90061804F /* GuideViewController.m in Sources */,
+				FDBA990917D9BDC00061804F /* RankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

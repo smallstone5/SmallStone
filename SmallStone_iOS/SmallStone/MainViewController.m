@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "GameViewController.h"
 #import "StoneWallViewController.h"
+#import "RankViewController.h"
 
 static CGFloat const kButtonWidth =     120.0f;
 static CGFloat const kButtonHeight =    50.0f;
@@ -82,7 +83,15 @@ static CGFloat const kButtonSpacing =   10.0f;
     [self.levelButton setTitle:NSLocalizedString(@"Level", @"Level") forState:UIControlStateNormal];
     [self.view addSubview:self.levelButton];
     
-
+    //显示排行榜
+    buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
+    self.ranknewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.ranknewButton.frame = buttonFrame;
+    self.levelButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    [self.ranknewButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [self.ranknewButton setTitle:NSLocalizedString(@"排行榜", @"排行榜") forState:UIControlStateNormal];
+    [self.ranknewButton addTarget:self action:@selector(rankNewAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.ranknewButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -104,6 +113,14 @@ static CGFloat const kButtonSpacing =   10.0f;
 - (void)createGameAction:(UIButton *)button
 {
     StoneWallViewController * wallViewController = [[StoneWallViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:wallViewController animated:YES completion:nil];
+}
+
+#pragma newrank - Action
+-(void) rankNewAction:(UIButton *)button
+{
+    NSLog(@"111");
+    RankViewController * wallViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:wallViewController animated:YES completion:nil];
 }
 
