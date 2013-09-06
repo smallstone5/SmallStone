@@ -27,6 +27,9 @@
     if (self) {
         _stone = stone;
         self.backgroundColor = stone.color;
+        self.image = [stone imageForState:kStoneStateNormal];
+        self.contentMode = UIViewContentModeScaleAspectFit;
+        self.clipsToBounds = YES;
     }
 
     return self;
@@ -59,6 +62,8 @@ CGFloat DegressToRadians(CGFloat degress)
 
 - (void)updateWithState:(StoneState)state
 {
+    self.image = [self.stone imageForState:state];
+
     switch (state) {
         case kStoneStateNormal:
         {
@@ -69,7 +74,7 @@ CGFloat DegressToRadians(CGFloat degress)
 
         case kStoneStateShaking:
         {
-            self.backgroundColor = [UIColor whiteColor];
+//            self.backgroundColor = [UIColor whiteColor];
             CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
             [animation setDuration:0.25];
             [animation setRepeatCount:NSUIntegerMax];

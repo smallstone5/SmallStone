@@ -30,6 +30,8 @@
     for (NSInteger i = 0; i < minCount; i++) {
         Stone * aStone = [[Stone alloc] init];
         aStone.point = [self randNonRepeatMatrixPoint];
+        [aStone setImage:[UIImage imageNamed:@"stone_blue.png"] forState:kStoneStateNormal];
+        aStone.color = nil;
         [self markMatrixPoint:aStone.point];
         [self.stoneList addObject:aStone];
     }

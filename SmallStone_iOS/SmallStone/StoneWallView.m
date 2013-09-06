@@ -6,6 +6,11 @@
 //  Copyright (c) 2013 tencent. All rights reserved.
 //
 
+
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+
+
 #import "StoneWallView.h"
 #import "StoneLinkView.h"
 
@@ -17,6 +22,8 @@ static CGFloat const kStoneSpacing = 4.0f;
 @interface StoneWallView()
 
 @property (nonatomic, strong) StoneLinkView *       linkView;
+@property (nonatomic, strong) AVAudioPlayer *       audioPlayer;
+
 
 @end
 
@@ -43,11 +50,13 @@ static CGFloat const kStoneSpacing = 4.0f;
     self = [self initWithFrame:frame];
     if (self) {
         _stoneWall = stoneWall;
-        [self initStoneViews];
+
         self.linkView = [[StoneLinkView alloc] initWithFrame:frame];
         self.linkView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.linkView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.linkView];
+
+        [self initStoneViews];
     }
 
     return self;
@@ -176,6 +185,13 @@ static CGFloat const kStoneSpacing = 4.0f;
         stoneView.state = kStoneStateShaking;
         [self.linkView connectLinkToPoint:stoneView.center];
     }
+
+    self.audioPlayer =
+    [[AVAudioPlayer alloc]
+     initWithContentsOfURL:backgroundMusicURL error:&error];
+    [_backgroundMusicPlayer prepareToPlay];
+    [_backgroundMusicPlayer play];
+
 }
 
 //将stoneView从连接队列清除
@@ -191,13 +207,35 @@ static CGFloat const kStoneSpacing = 4.0f;
 //消除所有连接的石子
 - (void)clearConnectedStones
 {
+
+    if (self.connectedStoneViews.count == 0) {
+        return;
+    }
+
     for (StoneView * aStoneView in self.connectedStoneViews) {
         aStoneView.state = kStoneStateCleared;
     };
 
+
     [self.connectedStoneViews removeAllObjects];
     [self.linkView clear];
 }
+
+
+- (AVAudioPlayer *)audioPlayerWith
+{
+    if (nil == _audioPlayer) {
+        NSError * error = nil;
+        NSString * muteAudioPath = [[NSBundle mainBundle] pathForResource:@"mute" ofType:@"mp3"];
+        NSURL * muteAudioURL = [NSURL fileURLWithPath:muteAudioPath];
+        _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:muteAudioURL error:&error];
+        _audioPlayer.delegate = self;
+        _audioPlayer.numberOfLoops = -1;
+    }
+
+    return _audioPlayer;
+}
+
 
 
 @end
