@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9733AAF317DA156600791D4D /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9733AAF217DA156600791D4D /* RankViewController.xib */; };
+		9733AAF717DA19F300791D4D /* BaseBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF617DA19F300791D4D /* BaseBall.m */; };
+		9733AAFA17DA221000791D4D /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF917DA221000791D4D /* CommonType.m */; };
+		9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAFC17DA254A00791D4D /* GameSetting.m */; };
+		9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AB0317DA30B200791D4D /* BaseLevel.m */; };
 		A1EAA80017D9F66B00EDF3B4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */; };
 		A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */; };
 		ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0D70B417D8D0D4002D3353 /* StoneWallView.m */; };
@@ -62,6 +66,14 @@
 
 /* Begin PBXFileReference section */
 		9733AAF217DA156600791D4D /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
+		9733AAF517DA19F300791D4D /* BaseBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBall.h; sourceTree = "<group>"; };
+		9733AAF617DA19F300791D4D /* BaseBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBall.m; sourceTree = "<group>"; };
+		9733AAF817DA221000791D4D /* CommonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonType.h; sourceTree = "<group>"; };
+		9733AAF917DA221000791D4D /* CommonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonType.m; sourceTree = "<group>"; };
+		9733AAFB17DA254A00791D4D /* GameSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameSetting.h; sourceTree = "<group>"; };
+		9733AAFC17DA254A00791D4D /* GameSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetting.m; sourceTree = "<group>"; };
+		9733AB0217DA30B200791D4D /* BaseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLevel.h; sourceTree = "<group>"; };
+		9733AB0317DA30B200791D4D /* BaseLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLevel.m; sourceTree = "<group>"; };
 		A1EAA7FD17D9F66B00EDF3B4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -145,6 +157,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9733AAF417DA19DA00791D4D /* Ball */ = {
+			isa = PBXGroup;
+			children = (
+				9733AAF517DA19F300791D4D /* BaseBall.h */,
+				9733AAF617DA19F300791D4D /* BaseBall.m */,
+			);
+			path = Ball;
+			sourceTree = "<group>";
+		};
+		9733AB0117DA308D00791D4D /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				9733AB0217DA30B200791D4D /* BaseLevel.h */,
+				9733AB0317DA30B200791D4D /* BaseLevel.m */,
+			);
+			path = Level;
+			sourceTree = "<group>";
+		};
 		ED8AA0F517D813B50070BFF0 /* GameModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +222,12 @@
 			children = (
 				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
 				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
+				9733AAF817DA221000791D4D /* CommonType.h */,
+				9733AAF917DA221000791D4D /* CommonType.m */,
+				9733AAFB17DA254A00791D4D /* GameSetting.h */,
+				9733AAFC17DA254A00791D4D /* GameSetting.m */,
+				9733AAF417DA19DA00791D4D /* Ball */,
+				9733AB0117DA308D00791D4D /* Level */,
 				ED8AA0F517D813B50070BFF0 /* GameModel */,
 				EDA60D5017D7296000B0A63C /* GameViewController.h */,
 				EDA60D5117D7296000B0A63C /* GameViewController.m */,
@@ -379,6 +415,10 @@
 				FDBA98FE17D9B5D90061804F /* GuideViewController.m in Sources */,
 				FDBA990917D9BDC00061804F /* RankViewController.m in Sources */,
 				A1EAA80017D9F66B00EDF3B4 /* SettingViewController.m in Sources */,
+				9733AAF717DA19F300791D4D /* BaseBall.m in Sources */,
+				9733AAFA17DA221000791D4D /* CommonType.m in Sources */,
+				9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */,
+				9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

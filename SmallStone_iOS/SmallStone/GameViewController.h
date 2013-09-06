@@ -2,25 +2,20 @@
 //  GameViewController.h
 //  SmallStone
 //
-//  Created by Jamin on 9/4/13.
+//  Created by zhuochen on 9/4/13.
 //  Copyright (c) 2013 tencent. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+@class BaseBall;
 @interface GameViewController : UIViewController {
-    CFTimeInterval _lastTimeStamp;
-    UIImageView *_imageTest;
-    CGPoint _ptStart;
-    CFAbsoluteTime _tmStart;
+    BaseBall *_ball;
     
-    CGFloat _x;
-    CGFloat _y;
-    CGFloat _vx;
-    CGFloat _vy;
-    CGFloat _ax;
-    CGFloat _ay;
+    CFTimeInterval _lastTimeStamp;
+    CFTimeInterval _tmStart;
+    CGPoint _ptStart;
     BOOL _gameStart;
 }
 
