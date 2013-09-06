@@ -7,14 +7,17 @@
 //
 
 #import "GameViewController.h"
-#import "BaseBall.h"
 #import "GameSetting.h"
+#import "BaseLevel.h"
+
+#import "Level1.h"
 
 @interface GameViewController ()
 
 @end
 
 @implementation GameViewController
+@synthesize level = _level;
 @synthesize displayLink;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -22,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _level = [[Level1 alloc] init];             //直接创建Level1
     }
     return self;
 }
@@ -35,10 +39,9 @@
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.displayLink setPaused: YES];
     
-    _ball = [[BaseBall alloc] initWithFrame: CGRectMake(0.0f, 0.0f, kSmallBallSize, kSmallBallSize)];
-    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-kSmallBallSize/2, -kSmallBallSize/2));
+    _ball = [_level createBall];
+    _ball.delegate = self;
     [self.view addSubview: _ball];
-    _ball.image = [UIImage imageNamed: @"Icon"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,10 +63,11 @@
     [_ball updateData: delta];
     
     CGPoint ballCenter = _ball.center;
-    if (ballCenter.x > g_rcScreen.size.width + kSmallBallSize || ballCenter.y < -kSmallBallSize)
+    CGFloat ballsize = _level.ballSize;
+    if (ballCenter.x > g_rcScreen.size.width + ballsize || ballCenter.y > g_rcScreen.size.height + ballsize)
     {
         [self.displayLink setPaused: YES];
-        _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-kSmallBallSize/2, -kSmallBallSize/2));
+        _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
         _gameStart = NO;
     }
 }
@@ -103,11 +107,28 @@
         return;                             //Swipe的距离不够
 
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
-    _ball.speed = CGPointMake(deltaY / tmDelta, deltaX / tmDelta);
+    _ball.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
     _ball.acceleration = CGPointMake(0.0f, 10000.0f);
+    _ball.flyingTime = 0.0f;
+    [_level resetBall: _ball];
+    _lastTimeStamp = 0.0f;
     
     [self.displayLink setPaused: NO];
     _gameStart = YES;
+}
+
+- (void) ballDidTapped: (BaseBall *) ball
+{
+    [self.displayLink setPaused: YES];
+    _ball.image = nil;
+    [self performSelector: @selector(onResult) withObject: nil afterDelay: 1.5];
+}
+
+- (void) onResult
+{
+    CGFloat ballsize = _level.ballSize;
+    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
+    _gameStart = NO;
 }
 
 @end

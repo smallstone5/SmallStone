@@ -9,5 +9,15 @@
 #import "BaseLevel.h"
 
 @implementation BaseLevel
+@synthesize ballSize = _ballSize;
 
+- (BaseBall *) createBall
+{
+    return nil;
+}
+
+- (void) resetBall: (BaseBall *) ball
+{
+    
+}
 @end

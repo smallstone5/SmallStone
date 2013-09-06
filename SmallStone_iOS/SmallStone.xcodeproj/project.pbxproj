@@ -12,6 +12,15 @@
 		9733AAFA17DA221000791D4D /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF917DA221000791D4D /* CommonType.m */; };
 		9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAFC17DA254A00791D4D /* GameSetting.m */; };
 		9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AB0317DA30B200791D4D /* BaseLevel.m */; };
+		9733AB0E17DA37FC00791D4D /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0617DA37FC00791D4D /* ball.png */; };
+		9733AB0F17DA37FC00791D4D /* Bomb0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0717DA37FC00791D4D /* Bomb0.png */; };
+		9733AB1017DA37FC00791D4D /* Bomb1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0817DA37FC00791D4D /* Bomb1.png */; };
+		9733AB1117DA37FC00791D4D /* Bomb2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0917DA37FC00791D4D /* Bomb2.png */; };
+		9733AB1217DA37FC00791D4D /* Bomb3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0A17DA37FC00791D4D /* Bomb3.png */; };
+		9733AB1317DA37FC00791D4D /* Bomb4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0B17DA37FC00791D4D /* Bomb4.png */; };
+		9733AB1417DA37FC00791D4D /* Bomb5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0C17DA37FC00791D4D /* Bomb5.png */; };
+		9733AB1517DA37FC00791D4D /* Bomb6.png in Resources */ = {isa = PBXBuildFile; fileRef = 9733AB0D17DA37FC00791D4D /* Bomb6.png */; };
+		9733AB1817DA384200791D4D /* Level1.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AB1717DA384200791D4D /* Level1.m */; };
 		A1EAA80017D9F66B00EDF3B4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */; };
 		A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */; };
 		ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0D70B417D8D0D4002D3353 /* StoneWallView.m */; };
@@ -74,6 +83,16 @@
 		9733AAFC17DA254A00791D4D /* GameSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameSetting.m; sourceTree = "<group>"; };
 		9733AB0217DA30B200791D4D /* BaseLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLevel.h; sourceTree = "<group>"; };
 		9733AB0317DA30B200791D4D /* BaseLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLevel.m; sourceTree = "<group>"; };
+		9733AB0617DA37FC00791D4D /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		9733AB0717DA37FC00791D4D /* Bomb0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb0.png; sourceTree = "<group>"; };
+		9733AB0817DA37FC00791D4D /* Bomb1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb1.png; sourceTree = "<group>"; };
+		9733AB0917DA37FC00791D4D /* Bomb2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb2.png; sourceTree = "<group>"; };
+		9733AB0A17DA37FC00791D4D /* Bomb3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb3.png; sourceTree = "<group>"; };
+		9733AB0B17DA37FC00791D4D /* Bomb4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb4.png; sourceTree = "<group>"; };
+		9733AB0C17DA37FC00791D4D /* Bomb5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb5.png; sourceTree = "<group>"; };
+		9733AB0D17DA37FC00791D4D /* Bomb6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bomb6.png; sourceTree = "<group>"; };
+		9733AB1617DA384200791D4D /* Level1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1.h; sourceTree = "<group>"; };
+		9733AB1717DA384200791D4D /* Level1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level1.m; sourceTree = "<group>"; };
 		A1EAA7FD17D9F66B00EDF3B4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -171,8 +190,25 @@
 			children = (
 				9733AB0217DA30B200791D4D /* BaseLevel.h */,
 				9733AB0317DA30B200791D4D /* BaseLevel.m */,
+				9733AB1617DA384200791D4D /* Level1.h */,
+				9733AB1717DA384200791D4D /* Level1.m */,
 			);
 			path = Level;
+			sourceTree = "<group>";
+		};
+		9733AB0517DA37FC00791D4D /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				9733AB0617DA37FC00791D4D /* ball.png */,
+				9733AB0717DA37FC00791D4D /* Bomb0.png */,
+				9733AB0817DA37FC00791D4D /* Bomb1.png */,
+				9733AB0917DA37FC00791D4D /* Bomb2.png */,
+				9733AB0A17DA37FC00791D4D /* Bomb3.png */,
+				9733AB0B17DA37FC00791D4D /* Bomb4.png */,
+				9733AB0C17DA37FC00791D4D /* Bomb5.png */,
+				9733AB0D17DA37FC00791D4D /* Bomb6.png */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		ED8AA0F517D813B50070BFF0 /* GameModel */ = {
@@ -220,6 +256,7 @@
 		EDA60D3317D71C1400B0A63C /* SmallStone */ = {
 			isa = PBXGroup;
 			children = (
+				9733AB0517DA37FC00791D4D /* Image */,
 				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
 				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
 				9733AAF817DA221000791D4D /* CommonType.h */,
@@ -392,6 +429,14 @@
 				FDBA990517D9B9FD0061804F /* 3.png in Resources */,
 				A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */,
 				9733AAF317DA156600791D4D /* RankViewController.xib in Resources */,
+				9733AB0E17DA37FC00791D4D /* ball.png in Resources */,
+				9733AB0F17DA37FC00791D4D /* Bomb0.png in Resources */,
+				9733AB1017DA37FC00791D4D /* Bomb1.png in Resources */,
+				9733AB1117DA37FC00791D4D /* Bomb2.png in Resources */,
+				9733AB1217DA37FC00791D4D /* Bomb3.png in Resources */,
+				9733AB1317DA37FC00791D4D /* Bomb4.png in Resources */,
+				9733AB1417DA37FC00791D4D /* Bomb5.png in Resources */,
+				9733AB1517DA37FC00791D4D /* Bomb6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +464,7 @@
 				9733AAFA17DA221000791D4D /* CommonType.m in Sources */,
 				9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */,
 				9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */,
+				9733AB1817DA384200791D4D /* Level1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

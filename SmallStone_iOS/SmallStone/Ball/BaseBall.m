@@ -12,14 +12,17 @@
 @implementation BaseBall
 @synthesize speed = _speed;
 @synthesize acceleration = _acceleration;
+@synthesize flyingTime = _flyingTime;
 @synthesize timeScale = _timeScale;
 @synthesize verticalScale = _verticalScale;
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.userInteractionEnabled = YES;
         _timeScale = kDefaultTimeScale;
         _verticalScale = kDefaultVerticalScale;
     }
@@ -37,6 +40,24 @@
 - (void) gameDraw
 {
     
+}
+
+- (void) reset
+{
+    
+}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+//    [super touchesBegan: touches withEvent: event];
+    if ([self.delegate respondsToSelector: @selector(ballDidTapped:)])
+        [self.delegate ballDidTapped: self];
+    [self startAnimating];
+}
+
+- (void) dealloc
+{
+    self.delegate = nil;
 }
 
 @end

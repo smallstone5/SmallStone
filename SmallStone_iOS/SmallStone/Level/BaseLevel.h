@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BaseLevel : NSObject
+@class BaseBall;
+@interface BaseLevel : NSObject {
+    CGFloat _ballSize;
+}
+
+@property (nonatomic) CGFloat ballSize;
+
+- (BaseBall *) createBall;
+- (void) resetBall: (BaseBall *) ball;
 
 @end
