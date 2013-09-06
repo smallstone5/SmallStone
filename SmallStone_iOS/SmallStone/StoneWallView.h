@@ -24,5 +24,5 @@
  *  @return 
  */
 - (id)initWithStoneWall:(StoneWall *)stoneWall;
-
+   
 @end
