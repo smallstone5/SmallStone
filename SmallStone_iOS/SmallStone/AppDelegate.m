@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "MainViewController.h"
+#import "GuideViewController.h"
 
 @implementation AppDelegate
 
@@ -16,8 +17,16 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[MainViewController alloc] initWithNibName:nil bundle:nil];
-    self.window.rootViewController = self.viewController;
+    
+    //判断是否第一次启动应用，区分是否加载引导页面
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"launchFlag"]) {
+        self.viewController = [[MainViewController alloc] initWithNibName:nil bundle:nil];
+        self.window.rootViewController = self.viewController;
+    }else {
+        GuideViewController *guideController = [[GuideViewController alloc] init];
+        self.window.rootViewController = guideController;
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"launchFlag"];
+    }
     [self.window makeKeyAndVisible];
     return YES;
 }
