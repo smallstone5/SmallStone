@@ -51,7 +51,7 @@
     [scrollView addSubview:imageview1];
     //[imageview1 release];
     
-    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(640, 0, 320, 460)];
+    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(640, 0, 320, 640)];
     [imageview2 setImage:[UIImage imageNamed:@"3.png"]];
     imageview2.userInteractionEnabled = YES;
     [scrollView addSubview:imageview2];
