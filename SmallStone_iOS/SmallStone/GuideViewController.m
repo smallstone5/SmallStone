@@ -35,24 +35,28 @@
 
 - (void)initGuide
 {
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 640)];
-    [scrollView setContentSize:CGSizeMake(960, 0)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width * 3, 0)];
     [scrollView setPagingEnabled:YES];  //视图整页显示
     //[scrollView setBounces:NO]; //避免弹跳效果,避免把根视图露出来
     scrollView.delegate = self;
     
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 460)];
+    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
+    [imageview setContentMode:UIViewContentModeScaleToFill];
     [imageview setImage:[UIImage imageNamed:@"1.jpg"]];
     [scrollView addSubview:imageview];
     //[imageview release];
     
-    UIImageView *imageview1 = [[UIImageView alloc] initWithFrame:CGRectMake(320, 0, 320, 460)];
-    [imageview1 setImage:[UIImage imageNamed:@"2.jpg"]];
+    UIImageView *imageview1 = [[UIImageView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
+    [imageview1 setContentMode:UIViewContentModeScaleToFill];
+    [imageview1 setImage:[UIImage imageNamed:@"2.jpg"]]; 
     [scrollView addSubview:imageview1];
     //[imageview1 release];
     
-    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(640, 0, 320, 460)];
+    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(2 * scrollView.frame.size.width, 0,  scrollView.frame.size.width, scrollView.frame.size.height)];
     [imageview2 setImage:[UIImage imageNamed:@"3.png"]];
+    [imageview2 setContentMode:UIViewContentModeScaleToFill];
     imageview2.userInteractionEnabled = YES;
     [scrollView addSubview:imageview2];
     //[imageview2 release];
@@ -69,7 +73,8 @@
     [self.view addSubview:scrollView];
     //[scrollView release];
     
-    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 400, 320, 20)];
+    self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 60, 320, 20)];
+    self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.pageControl setBackgroundColor:[UIColor clearColor]];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 3;
