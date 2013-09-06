@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1EAA7FC17D9F53800EDF3B4 /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EAA7FB17D9F53800EDF3B4 /* RankViewController.xib */; };
+		9733AAF317DA156600791D4D /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9733AAF217DA156600791D4D /* RankViewController.xib */; };
 		A1EAA80017D9F66B00EDF3B4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */; };
 		A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */; };
 		ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0D70B417D8D0D4002D3353 /* StoneWallView.m */; };
@@ -58,11 +58,10 @@
 		FDBA990417D9B9FD0061804F /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990117D9B9FD0061804F /* 2.jpg */; };
 		FDBA990517D9B9FD0061804F /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990217D9B9FD0061804F /* 3.png */; };
 		FDBA990917D9BDC00061804F /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA990717D9BDC00061804F /* RankViewController.m */; };
-		FDBA990A17D9BDC00061804F /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDBA990817D9BDC00061804F /* RankViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1EAA7FB17D9F53800EDF3B4 /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
+		9733AAF217DA156600791D4D /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		A1EAA7FD17D9F66B00EDF3B4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -127,7 +126,6 @@
 		FDBA990217D9B9FD0061804F /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		FDBA990617D9BDC00061804F /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		FDBA990717D9BDC00061804F /* RankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
-		FDBA990817D9BDC00061804F /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,8 +203,8 @@
 				EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */,
 				EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */,
 				FDBA990617D9BDC00061804F /* RankViewController.h */,
-				A1EAA7FB17D9F53800EDF3B4 /* RankViewController.xib */,
 				FDBA990717D9BDC00061804F /* RankViewController.m */,
+				9733AAF217DA156600791D4D /* RankViewController.xib */,
 				ED8AA0F317D813790070BFF0 /* StoneView.m */,
 				ED0D70B317D8D0D4002D3353 /* StoneWallView.h */,
 				ED0D70B417D8D0D4002D3353 /* StoneWallView.m */,
@@ -356,9 +354,8 @@
 				FDBA990317D9B9FD0061804F /* 1.jpg in Resources */,
 				FDBA990417D9B9FD0061804F /* 2.jpg in Resources */,
 				FDBA990517D9B9FD0061804F /* 3.png in Resources */,
-				FDBA990A17D9BDC00061804F /* RankViewController.xib in Resources */,
-				A1EAA7FC17D9F53800EDF3B4 /* RankViewController.xib in Resources */,
 				A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */,
+				9733AAF317DA156600791D4D /* RankViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,13 +456,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
 				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "86ADDD9A-BD69-4312-8282-D142DBC10C3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -474,13 +472,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
 				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "86ADDD9A-BD69-4312-8282-D142DBC10C3C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
