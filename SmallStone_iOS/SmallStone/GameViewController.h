@@ -17,7 +17,11 @@
     
     CGFloat _x;
     CGFloat _y;
-    CGFloat _a;
+    CGFloat _vx;
+    CGFloat _vy;
+    CGFloat _ax;
+    CGFloat _ay;
+    BOOL _gameStart;
 }
 
 @property (nonatomic, strong) CADisplayLink *displayLink;

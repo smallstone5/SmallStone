@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "GameViewController.h"
 #import "StoneWallViewController.h"
 
 static CGFloat const kButtonWidth =     120.0f;
@@ -39,6 +40,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.rankButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.rankButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.rankButton setTitle:NSLocalizedString(@"Rank", @"Rank") forState:UIControlStateNormal];
+    [self.rankButton addTarget:self action:@selector(rankAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.rankButton];
     
     //新建游戏 New
@@ -92,6 +94,13 @@ static CGFloat const kButtonSpacing =   10.0f;
 
 
 #pragma mark - Action
+- (void)rankAction:(UIButton *)button
+{
+    GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
+    gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController: gameController animated: YES completion: nil];
+}
+
 - (void)createGameAction:(UIButton *)button
 {
     StoneWallViewController * wallViewController = [[StoneWallViewController alloc] initWithNibName:nil bundle:nil];

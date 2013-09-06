@@ -7,6 +7,7 @@
 //
 
 #import "StoneView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation StoneView
 
