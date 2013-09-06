@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "StoneWallViewController.h"
 
 static CGFloat const kButtonWidth =     120.0f;
 static CGFloat const kButtonHeight =    50.0f;
@@ -47,6 +48,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.createGameButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.createGameButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.createGameButton setTitle:NSLocalizedString(@"New", @"New") forState:UIControlStateNormal];
+    [self.createGameButton addTarget:self action:@selector(createGameAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.createGameButton];
     
     
@@ -85,6 +87,15 @@ static CGFloat const kButtonSpacing =   10.0f;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+#pragma mark - Action
+- (void)createGameAction:(UIButton *)button
+{
+    StoneWallViewController * wallViewController = [[StoneWallViewController alloc] initWithNibName:nil bundle:nil];
+    [self presentViewController:wallViewController animated:YES completion:nil];
 }
 
 @end
