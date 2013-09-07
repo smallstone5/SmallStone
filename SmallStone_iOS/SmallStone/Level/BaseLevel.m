@@ -53,6 +53,7 @@
 - (void) gameOver
 {
     _state = GS_Loser;
+    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
 }
 
 - (void) victory
@@ -63,5 +64,11 @@
 - (void) checkResult
 {
     
+}
+
+- (BOOL) isOutOfBounds
+{
+    CGPoint ballCenter = _ball.center;
+    return (ballCenter.x > g_rcScreen.size.width + _ballSize || ballCenter.y > g_rcScreen.size.height + _ballSize);
 }
 @end

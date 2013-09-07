@@ -63,13 +63,11 @@
 {
     [_level updateData: delta];
     
-    CGPoint ballCenter = _level.ball.center;
-    CGFloat ballsize = _level.ballSize;
-    if (ballCenter.x > g_rcScreen.size.width + ballsize || ballCenter.y > g_rcScreen.size.height + ballsize)
+    if ([_level isOutOfBounds])
     {
-        [self.displayLink setPaused: YES];
-        _level.ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
         [_level gameOver];
+        
+        [self.displayLink setPaused: YES];
     }
 }
 
@@ -90,8 +88,9 @@
         if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
         {
             //点击到小球
-            [self.displayLink setPaused: YES];
             [_level victory];
+            
+            [self.displayLink setPaused: YES];
         }
         
         return;
@@ -122,6 +121,7 @@
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
     _level.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
     [_level startGame];
+    
     [self.displayLink setPaused: NO];
 }
 

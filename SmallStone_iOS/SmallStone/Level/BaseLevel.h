@@ -48,4 +48,5 @@ typedef enum _GameState {
 - (void) gameOver;
 - (void) victory;
 - (void) checkResult;
+- (BOOL) isOutOfBounds;
 @end
