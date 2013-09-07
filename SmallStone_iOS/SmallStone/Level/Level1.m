@@ -22,7 +22,7 @@
         
         _timeScale = kDefaultTimeScale;
         _verticalScale = kDefaultVerticalScale;
-        _speedScale = CGPointMake(0.6f, 1.0f);
+        _speedScale = CGPointMake(0.5f, 1.0f);
         
         //创建小球
         _ball = [[BaseBall alloc] initWithFrame: CGRectMake(0.0f, 0.0f, _ballSize, _ballSize)];
@@ -44,7 +44,7 @@
         StoneWall * wall = [[StoneWall alloc] init];
         wall.matrixRow = 3;
         wall.matrixColumn = 4;
-        [wall generateRandStones:8];
+        [wall generateRandStones:1];
         
         _stoneWall = [[StoneWallView alloc] initWithStoneWall:wall];
         _stoneWall.frame = CGRectMake((g_rcScreen.size.width - _stoneWall.frame.size.width)/2,
