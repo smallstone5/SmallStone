@@ -12,7 +12,8 @@
 
 @end
 
-#define BASE_URL @"http://10.66.60.45/default/rank"
+#define BASE_URL @"http://180.153.0.208/index.php?o=rank"
+#define TITLE @"排行榜"
 
 @implementation RankViewController
 
@@ -20,14 +21,16 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        UIBarButtonItem * backBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"返回", @"返回") style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
+        self.navigationItem.leftBarButtonItem = backBarButton;
     }
     return self;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.rankTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    [super viewWillAppear:animated];
+    
     //[self initData];
     [self getAllData];
 }
@@ -36,6 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+        
+    self.rankTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -66,23 +72,6 @@
     self.rankData = [NSMutableArray arrayWithArray:dataArr];
 }
 
-//显示网络状态栏
--(void)showNetworkActivityIndicator
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    if (!(app.isNetworkActivityIndicatorVisible)) {
-        app.networkActivityIndicatorVisible = YES;
-    }
-}
-
-//隐藏网络状态栏
--(void)hideNetworkActivityIndicator
-{
-    UIApplication *app = [UIApplication sharedApplication];
-    if (app.isNetworkActivityIndicatorVisible) {
-        app.networkActivityIndicatorVisible = NO;
-    }
-}
 
 //通过接口拉取全部信息
 -(void)getAllData
@@ -90,15 +79,36 @@
     //异步调用接口设置以前的session无效，此步骤失败也无影响
     NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", BASE_URL];
     NSURL *url = [NSURL URLWithString:appUrl];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
     NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
     [urlConnection start];
-    [self showNetworkActivityIndicator];
+    
+    //加载状态
+    [self showRankStart];
+}
+
+//开始加载
+-(void)showRankStart
+{
+    UIActivityIndicatorView *loadView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [loadView setCenter:self.navigationItem.titleView.center];
+    [loadView setHidesWhenStopped:YES];
+    self.navigationItem.titleView = loadView;
+    [loadView startAnimating];
 }
 
 
+//结束加载
+-(void)showRankEnd
+{
+    self.navigationItem.titleView = nil;
+    self.title = @"排行榜";
+}
+
 //实现连接失败的委托方法
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    
+    [self showRankEnd];
     NSLog(@"网络连接失败");
 }
 
@@ -107,12 +117,12 @@
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     if (json == nil) {
-        NSLog(@"json parse failed \r\n");
+        [self showRankEnd];
         return;
     }
     NSString *result = [json objectForKey:@"errCode"];
     if ([result intValue] == 0) {
-        [self hideNetworkActivityIndicator];
+        [self showRankEnd];
         
         int num = 1;
         NSDictionary *rows = [json objectForKey:@"result"];
@@ -134,6 +144,7 @@
         //在主线程reload数据，防止datasource有误时出现crash
         [self.rankTable performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
+    
 }
 
 #pragma getdevice id
@@ -164,7 +175,10 @@
 //元素个数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.rankData count];
+    if (self.rankData) {
+        return [self.rankData count];
+    }
+    return 1;
 }
 
 //设置行高
@@ -187,7 +201,7 @@
 
 //标题
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return @"排行榜";
+	return @"";
 }
 
 /*
@@ -222,6 +236,12 @@
     }
     
     NSUInteger row = [indexPath row];
+    if (!self.rankData && 0 == row) {
+        cell.textLabel.text = @"暂无排名数据.";
+        return cell;
+    }        
+    
+    cell.accessoryView = nil;
     NSDictionary *userData = [self.rankData objectAtIndex:row];
         
     NSInteger index = [[userData valueForKey:@"num"] intValue];
@@ -232,7 +252,7 @@
     
     NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[userData valueForKey:@"pic"]]];
     cell.imageView.image = [UIImage imageWithData:imageData];
-    float scale = (cell.frame.size.height-10)/cell.imageView.image.size.width;
+    float scale = 40.0/cell.imageView.image.size.width;
     cell.imageView.transform = CGAffineTransformMakeScale(scale, scale);
     cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数: %@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
     
@@ -261,7 +281,7 @@
 //是否当前用户的排名
 -(BOOL)isCuruserRank:(NSString *)name
 {
-    NSString *curUsername = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    NSString *curUsername = [[NSUserDefaults standardUserDefaults] valueForKey:@"nickname"];
     if ([curUsername isEqualToString:name]) {
         return YES;
     }
