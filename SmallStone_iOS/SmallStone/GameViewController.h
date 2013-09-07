@@ -10,10 +10,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 @class BaseBall;
+@class StoneWallView;
 @class BaseLevel;
 @interface GameViewController : UIViewController {
     BaseLevel *_level;
     BaseBall *_ball;
+    StoneWallView *_stoneWall;
     
     CFTimeInterval _lastTimeStamp;
     CFTimeInterval _tmStart;

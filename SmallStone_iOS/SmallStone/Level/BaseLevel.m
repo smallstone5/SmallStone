@@ -21,4 +21,9 @@
 {
     
 }
+
+- (StoneWallView *) createStoneWall
+{
+    return nil;
+}
 @end

@@ -10,6 +10,7 @@
 #import "GameSetting.h"
 #import "BaseLevel.h"
 #import "BaseBall.h"
+#import "StoneWallView.h"
 
 #import "Level1.h"
 
@@ -39,6 +40,9 @@
     _lastTimeStamp = self.displayLink.timestamp;
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.displayLink setPaused: YES];
+    
+    _stoneWall = [_level createStoneWall];
+    [self.view addSubview: _stoneWall];
     
     _ball = [_level createBall];
     [self.view addSubview: _ball];

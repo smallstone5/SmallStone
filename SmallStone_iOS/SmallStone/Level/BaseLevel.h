@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class BaseBall;
+@class StoneWallView;
 @interface BaseLevel : NSObject {
     CGFloat _ballSize;                  //小球大小
     CGPoint _acceleration;
@@ -20,5 +21,7 @@
 
 - (BaseBall *) createBall;
 - (void) resetBall: (BaseBall *) ball;
+
+- (StoneWallView *) createStoneWall;
 
 @end

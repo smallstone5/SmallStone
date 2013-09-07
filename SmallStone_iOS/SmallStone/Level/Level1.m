@@ -8,6 +8,7 @@
 
 #import "Level1.h"
 #import "BaseBall.h"
+#import "StoneWallView.h"
 
 @implementation Level1
 
@@ -43,5 +44,19 @@
 - (void) resetBall: (BaseBall *) ball
 {
     ball.image = [UIImage imageNamed: @"ball.png"];
+}
+
+- (StoneWallView *) createStoneWall
+{
+    StoneWall * wall = [[StoneWall alloc] init];
+    wall.matrixRow = 3;
+    wall.matrixColumn = 4;
+    [wall generateRandStones:8];
+    
+    StoneWallView *stoneWallView = [[StoneWallView alloc] initWithStoneWall:wall];
+    stoneWallView.frame = CGRectMake((g_rcScreen.size.width - stoneWallView.frame.size.width)/2,
+                                     g_rcScreen.size.height - stoneWallView.frame.size.height,
+                                     stoneWallView.frame.size.width, stoneWallView.frame.size.height);
+    return stoneWallView;
 }
 @end
