@@ -184,6 +184,11 @@ static CGFloat const kStoneSpacing = 4.0f;
         stoneView.state = kStoneStateShaking;
         [self.linkView connectLinkToPoint:stoneView.center];
         [self playConnectSound];
+
+        if ([self.delegate respondsToSelector:@selector(stoneWallView:didConnectStoneView:)]) {
+            [self.delegate stoneWallView:self didConnectStoneView:stoneView];
+        }
+
     }
 }
 
@@ -194,6 +199,9 @@ static CGFloat const kStoneSpacing = 4.0f;
     stoneView.state = kStoneStateNormal;
     [self.linkView disconnectLinkPoint:stoneView.center];
     [self playConnectSound];
+    if ([self.delegate respondsToSelector:@selector(stoneWallView:didDisconnectStoneView:)]) {
+        [self.delegate stoneWallView:self didDisconnectStoneView:stoneView];
+    }
 }
 
 
@@ -209,10 +217,14 @@ static CGFloat const kStoneSpacing = 4.0f;
         aStoneView.state = kStoneStateCleared;
     };
 
-
-    [self.connectedStoneViews removeAllObjects];
     [self.linkView clear];
     [self playClearSound];
+
+    if ([self.delegate respondsToSelector:@selector(stoneWallView:didClearStoneViews:)]) {
+        [self.delegate stoneWallView:self didClearStoneViews:self.connectedStoneViews];
+    }
+
+    [self.connectedStoneViews removeAllObjects];
 }
 
 

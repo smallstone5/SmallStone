@@ -32,12 +32,16 @@
  */
 - (void)stoneWallView:(StoneWallView *)wallView didDisconnectStoneView:(StoneView *)stoneView;
 
+
+
 /*
  * 消除一堆已连接石子时回调，此时可以做道具检测工作
  *  @param wallView 石子堆
  *  @param stoneViews 石子
  */
 - (void)stoneWallView:(StoneWallView *)wallView didClearStoneViews:(NSArray *)stoneViews;
+
+
 
 @end
 
@@ -49,6 +53,8 @@
 
 @property (nonatomic, strong) NSMutableArray *          stoneViews;
 @property (nonatomic, strong) NSMutableArray *          connectedStoneViews;
+
+@property (nonatomic, weak) id<StoneWallViewDelegate>   delegate;
 
 /*
  * 使用石子墙初始化view
