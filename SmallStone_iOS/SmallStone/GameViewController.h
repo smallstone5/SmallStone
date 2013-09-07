@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "BaseBall.h"
 
+@class BaseBall;
 @class BaseLevel;
-@interface GameViewController : UIViewController <BaseBallDelegate> {
+@interface GameViewController : UIViewController {
     BaseLevel *_level;
     BaseBall *_ball;
     
