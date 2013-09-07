@@ -88,7 +88,10 @@
         if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
         {
             //点击到小球
-            [_level victory];
+            if (_level.stoneWall.isCleared)
+                [_level victory];
+            else
+                [_level gameOver];
             
             [self.displayLink setPaused: YES];
         }

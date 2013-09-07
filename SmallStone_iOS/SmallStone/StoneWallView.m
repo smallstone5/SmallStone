@@ -132,6 +132,11 @@
 }
 
 
+- (void)resume
+{
+    _isStopped = NO;
+}
+
 
 - (void)reset
 {
