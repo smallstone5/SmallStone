@@ -11,6 +11,8 @@
 
 @interface StoneLinkView : UIView
 
+@property (nonatomic, strong) UIColor *             linkColor;
+
 
 /*
  * 画线连接到point

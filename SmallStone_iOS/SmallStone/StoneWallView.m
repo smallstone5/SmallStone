@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) StoneLinkView *       linkView;
 @property (nonatomic, strong) AVAudioPlayer *       audioPlayer;
+@property (nonatomic, assign) NSUInteger            clearCount;
 
 
 
@@ -34,7 +35,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        _isStopped = NO;
     }
     return self;
 }
@@ -103,6 +104,18 @@
     [self clearConnectedStones];
 }
 
+#pragma mark - Getter
+- (BOOL)isStopped
+{
+    return _isStopped;
+}
+
+
+- (BOOL)isCleared
+{
+    return (self.stoneViews.count == 0);
+}
+
 #pragma mark - Public
 - (void)stop
 {
@@ -127,6 +140,7 @@
     [self resetStoneViews];
 }
 
+
 #pragma mark - Private
 
 - (void)resetWall
@@ -143,6 +157,12 @@
 - (void)resetStoneViews
 {
     for (Stone * aStone in self.stoneWall.stoneList) {
+        
+        if (aStone.point.x > self.stoneWall.matrixColumn
+            || aStone.point.y > self.stoneWall.matrixRow) {
+            continue;
+        }
+
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
         CGFloat originX = aStone.point.x * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
         CGFloat originY = aStone.point.y * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
@@ -264,6 +284,7 @@
         [self.delegate stoneWallView:self didClearStoneViews:self.connectedStoneViews];
     }
 
+    [self.stoneViews removeObjectsInArray:self.connectedStoneViews];
     [self.connectedStoneViews removeAllObjects];
 }
 

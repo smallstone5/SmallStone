@@ -22,6 +22,7 @@
     if (self) {
         self.backgroundColor = nil;
         _pointList = [NSMutableArray array];
+        _linkColor = [UIColor colorWithWhite:0.6 alpha:0.6];
     }
     return self;
 }
@@ -38,7 +39,7 @@
 
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [self.linkColor CGColor]);
     CGContextSetLineWidth(context, 8.0);
     CGPoint fromPoint = [self.pointList[0] CGPointValue];
     for (NSInteger i = 1; i < self.pointList.count; i++) {

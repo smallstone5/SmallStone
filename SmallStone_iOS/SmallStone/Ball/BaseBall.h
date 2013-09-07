@@ -10,18 +10,8 @@
 #import "CommonType.h"
 
 @interface BaseBall : UIImageView {
-    CGPoint _speed;
-    CGPoint _acceleration;
-    double _flyingTime;
-    CGFloat _timeScale;
-    CGFloat _verticalScale;
+    
 }
-
-@property (nonatomic) CGPoint speed;
-@property (nonatomic) CGPoint acceleration;
-@property (nonatomic) double flyingTime;
-@property (nonatomic) CGFloat timeScale;
-@property (nonatomic) CGFloat verticalScale;
 
 - (void) updateData: (CFTimeInterval) delta;
 - (void) gameDraw;

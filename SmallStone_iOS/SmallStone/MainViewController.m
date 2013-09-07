@@ -120,7 +120,6 @@ static CGFloat const kButtonSpacing =   10.0f;
 #pragma newrank - Action
 -(void) rankNewAction:(UIButton *)button
 {
-    NSLog(@"111");
     RankViewController * wallViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:wallViewController animated:YES completion:nil];
 }

@@ -9,5 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingViewController : UIViewController
+{
+	IBOutlet UITextField * serviceIp;
+	IBOutlet UITextField * nickname;
+}
+@property (nonatomic, strong) UIButton *  backButton;
+@property (nonatomic, strong) UIButton *  saveButton;
+@property (nonatomic, retain) UITextField * serviceIp;
+@property (nonatomic, retain) UITextField * nickname;
+
+-(IBAction)backButtonAction:(id) sender;
+-(IBAction)saveButtonAction:(id) sender;
+-(IBAction)textFieldDoneEditing:(id)sender;
+-(IBAction)backgroundTap:(id)sender;
 
 @end

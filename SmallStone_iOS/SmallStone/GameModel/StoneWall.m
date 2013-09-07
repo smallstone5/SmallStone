@@ -69,7 +69,7 @@
 
 - (StoneMatrixPoint)randNonRepeatMatrixPoint
 {
-    StoneMatrixPoint point = MatrixPointMake(0, 0);
+    StoneMatrixPoint point = MatrixPointMake(NSIntegerMax, NSIntegerMax);
     NSUInteger maxCheckCount = self.matrixRow * self.matrixColumn;
     do {
         NSInteger row = arc4random() % self.matrixRow;
