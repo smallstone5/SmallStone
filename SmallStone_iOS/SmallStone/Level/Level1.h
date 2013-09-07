@@ -10,4 +10,5 @@
 
 @interface Level1 : BaseLevel
 
+
 @end

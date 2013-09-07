@@ -7,14 +7,10 @@
 //
 
 #import "BaseBall.h"
-#import "GameSetting.h"
+
 
 @implementation BaseBall
-@synthesize speed = _speed;
-@synthesize acceleration = _acceleration;
-@synthesize flyingTime = _flyingTime;
-@synthesize timeScale = _timeScale;
-@synthesize verticalScale = _verticalScale;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,18 +18,14 @@
     if (self) {
         // Initialization code
         self.userInteractionEnabled = YES;
-        _timeScale = kDefaultTimeScale;
-        _verticalScale = kDefaultVerticalScale;
+        
     }
     return self;
 }
 
 - (void) updateData: (CFTimeInterval) delta
 {
-    _flyingTime += _timeScale * delta;
-    CGFloat x = _speed.x * _flyingTime + _acceleration.x * _flyingTime * _flyingTime;
-    CGFloat y = (_speed.y * _flyingTime - _acceleration.y * _flyingTime * _flyingTime) * _verticalScale;
-    self.center = ConvertPtBottomLeftToTopLeft(CGPointMake(x, y));
+    
 }
 
 - (void) gameDraw
