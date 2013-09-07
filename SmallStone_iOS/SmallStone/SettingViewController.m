@@ -15,7 +15,6 @@
 @implementation SettingViewController
 
 @synthesize nickname;
-@synthesize serviceIp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +30,7 @@
 {
     [super viewDidLoad];
 	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
-	serviceIp.text = [Setting objectForKey:@"serviceIp"];
 	nickname.text = [Setting objectForKey:@"nickname"];
-	NSLog(@"%@", [Setting objectForKey:@"serviceIp"]);
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -51,10 +48,8 @@
 -(void) saveButtonAction:(id)sender
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:serviceIp.text forKey:@"serviceIp"];
 	[defaults setObject:nickname.text forKey:@"nickname"];
 	[defaults synchronize];
-
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 }
 
@@ -65,7 +60,6 @@
 
 -(void) backgroundTap:(id)sender
 {
-	[serviceIp resignFirstResponder];
 	[nickname resignFirstResponder];
 }
 

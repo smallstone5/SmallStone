@@ -10,12 +10,10 @@
 
 @interface SettingViewController : UIViewController
 {
-	IBOutlet UITextField * serviceIp;
 	IBOutlet UITextField * nickname;
 }
 @property (nonatomic, strong) UIButton *  backButton;
 @property (nonatomic, strong) UIButton *  saveButton;
-@property (nonatomic, retain) UITextField * serviceIp;
 @property (nonatomic, retain) UITextField * nickname;
 
 -(IBAction)backButtonAction:(id) sender;
