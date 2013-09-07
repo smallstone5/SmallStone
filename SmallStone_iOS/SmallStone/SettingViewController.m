@@ -58,7 +58,7 @@
 	NSMutableString *appUrl = [[NSMutableString alloc] initWithString:saveNicknameURL];
 	[appUrl appendString:@"&id="];
 	//[appUrl appendString:@""]
-	NSLog(@"%@", appUrl);
+	NSLog(@"%@", appUrl, [self getDeviceId]);
 	
 }
 
@@ -84,5 +84,19 @@
 {
 	[nickname resignFirstResponder];
 }
-
+-(NSString *)getDeviceId
+{
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+    NSString *uniqueId;
+    if (version <= 5.0)
+    {
+        uniqueId = [[UIDevice currentDevice]  uniqueIdentifier];
+    }
+    else
+    {
+        uniqueId = [[UIDevice currentDevice] identifierForVendor];
+    }
+    
+    return uniqueId;
+}
 @end
