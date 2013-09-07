@@ -12,13 +12,16 @@
 #import "BaseBall.h"
 #import "StoneWallView.h"
 #import "CatchPowerView.h"
+#import "GameResultView.h"
 
 #import "Level1.h"
+
+
 
 @interface GameViewController () <StoneWallViewDelegate>
 
 @property (nonatomic, strong) CatchPowerView *      powerView;
-
+@property (nonatomic, strong) GameResultView *      resultView;
 @end
 
 @implementation GameViewController
@@ -45,8 +48,6 @@
     self.powerView.progress = 0.0;
     [self.view addSubview:self.powerView];
 
-
-
     self.level.stoneWall.delegate = self;
 
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkCallback:)];
@@ -56,6 +57,15 @@
     
     [self.view addSubview: _level.stoneWall];
     [self.view addSubview: _level.ball];
+
+
+    self.resultView = [GameResultView resultView];
+    [self.resultView.backToMainButton addTarget:self action:@selector(backToMainAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.resultView.restartButton addTarget:self action:@selector(restartAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.resultView.nextLevelButton addTarget:self action:@selector(nextLevelAction:) forControlEvents:UIControlEventTouchUpInside];
+
+
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +74,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark -
 - (void)displayLinkCallback:(CADisplayLink *)sender
 {
     if (_lastTimeStamp > 0.0f)
@@ -89,6 +101,7 @@
     [_level gameDraw];
 }
 
+#pragma mark - UIResponder
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan: touches withEvent: event];
@@ -141,10 +154,43 @@
     [self.displayLink setPaused: NO];
 }
 
+
+#pragma mark - Action
 - (IBAction) back:(id)sender
 {
     [self dismissViewControllerAnimated: YES completion: nil];
 }
+
+- (void)backToMainAction:(id)sender
+{
+    [self back:sender];
+}
+
+- (void)restartAction:(id)sender
+{
+    [self.resultView hideResultView];
+}
+
+- (void)nextLevelAction:(id)sender
+{
+    [self.resultView hideResultView];
+}
+
+
+#pragma mark - Private
+- (void)updatePowerProgress:(CGFloat)progress
+{
+    self.powerView.progress = progress;
+    if (progress == 1) {
+//        [self showGameResult];
+    }
+}
+
+- (void)showGameResult
+{
+//    [self.resultView showScore:2000 onView:self.view];
+}
+
 
 
 
@@ -168,8 +214,8 @@
                          animations:^{
                              starView.center = powerViewCenter;
                          } completion:^(BOOL finished) {
-                             self.powerView.progress = (CGFloat)(currentClearedCount + i + 1) / wallView.stoneViews.count;
-
+                             CGFloat progress = (CGFloat)(currentClearedCount + i + 1) / wallView.stoneViews.count;
+                             [self updatePowerProgress:progress];
                              [UIView animateWithDuration:0.5
                                               animations:^{
                                                   starView.alpha = 0;
