@@ -16,6 +16,7 @@ static CGFloat const kStrokeWidth = 12.0f;
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _strokeWidth = kStrokeWidth;
         _progressBGColor = [UIColor whiteColor];
         _progressColor = [UIColor orangeColor]; //[[UIColor orangeColor] colorWithAlphaComponent:0.8];
     }
@@ -43,12 +44,12 @@ static CGFloat const kStrokeWidth = 12.0f;
     
 //    CGContextMoveToPoint(context, center.x, center.y);
     CGFloat outerRadius = minSide / 2;
-    CGFloat innerRadius = outerRadius - kStrokeWidth / 2;
-    CGFloat startAngle = 0.0;
-    CGFloat endAngle = M_PI * 2 * self.progress;
+    CGFloat innerRadius = outerRadius - self.strokeWidth / 2;
+    CGFloat startAngle = -M_PI_2;
+    CGFloat endAngle = M_PI * 2 * self.progress - M_PI_2;
     CGContextAddArc(context, center.x, center.y, innerRadius, startAngle, endAngle, 0);
     CGContextSetStrokeColorWithColor(context, self.progressColor.CGColor);
-    CGContextSetLineWidth(context, kStrokeWidth);
+    CGContextSetLineWidth(context, self.strokeWidth);
     CGContextSetLineCap(context, kCGLineCapButt);
     CGContextStrokePath(context);
 
@@ -59,7 +60,7 @@ static CGFloat const kStrokeWidth = 12.0f;
 #pragma mark - Setter
 - (void)setProgress:(CGFloat)progress
 {
-    if (progress == _progress) {
+    if (progress <= _progress && progress != 0) {
         return;
     }
 

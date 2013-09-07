@@ -11,10 +11,13 @@
 #import "BaseLevel.h"
 #import "BaseBall.h"
 #import "StoneWallView.h"
+#import "CatchPowerView.h"
 
 #import "Level1.h"
 
-@interface GameViewController ()
+@interface GameViewController () <StoneWallViewDelegate>
+
+@property (nonatomic, strong) CatchPowerView *      powerView;
 
 @end
 
@@ -35,7 +38,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.powerView = [[CatchPowerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 10, 64, 64)];
+    self.powerView.backgroundColor = [UIColor clearColor];
+    self.powerView.progressBGColor = [UIColor colorWithWhite:0.8 alpha:0.8];
+    self.powerView.progress = 0.0;
+    [self.view addSubview:self.powerView];
+
+
+
+    self.level.stoneWall.delegate = self;
+
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkCallback:)];
     _lastTimeStamp = self.displayLink.timestamp;
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
@@ -131,6 +144,45 @@
 - (IBAction) back:(id)sender
 {
     [self dismissViewControllerAnimated: YES completion: nil];
+}
+
+
+
+#pragma mark - StoneWallViewDelegate
+- (void)stoneWallView:(StoneWallView *)wallView didClearStoneViews:(NSArray *)stoneViews
+{
+    CGPoint powerViewCenter = self.powerView.center;
+    NSInteger currentClearedCount = wallView.clearedStoneViews.count;
+
+    for (NSInteger i = 0; i < stoneViews.count; i++) {
+        UIView * stoneView = stoneViews[i];
+        CGPoint stoneViewCenter = [self.view convertPoint:stoneView.center fromView:wallView];
+        UIImageView * starView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"orange_sun.png"]];
+        starView.frame = CGRectMake(stoneViewCenter.x - 10, stoneViewCenter.y - 10, 20, 20);
+        starView.center = stoneViewCenter;
+        [self.view addSubview:starView];
+
+        [UIView animateWithDuration:0.8
+                              delay: i * 0.05
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionTransitionFlipFromTop
+                         animations:^{
+                             starView.center = powerViewCenter;
+                         } completion:^(BOOL finished) {
+                             self.powerView.progress = (CGFloat)(currentClearedCount + i + 1) / wallView.stoneViews.count;
+
+                             [UIView animateWithDuration:0.5
+                                              animations:^{
+                                                  starView.alpha = 0;
+                                                  CGRect frame = self.powerView.frame;
+                                                  starView.frame = CGRectMake(frame.origin.x + 6, frame.origin.y + 6,
+                                                                              frame.size.width - 12, frame.size.height - 12);
+                                              } completion:^(BOOL finished) {
+                                                  [starView removeFromSuperview];
+                                              }];
+
+                         }];
+    }
+
 }
 
 @end

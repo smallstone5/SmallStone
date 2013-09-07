@@ -113,7 +113,7 @@
 
 - (BOOL)isCleared
 {
-    return (self.stoneViews.count == 0);
+    return (self.stoneViews.count == self.clearedStoneViews.count);
 }
 
 #pragma mark - Public
@@ -156,6 +156,7 @@
 
     self.stoneViews = [[NSMutableArray alloc] init];
     self.connectedStoneViews = [NSMutableArray array];
+    self.clearedStoneViews = [NSMutableArray array];
     [self.linkView clear];
 }
 
@@ -289,7 +290,7 @@
         [self.delegate stoneWallView:self didClearStoneViews:self.connectedStoneViews];
     }
 
-    [self.stoneViews removeObjectsInArray:self.connectedStoneViews];
+    [self.clearedStoneViews addObjectsFromArray:self.connectedStoneViews];
     [self.connectedStoneViews removeAllObjects];
 }
 
