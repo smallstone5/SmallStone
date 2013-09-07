@@ -53,10 +53,6 @@
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 	//请求后台创建该用户名
 	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
-	NSMutableString *appUrl = [[NSMutableString alloc] initWithString:saveNicknameURL];
-	[appUrl appendString:@"&id="];
-	//[appUrl appendString:@""]
-	NSLog(@"%@", appUrl, [self getDeviceId]);
 	
 }
 
@@ -82,19 +78,5 @@
 {
 	[nickname resignFirstResponder];
 }
--(NSString *)getDeviceId
-{
-    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-    NSString *uniqueId;
-    if (version <= 5.0)
-    {
-        uniqueId = [[UIDevice currentDevice]  uniqueIdentifier];
-    }
-    else
-    {
-        uniqueId = [[UIDevice currentDevice] identifierForVendor];
-    }
-    
-    return uniqueId;
-}
+
 @end
