@@ -196,6 +196,7 @@ static NSInteger const kCoverViewTag  =  171522;
     } else {
         self.resultLabel.textColor = [UIColor darkTextColor];
         self.resultLabel.text = NSLocalizedString(@"Failed", @"Failed");
+        self.scoreLabel.text = nil;
         [self updateStarViewWithStarLevel:0];
 
         self.backToMainButton.enabled = YES;
