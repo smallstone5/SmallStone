@@ -7,6 +7,7 @@
 //
 
 #import "StoneWall.h"
+#import "GameSetting.h"
 
 @interface StoneWall()
 
@@ -17,6 +18,19 @@
 
 @implementation StoneWall
 
+
+
+#pragma mark - Lifecycle
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _stoneSize = kDefaultStoneSize;
+        _stoneSpacing = kDefaultStoneSpacing;
+    }
+
+    return self;
+}
 
 
 #pragma mark - Public
@@ -30,6 +44,7 @@
     for (NSInteger i = 0; i < minCount; i++) {
         Stone * aStone = [[Stone alloc] init];
         aStone.point = [self randNonRepeatMatrixPoint];
+        aStone.size = CGSizeMake(self.stoneSize, self.stoneSize);
         [aStone setImage:[UIImage imageNamed:@"stone_blue.png"] forState:kStoneStateNormal];
         aStone.color = nil;
         [self markMatrixPoint:aStone.point];

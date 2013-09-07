@@ -14,10 +14,6 @@
 #import "StoneLinkView.h"
 
 
-static CGSize const kStoneSize = {44, 44};
-static CGFloat const kStoneSpacing = 4.0f;
-
-
 @interface StoneWallView()
 {
     BOOL            _isStopped;
@@ -47,8 +43,8 @@ static CGFloat const kStoneSpacing = 4.0f;
 
 - (id)initWithStoneWall:(StoneWall *)stoneWall
 {
-    CGFloat width = stoneWall.matrixColumn * (kStoneSize.width + kStoneSpacing);
-    CGFloat height = stoneWall.matrixRow * (kStoneSize.height + kStoneSpacing);
+    CGFloat width = stoneWall.matrixColumn * (stoneWall.stoneSize + stoneWall.stoneSpacing);
+    CGFloat height = stoneWall.matrixRow * (stoneWall.stoneSize + stoneWall.stoneSpacing);
     CGRect frame = CGRectMake(0, 0, width, height);
     self = [self initWithFrame:frame];
     if (self) {
@@ -153,9 +149,9 @@ static CGFloat const kStoneSpacing = 4.0f;
 {
     for (Stone * aStone in self.stoneWall.stoneList) {
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
-        CGFloat originX = aStone.point.x * (kStoneSize.width + kStoneSpacing);
-        CGFloat originY = aStone.point.y * (kStoneSize.height + kStoneSpacing);
-        aStoneView.frame = CGRectMake(originX, originY, kStoneSize.width, kStoneSize.height);
+        CGFloat originX = aStone.point.x * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
+        CGFloat originY = aStone.point.y * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
+        aStoneView.frame = CGRectMake(originX, originY, self.stoneWall.stoneSize, self.stoneWall.stoneSize);
         aStoneView.state = kStoneStateNormal;
         [self.stoneViews addObject:aStoneView];
         [self addSubview:aStoneView];
@@ -205,8 +201,8 @@ static CGFloat const kStoneSpacing = 4.0f;
 
     CGFloat connetXLength = fabs(stoneView.center.x - lastStoneView.center.x);
     CGFloat connetYLength = fabs(stoneView.center.y - lastStoneView.center.y);
-    if (connetXLength <= kStoneSize.width + 2 * kStoneSpacing
-        && connetYLength <= kStoneSize.height + 2 * kStoneSpacing) {
+    if (connetXLength <= self.stoneWall.stoneSize + 2 * self.stoneWall.stoneSpacing
+        && connetYLength <= self.stoneWall.stoneSize + 2 * self.stoneWall.stoneSpacing) {
         return YES;
     }
 

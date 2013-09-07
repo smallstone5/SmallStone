@@ -23,7 +23,7 @@
 
 - (id)initWithStone:(Stone *)stone
 {
-    self = [self initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self = [self initWithFrame:CGRectMake(0, 0, stone.size.width, stone.size.height)];
     if (self) {
         _stone = stone;
         self.backgroundColor = stone.color;

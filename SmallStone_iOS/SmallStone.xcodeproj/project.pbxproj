@@ -98,6 +98,7 @@
 		A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		ED0D70B317D8D0D4002D3353 /* StoneWallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneWallView.h; sourceTree = "<group>"; };
 		ED0D70B417D8D0D4002D3353 /* StoneWallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneWallView.m; sourceTree = "<group>"; };
+		ED4C01A517DACB79002DA400 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
 		ED8AA0EF17D8135C0070BFF0 /* StoneWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneWallViewController.h; sourceTree = "<group>"; };
 		ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneWallViewController.m; sourceTree = "<group>"; };
 		ED8AA0F317D813790070BFF0 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
@@ -256,37 +257,38 @@
 		EDA60D3317D71C1400B0A63C /* SmallStone */ = {
 			isa = PBXGroup;
 			children = (
-				9733AB0517DA37FC00791D4D /* Image */,
 				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
 				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
+				9733AAF417DA19DA00791D4D /* Ball */,
 				9733AAF817DA221000791D4D /* CommonType.h */,
 				9733AAF917DA221000791D4D /* CommonType.m */,
+				ED8AA0F517D813B50070BFF0 /* GameModel */,
 				9733AAFB17DA254A00791D4D /* GameSetting.h */,
 				9733AAFC17DA254A00791D4D /* GameSetting.m */,
-				9733AAF417DA19DA00791D4D /* Ball */,
-				9733AB0117DA308D00791D4D /* Level */,
-				ED8AA0F517D813B50070BFF0 /* GameModel */,
 				EDA60D5017D7296000B0A63C /* GameViewController.h */,
 				EDA60D5117D7296000B0A63C /* GameViewController.m */,
 				EDA60D5217D7296000B0A63C /* GameViewController.xib */,
 				FDBA98FB17D9B5D90061804F /* GuideViewController.h */,
 				FDBA98FC17D9B5D90061804F /* GuideViewController.m */,
+				9733AB0517DA37FC00791D4D /* Image */,
+				9733AB0117DA308D00791D4D /* Level */,
 				EDA60D4517D71C1400B0A63C /* MainViewController.h */,
 				EDA60D4617D71C1400B0A63C /* MainViewController.m */,
-				EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */,
-				EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */,
 				FDBA990617D9BDC00061804F /* RankViewController.h */,
 				FDBA990717D9BDC00061804F /* RankViewController.m */,
 				9733AAF217DA156600791D4D /* RankViewController.xib */,
+				A1EAA7FD17D9F66B00EDF3B4 /* SettingViewController.h */,
+				A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */,
+				A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */,
+				EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */,
+				EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */,
+				ED4C01A517DACB79002DA400 /* StoneView.h */,
 				ED8AA0F317D813790070BFF0 /* StoneView.m */,
 				ED0D70B317D8D0D4002D3353 /* StoneWallView.h */,
 				ED0D70B417D8D0D4002D3353 /* StoneWallView.m */,
 				ED8AA0EF17D8135C0070BFF0 /* StoneWallViewController.h */,
 				ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */,
 				EDA60D3417D71C1400B0A63C /* Supporting Files */,
-				A1EAA7FD17D9F66B00EDF3B4 /* SettingViewController.h */,
-				A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */,
-				A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */,
 			);
 			path = SmallStone;
 			sourceTree = "<group>";

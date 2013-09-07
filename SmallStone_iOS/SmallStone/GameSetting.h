@@ -14,3 +14,7 @@
 #define kBigBallSize                    40.0f                       //大球size
 #define kDefaultTimeScale               0.1f                        //时间系数
 #define kDefaultVerticalScale           4.0f                        //垂直高度放大系数
+
+
+#define kDefaultStoneSize               36.0f                       //石子的大小
+#define kDefaultStoneSpacing            4.0f                        //石子间的空隙
