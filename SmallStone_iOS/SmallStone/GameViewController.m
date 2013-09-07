@@ -42,6 +42,7 @@
     [self.displayLink setPaused: YES];
     
     _stoneWall = [_level createStoneWall];
+    _stoneWall.isStopped = YES;
     [self.view addSubview: _stoneWall];
     
     _ball = [_level createBall];
@@ -72,7 +73,8 @@
     {
         [self.displayLink setPaused: YES];
         _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
-        _gameStart = NO;
+        [_stoneWall stop];
+//        _gameStart = NO;
     }
 }
 
@@ -95,6 +97,7 @@
             //点击到小球
             [self.displayLink setPaused: YES];
             [self performSelector: @selector(onResult) withObject: nil afterDelay: 1.5];
+            [_stoneWall stop];
             [_ball bomb];
         }
         
@@ -126,12 +129,13 @@
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
     _ball.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
     _ball.acceleration = _level.acceleration;
-    _ball.flyingTime = 0.0f;
-    [_level resetBall: _ball];
-    _lastTimeStamp = 0.0f;
+//    _ball.flyingTime = 0.0f;
+//    [_level resetBall: _ball];
+//    _lastTimeStamp = 0.0f;
     
     [self.displayLink setPaused: NO];
     _gameStart = YES;
+    _stoneWall.isStopped = NO;
 }
 
 - (void) onResult
@@ -139,6 +143,11 @@
     CGFloat ballsize = _level.ballSize;
     _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
     _gameStart = NO;
+}
+
+- (IBAction) back:(id)sender
+{
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 @end

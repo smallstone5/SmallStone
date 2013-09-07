@@ -30,4 +30,6 @@
 
 - (void) updateData: (CFTimeInterval) delta;
 - (void) gameDraw;
+
+- (IBAction) back:(id)sender;
 @end

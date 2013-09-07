@@ -53,7 +53,7 @@
 
 @property (nonatomic, strong) NSMutableArray *          stoneViews;
 @property (nonatomic, strong) NSMutableArray *          connectedStoneViews;
-@property (nonatomic, readonly) BOOL                    isStopped;
+@property (nonatomic) BOOL                    isStopped;
 
 
 
