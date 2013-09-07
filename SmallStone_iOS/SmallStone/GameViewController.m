@@ -10,6 +10,7 @@
 #import "GameSetting.h"
 #import "BaseLevel.h"
 #import "BaseBall.h"
+#import "StoneWallView.h"
 
 #import "Level1.h"
 
@@ -40,8 +41,8 @@
     [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [self.displayLink setPaused: YES];
     
-    _ball = [_level createBall];
-    [self.view addSubview: _ball];
+    [self.view addSubview: _level.stoneWall];
+    [self.view addSubview: _level.ball];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,21 +61,19 @@
 
 - (void) updateData: (CFTimeInterval) delta
 {
-    [_ball updateData: delta];
+    [_level updateData: delta];
     
-    CGPoint ballCenter = _ball.center;
-    CGFloat ballsize = _level.ballSize;
-    if (ballCenter.x > g_rcScreen.size.width + ballsize || ballCenter.y > g_rcScreen.size.height + ballsize)
+    if ([_level isOutOfBounds])
     {
+        [_level gameOver];
+        
         [self.displayLink setPaused: YES];
-        _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
-        _gameStart = NO;
     }
 }
 
 - (void) gameDraw
 {
-    [_ball gameDraw];
+    [_level gameDraw];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -82,16 +81,16 @@
     [super touchesBegan: touches withEvent: event];
     UITouch *touch = [touches anyObject];
     CGPoint touchPoint = [touch locationInView: self.view];
-    if (_gameStart) {
-        CGPoint ballCenter = _ball.center;
+    if (_level.state == GS_Start) {
+        CGPoint ballCenter = _level.ball.center;
         CGFloat deltaX = touchPoint.x - ballCenter.x;
         CGFloat deltaY = touchPoint.y - ballCenter.y;
         if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
         {
             //点击到小球
+            [_level victory];
+            
             [self.displayLink setPaused: YES];
-            [self performSelector: @selector(onResult) withObject: nil afterDelay: 1.5];
-            [_ball bomb];
         }
         
         return;
@@ -105,7 +104,7 @@
 {
     [super touchesEnded: touches withEvent: event];
    
-    if (_gameStart)
+    if (_level.state != GS_WaitForSwipe)
         return;
     
     UITouch *touch = [touches anyObject];
@@ -120,21 +119,15 @@
         return;                             //Swipe的距离不够
 
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
-    _ball.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
-    _ball.acceleration = _level.acceleration;
-    _ball.flyingTime = 0.0f;
-    [_level resetBall: _ball];
-    _lastTimeStamp = 0.0f;
+    _level.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
+    [_level startGame];
     
     [self.displayLink setPaused: NO];
-    _gameStart = YES;
 }
 
-- (void) onResult
+- (IBAction) back:(id)sender
 {
-    CGFloat ballsize = _level.ballSize;
-    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-ballsize/2, -ballsize/2));
-    _gameStart = NO;
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 
 @end

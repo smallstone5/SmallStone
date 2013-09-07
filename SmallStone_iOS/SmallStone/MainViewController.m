@@ -107,21 +107,19 @@ static CGFloat const kButtonSpacing =   10.0f;
 #pragma mark - Action
 - (void)rankAction:(UIButton *)button
 {
+    
+}
+
+- (void)createGameAction:(UIButton *)button
+{
     GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
     gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController: gameController animated: YES completion: nil];
 }
 
-- (void)createGameAction:(UIButton *)button
-{
-    StoneWallViewController * wallViewController = [[StoneWallViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:wallViewController animated:YES completion:nil];
-}
-
 #pragma newrank - Action
 -(void) rankNewAction:(UIButton *)button
 {
-    NSLog(@"111");
     RankViewController * wallViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:wallViewController animated:YES completion:nil];
 }

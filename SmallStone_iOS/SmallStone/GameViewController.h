@@ -9,16 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@class BaseBall;
 @class BaseLevel;
 @interface GameViewController : UIViewController {
     BaseLevel *_level;
-    BaseBall *_ball;
-    
     CFTimeInterval _lastTimeStamp;
     CFTimeInterval _tmStart;
     CGPoint _ptStart;
-    BOOL _gameStart;
     
     
 }
@@ -28,4 +24,6 @@
 
 - (void) updateData: (CFTimeInterval) delta;
 - (void) gameDraw;
+
+- (IBAction) back:(id)sender;
 @end

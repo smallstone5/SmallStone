@@ -44,6 +44,9 @@
 		EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D5517D72C0000B0A63C /* QuartzCore.framework */; };
 		EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5817D733AB00B0A63C /* Icon.png */; };
 		EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5917D733AB00B0A63C /* Icon@2x.png */; };
+		FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BC17DAF0FC00A231C0 /* No1.png */; };
+		FD18F5BF17DAF11600A231C0 /* No2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BE17DAF11600A231C0 /* No2.png */; };
+		FD18F5C117DAF13000A231C0 /* No3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5C017DAF13000A231C0 /* No3.png */; };
 		EDE4F6BD17D987D0004F3057 /* StoneLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */; };
 		EDE4F6C217D9BD53004F3057 /* stone_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE4F6BE17D9BD53004F3057 /* stone_blue.png */; };
 		EDE4F6C317D9BD53004F3057 /* stone_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE4F6BF17D9BD53004F3057 /* stone_blue@2x.png */; };
@@ -130,6 +133,9 @@
 		EDA60D5517D72C0000B0A63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDA60D5817D733AB00B0A63C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = SmallStone/Icon.png; sourceTree = "<group>"; };
 		EDA60D5917D733AB00B0A63C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "SmallStone/Icon@2x.png"; sourceTree = "<group>"; };
+		FD18F5BC17DAF0FC00A231C0 /* No1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No1.png; sourceTree = "<group>"; };
+		FD18F5BE17DAF11600A231C0 /* No2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No2.png; sourceTree = "<group>"; };
+		FD18F5C017DAF13000A231C0 /* No3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No3.png; sourceTree = "<group>"; };
 		EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneLinkView.h; sourceTree = "<group>"; };
 		EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneLinkView.m; sourceTree = "<group>"; };
 		EDE4F6BE17D9BD53004F3057 /* stone_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stone_blue.png; path = SmallStone/stone_blue.png; sourceTree = "<group>"; };
@@ -325,6 +331,9 @@
 				FDBA990217D9B9FD0061804F /* 3.png */,
 				EDA60D5817D733AB00B0A63C /* Icon.png */,
 				EDA60D5917D733AB00B0A63C /* Icon@2x.png */,
+				FD18F5BC17DAF0FC00A231C0 /* No1.png */,
+				FD18F5BE17DAF11600A231C0 /* No2.png */,
+				FD18F5C017DAF13000A231C0 /* No3.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -434,6 +443,10 @@
 				FDBA990317D9B9FD0061804F /* 1.jpg in Resources */,
 				FDBA990417D9B9FD0061804F /* 2.jpg in Resources */,
 				FDBA990517D9B9FD0061804F /* 3.png in Resources */,
+				FDBA990A17D9BDC00061804F /* RankViewController.xib in Resources */,
+				FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */,
+				FD18F5BF17DAF11600A231C0 /* No2.png in Resources */,
+				FD18F5C117DAF13000A231C0 /* No3.png in Resources */,
 				A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */,
 				9733AAF317DA156600791D4D /* RankViewController.xib in Resources */,
 				9733AB0E17DA37FC00791D4D /* ball.png in Resources */,
@@ -554,7 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
 				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "86ADDD9A-BD69-4312-8282-D142DBC10C3C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -570,7 +583,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SmallStone/SmallStone-Prefix.pch";
 				INFOPLIST_FILE = "SmallStone/SmallStone-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "86ADDD9A-BD69-4312-8282-D142DBC10C3C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

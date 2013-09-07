@@ -28,14 +28,14 @@
 @end
 
 @implementation StoneWallView
-
+@synthesize isStopped = _isStopped;
 
 #pragma mark - Lifecycle
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-
+        _isStopped = NO;
     }
     return self;
 }
@@ -75,6 +75,8 @@
 #pragma mark - Touch
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan: touches withEvent: event];
+    
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     [self touchStoneAtPoint:point];
