@@ -10,6 +10,7 @@
 
 @implementation BaseLevel
 @synthesize ballSize = _ballSize;
+@synthesize acceleration = _acceleration;
 
 - (BaseBall *) createBall
 {

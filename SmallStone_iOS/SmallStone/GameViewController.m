@@ -121,7 +121,7 @@
 
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
     _ball.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
-    _ball.acceleration = CGPointMake(0.0f, 10000.0f);
+    _ball.acceleration = _level.acceleration;
     _ball.flyingTime = 0.0f;
     [_level resetBall: _ball];
     _lastTimeStamp = 0.0f;
