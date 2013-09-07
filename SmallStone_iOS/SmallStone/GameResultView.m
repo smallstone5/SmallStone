@@ -188,11 +188,19 @@ static NSInteger const kCoverViewTag  =  171522;
 
         NSUInteger starLevel = [self starLevelOfScore:score];
         [self updateStarViewWithStarLevel:starLevel];
+
+        self.backToMainButton.enabled = YES;
+        self.restartButton.enabled = YES;
+        self.nextLevelButton.enabled = YES;
         
     } else {
         self.resultLabel.textColor = [UIColor darkTextColor];
         self.resultLabel.text = NSLocalizedString(@"Failed", @"Failed");
         [self updateStarViewWithStarLevel:0];
+
+        self.backToMainButton.enabled = YES;
+        self.restartButton.enabled = YES;
+        self.nextLevelButton.enabled = NO;
     }
 
 }
