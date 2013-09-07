@@ -12,10 +12,11 @@
 
 @end
 
+#define saveNicknameURL @"http://180.153.0.208/index.php?o=save&id=:uuid&name=:nickname&token=google"
+
 @implementation SettingViewController
 
 @synthesize nickname;
-@synthesize serviceIp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,9 +32,7 @@
 {
     [super viewDidLoad];
 	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
-	serviceIp.text = [Setting objectForKey:@"serviceIp"];
 	nickname.text = [Setting objectForKey:@"nickname"];
-	NSLog(@"%@", [Setting objectForKey:@"serviceIp"]);
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -51,11 +50,29 @@
 -(void) saveButtonAction:(id)sender
 {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:serviceIp.text forKey:@"serviceIp"];
 	[defaults setObject:nickname.text forKey:@"nickname"];
 	[defaults synchronize];
-
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
+	//请求后台创建该用户名
+	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
+	NSMutableString *appUrl = [[NSMutableString alloc] initWithString:saveNicknameURL];
+	[appUrl appendString:@"&id="];
+	//[appUrl appendString:@""]
+	NSLog(@"%@", appUrl);
+	
+}
+
+-(void)sendCreateData
+{
+	
+    /*
+    NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
+    NSURL *url = [NSURL URLWithString:appUrl];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
+    NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
+    [urlConnection start];
+    [self showNetworkActivityIndicator];
+	*/
 }
 
 -(void) textFieldDoneEditing:(id)sender
@@ -65,7 +82,6 @@
 
 -(void) backgroundTap:(id)sender
 {
-	[serviceIp resignFirstResponder];
 	[nickname resignFirstResponder];
 }
 
