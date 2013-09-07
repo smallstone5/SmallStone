@@ -64,7 +64,7 @@
 - (void) startGame
 {
     [super startGame];
-    [self.stoneWall reset];
+    [self.stoneWall resume];
 }
 
 - (void) gameOver
