@@ -22,9 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-		NSUserDefaults * Setting = [NSUserDefaults standardUserDefaults];
-		serviceIp.text = [Setting objectForKey:@"serviceIp"];
-		nickname.text = [Setting objectForKey:@"nickname"];
+		
     }
     return self;
 }
@@ -32,6 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
+	serviceIp.text = [Setting objectForKey:@"serviceIp"];
+	nickname.text = [Setting objectForKey:@"nickname"];
+	NSLog(@"%@", [Setting objectForKey:@"serviceIp"]);
     // Do any additional setup after loading the view from its nib.
 }
 
