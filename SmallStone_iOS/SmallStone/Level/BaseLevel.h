@@ -28,7 +28,9 @@ typedef enum _GameState {
     CGFloat _timeScale;
     CGFloat _verticalScale;
     CGPoint _speedScale;
-    
+    CGFloat _checkDelay;
+    CFAbsoluteTime _startTick;
+    CFAbsoluteTime _endTick;
 }
 
 @property (nonatomic) GameState state;

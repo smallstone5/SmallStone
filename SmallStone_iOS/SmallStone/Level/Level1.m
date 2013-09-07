@@ -36,7 +36,7 @@
                                  [UIImage imageNamed: @"Bomb4.png"],
                                  [UIImage imageNamed: @"Bomb5.png"],
                                  [UIImage imageNamed: @"Bomb6.png"],nil];
-        _ball.animationDuration = 1.0f;
+        _ball.animationDuration = 0.8f;
         _ball.animationRepeatCount = 1;
         
         
@@ -70,7 +70,8 @@
 - (void) gameOver
 {
     [super gameOver];
-    
+    [_stoneWall stop];
+    [_ball bomb];
 }
 
 - (void) victory
@@ -78,13 +79,21 @@
     [super victory];
     [_stoneWall stop];
     [_ball bomb];
-    
-    [self performSelector: @selector(checkResult) withObject: nil afterDelay: 1.5f];
 }
 
 - (void) checkResult
 {
-    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
+    [super checkResult];
+    if (_state == GS_Victory)
+    {
+        //成功
+        NSLog(@"Duration: %f\n", _endTick - _startTick);
+        
+    }
+    else if (_state == GS_Loser)
+    {
+        //失败
+    }
 }
 
 @end

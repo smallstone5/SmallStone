@@ -13,7 +13,7 @@
 #define kMinSwipeTime                   0.1f                        //Swipe手势最短检测时间
 #define kSmallBallSize                  28.0f                       //小球size
 #define kBigBallSize                    40.0f                       //大球size
-#define kDefaultTimeScale               0.1f                        //时间系数
+#define kDefaultTimeScale               0.08f                       //时间系数
 #define kDefaultVerticalScale           4.0f                        //垂直高度放大系数
 
 

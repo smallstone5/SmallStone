@@ -27,6 +27,7 @@
     if (self = [super init])
     {
         _state = GS_WaitForSwipe;
+        _checkDelay = 1.0f;
     }
     
     return self;
@@ -48,22 +49,26 @@
 - (void) startGame
 {
     _state = GS_Start;
+    _startTick = CFAbsoluteTimeGetCurrent();
 }
 
 - (void) gameOver
 {
     _state = GS_Loser;
-    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
+    _endTick = CFAbsoluteTimeGetCurrent();
+    [self performSelector: @selector(checkResult) withObject: nil afterDelay: _checkDelay];
 }
 
 - (void) victory
 {
     _state = GS_Victory;
+    _endTick = CFAbsoluteTimeGetCurrent();
+    [self performSelector: @selector(checkResult) withObject: nil afterDelay: _checkDelay];
 }
 
 - (void) checkResult
 {
-    
+    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
 }
 
 - (BOOL) isOutOfBounds
