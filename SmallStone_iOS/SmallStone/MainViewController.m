@@ -10,6 +10,7 @@
 #import "GameViewController.h"
 #import "StoneWallViewController.h"
 #import "RankViewController.h"
+#import "SettingViewController.h"
 
 static CGFloat const kButtonWidth =     120.0f;
 static CGFloat const kButtonHeight =    50.0f;
@@ -72,6 +73,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.settingButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.settingButton setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
     [self.settingButton setTitle:NSLocalizedString(@"Setting", @"Setting") forState:UIControlStateNormal];
+	[self.settingButton addTarget:self action:@selector(settingAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.settingButton];
     
     //难易程度 Level
@@ -105,15 +107,14 @@ static CGFloat const kButtonSpacing =   10.0f;
 #pragma mark - Action
 - (void)rankAction:(UIButton *)button
 {
-    GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
-    gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController: gameController animated: YES completion: nil];
+    
 }
 
 - (void)createGameAction:(UIButton *)button
 {
-    StoneWallViewController * wallViewController = [[StoneWallViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:wallViewController animated:YES completion:nil];
+    GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
+    gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController: gameController animated: YES completion: nil];
 }
 
 #pragma newrank - Action
@@ -121,6 +122,13 @@ static CGFloat const kButtonSpacing =   10.0f;
 {
     RankViewController * wallViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:wallViewController animated:YES completion:nil];
+}
+
+-(void) settingAction:(UIButton *)button
+{
+	SettingViewController * settingController = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:[NSBundle mainBundle]];
+	settingController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:settingController animated:YES completion:nil];
 }
 
 @end

@@ -15,7 +15,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _state = kStoneStateNormal;
+
     }
     return self;
 }
@@ -23,10 +23,13 @@
 
 - (id)initWithStone:(Stone *)stone
 {
-    self = [self initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self = [self initWithFrame:CGRectMake(0, 0, stone.size.width, stone.size.height)];
     if (self) {
         _stone = stone;
         self.backgroundColor = stone.color;
+        self.image = [stone imageForState:kStoneStateNormal];
+        self.contentMode = UIViewContentModeScaleAspectFit;
+        self.clipsToBounds = YES;
     }
 
     return self;
@@ -35,12 +38,17 @@
 #pragma mark - Setter
 - (void)setState:(StoneState)state
 {
-    if (state == _state) {
+    if (state == self.stone.state ) {
         return;
     }
 
-    _state = state;
+    self.stone.state = state;
     [self updateWithState:state];
+}
+
+- (StoneState)state
+{
+    return self.stone.state;
 }
 
 
@@ -54,6 +62,8 @@ CGFloat DegressToRadians(CGFloat degress)
 
 - (void)updateWithState:(StoneState)state
 {
+    self.image = [self.stone imageForState:state];
+
     switch (state) {
         case kStoneStateNormal:
         {
@@ -64,7 +74,7 @@ CGFloat DegressToRadians(CGFloat degress)
 
         case kStoneStateShaking:
         {
-            self.backgroundColor = [UIColor whiteColor];
+//            self.backgroundColor = [UIColor whiteColor];
             CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.z"];
             [animation setDuration:0.25];
             [animation setRepeatCount:NSUIntegerMax];

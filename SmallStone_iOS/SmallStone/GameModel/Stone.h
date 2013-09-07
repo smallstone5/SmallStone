@@ -38,7 +38,10 @@ MatrixPointMake(NSInteger x, NSInteger y)
 
 @property (nonatomic, strong) UIColor *             color;
 @property (nonatomic, assign) StoneState            state;
+@property (nonatomic, assign) CGSize                size;
 @property (nonatomic, assign) StoneMatrixPoint      point;      //矩阵上的位置
+
+
 
 /*
  * 设置不同state下，石头的图片

@@ -6,14 +6,28 @@
 //  Copyright (c) 2013 tencent. All rights reserved.
 //
 
+
+#import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
+
 #import "StoneWallView.h"
+#import "StoneLinkView.h"
 
 
-static CGSize const kStoneSize = {44, 44};
-static CGFloat const kStoneSpacing = 4.0f;
+@interface StoneWallView()
+{
+    BOOL            _isStopped;
+}
+
+@property (nonatomic, strong) StoneLinkView *       linkView;
+@property (nonatomic, strong) AVAudioPlayer *       audioPlayer;
+
+
+
+@end
 
 @implementation StoneWallView
-
+@synthesize isStopped = _isStopped;
 
 #pragma mark - Lifecycle
 - (id)initWithFrame:(CGRect)frame
@@ -29,13 +43,19 @@ static CGFloat const kStoneSpacing = 4.0f;
 
 - (id)initWithStoneWall:(StoneWall *)stoneWall
 {
-    CGFloat width = stoneWall.matrixColumn * (kStoneSize.width + kStoneSpacing);
-    CGFloat height = stoneWall.matrixRow * (kStoneSize.height + kStoneSpacing);
+    CGFloat width = stoneWall.matrixColumn * (stoneWall.stoneSize + stoneWall.stoneSpacing);
+    CGFloat height = stoneWall.matrixRow * (stoneWall.stoneSize + stoneWall.stoneSpacing);
     CGRect frame = CGRectMake(0, 0, width, height);
     self = [self initWithFrame:frame];
     if (self) {
         _stoneWall = stoneWall;
-        [self initStoneViews];
+
+        self.linkView = [[StoneLinkView alloc] initWithFrame:frame];
+        self.linkView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.linkView.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.linkView];
+
+        [self reset];
     }
 
     return self;
@@ -54,6 +74,8 @@ static CGFloat const kStoneSpacing = 4.0f;
 #pragma mark - Touch
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan: touches withEvent: event];
+    
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     [self touchStoneAtPoint:point];
@@ -81,29 +103,64 @@ static CGFloat const kStoneSpacing = 4.0f;
     [self clearConnectedStones];
 }
 
+#pragma mark - Public
+- (void)stop
+{
+    _isStopped = YES;
+    if (self.connectedStoneViews.count == 0) {
+        return;
+    }
 
+    for (StoneView * aStoneView in self.connectedStoneViews) {
+        aStoneView.state = kStoneStateNormal;
+    };
+
+    [self.linkView clear];
+}
+
+
+
+- (void)reset
+{
+    _isStopped = NO;
+    [self resetWall];
+    [self resetStoneViews];
+}
 
 #pragma mark - Private
-- (void)initStoneViews
+
+- (void)resetWall
 {
+    for (StoneView * aStoneView in self.connectedStoneViews) {
+        aStoneView.state = kStoneStateNormal;
+    };
+
     self.stoneViews = [[NSMutableArray alloc] init];
+    self.connectedStoneViews = [NSMutableArray array];
+    [self.linkView clear];
+}
+
+- (void)resetStoneViews
+{
     for (Stone * aStone in self.stoneWall.stoneList) {
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
-        CGFloat originX = aStone.point.x * (kStoneSize.width + kStoneSpacing);
-        CGFloat originY = aStone.point.y * (kStoneSize.height + kStoneSpacing);
-        aStoneView.frame = CGRectMake(originX, originY, kStoneSize.width, kStoneSize.height);
+        CGFloat originX = aStone.point.x * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
+        CGFloat originY = aStone.point.y * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
+        aStoneView.frame = CGRectMake(originX, originY, self.stoneWall.stoneSize, self.stoneWall.stoneSize);
         aStoneView.state = kStoneStateNormal;
         [self.stoneViews addObject:aStoneView];
         [self addSubview:aStoneView];
     }
-
-
-    self.connectedStoneViews = [NSMutableArray array];
 }
 
 
+//点击到某一点，查看点击点是否有stoneView来连接
 - (void)touchStoneAtPoint:(CGPoint)point
 {
+    if (self.isStopped) {
+        return;
+    }
+    
     StoneView * touchedStoneView = nil;
     for (StoneView * aStoneView in self.stoneViews) {
         if (CGRectContainsPoint(aStoneView.frame, point)) {
@@ -117,11 +174,11 @@ static CGFloat const kStoneSpacing = 4.0f;
     }
 
     if ([self.connectedStoneViews containsObject:touchedStoneView]) {
-        if (self.connectedStoneViews.count > 2) {
+        if (self.connectedStoneViews.count >= 2) {
             //回退机制，从n移回到n-1，即产生回退，将n从connectedStoneViews中清除
             StoneView * prevStoneView = [self.connectedStoneViews objectAtIndex:self.connectedStoneViews.count - 2];
             if (touchedStoneView == prevStoneView) {
-                [self unconnectStoneView:self.connectedStoneViews.lastObject];
+                [self disconnectStoneView:self.connectedStoneViews.lastObject];
             }
         }
     } else {
@@ -129,29 +186,122 @@ static CGFloat const kStoneSpacing = 4.0f;
     }
 }
 
+//验证需要connect的stoneView，跟当前已连接的最后一个stoneView是不是相邻的
+- (BOOL)canConnectToStoneView:(StoneView *)stoneView
+{
+    StoneView * lastStoneView = self.connectedStoneViews.lastObject;
+    if (nil == lastStoneView) {
+        return YES;
+    }
 
+    CGFloat connetXLength = fabs(stoneView.center.x - lastStoneView.center.x);
+    CGFloat connetYLength = fabs(stoneView.center.y - lastStoneView.center.y);
+    if (connetXLength <= self.stoneWall.stoneSize + 2 * self.stoneWall.stoneSpacing
+        && connetYLength <= self.stoneWall.stoneSize + 2 * self.stoneWall.stoneSpacing) {
+        return YES;
+    }
 
+    return NO;
+
+}
+
+//将stoneView连接起来
 - (void)connectStoneView:(StoneView *)stoneView
 {
-    [self.connectedStoneViews addObject:stoneView];
-    stoneView.state = kStoneStateShaking;
+    if (self.isStopped) {
+        return;
+    }
+
+    if ([self canConnectToStoneView:stoneView]) {
+        [self.connectedStoneViews addObject:stoneView];
+        stoneView.state = kStoneStateShaking;
+        [self.linkView connectLinkToPoint:stoneView.center];
+        [self playConnectSound];
+
+        if ([self.delegate respondsToSelector:@selector(stoneWallView:didConnectStoneView:)]) {
+            [self.delegate stoneWallView:self didConnectStoneView:stoneView];
+        }
+
+    }
 }
 
-
-- (void)unconnectStoneView:(StoneView *)stoneView
+//将stoneView从连接队列清除
+- (void)disconnectStoneView:(StoneView *)stoneView
 {
+    if (self.isStopped) {
+        return;
+    }
+
     [self.connectedStoneViews removeObject:stoneView];
     stoneView.state = kStoneStateNormal;
+    [self.linkView disconnectLinkPoint:stoneView.center];
+    [self playConnectSound];
+    if ([self.delegate respondsToSelector:@selector(stoneWallView:didDisconnectStoneView:)]) {
+        [self.delegate stoneWallView:self didDisconnectStoneView:stoneView];
+    }
 }
 
 
+//消除所有连接的石子
 - (void)clearConnectedStones
 {
+    if (self.isStopped) {
+        return;
+    }
+
+    if (self.connectedStoneViews.count == 0) {
+        return;
+    }
+
     for (StoneView * aStoneView in self.connectedStoneViews) {
         aStoneView.state = kStoneStateCleared;
     };
 
+    [self.linkView clear];
+    [self playClearSound];
+
+    if ([self.delegate respondsToSelector:@selector(stoneWallView:didClearStoneViews:)]) {
+        [self.delegate stoneWallView:self didClearStoneViews:self.connectedStoneViews];
+    }
+
     [self.connectedStoneViews removeAllObjects];
+}
+
+
+- (void)playConnectSound
+{
+    SystemSoundID soundID;
+    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:connectAudioName ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
+
+//    NSError * error = nil;
+//    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+//    NSString * audioPath = [[NSBundle mainBundle] pathForResource:connectAudioName ofType:@"mp3"];
+//    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
+//    [self.audioPlayer prepareToPlay];
+//    [self.audioPlayer play];
+}
+
+- (void)playClearSound
+{
+
+    SystemSoundID soundID;
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:@"clear" ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
+
+//    NSError * error = nil;
+////    NSString * connectAudioName = [NSString stringWithFormat:@"connect_%d", self.connectedStoneViews.count];
+//    NSString * audioPath = [[NSBundle mainBundle] pathForResource:@"clear" ofType:@"mp3"];
+//    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+//    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:audioURL error:&error];
+//    [self.audioPlayer prepareToPlay];
+//    [self.audioPlayer play];
 }
 
 
