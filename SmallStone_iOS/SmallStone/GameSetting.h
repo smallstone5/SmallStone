@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define kMinSwipeDistance               100.0f                      //Swipe手势最短检测距离（平方）
-#define kMaxTapDistance                 800.0f                      //小球中心到点击点距离的平方
+#define kMaxTapDistance                 1200.0f                      //小球中心到点击点距离的平方
 #define kMinSwipeTime                   0.1f                        //Swipe手势最短检测时间
 #define kSmallBallSize                  28.0f                       //小球size
 #define kBigBallSize                    40.0f                       //大球size
