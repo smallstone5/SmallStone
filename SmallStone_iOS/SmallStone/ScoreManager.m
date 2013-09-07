@@ -73,7 +73,7 @@
 {
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-    NSLog(@"reportScore json:%@", [json objectForKey:@"errCode"]);
+    NSLog(@"reportScore json:%@", json);
 	NSString *errorCode = [NSString stringWithFormat:@"%@", [json objectForKey:@"errCode"]];
 	NSString *tips = nil;
 	if([errorCode isEqual: @"-3"]) {
