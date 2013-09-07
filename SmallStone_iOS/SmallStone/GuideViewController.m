@@ -33,9 +33,11 @@
     [self initGuide];
 }
 
+
 - (void)initGuide
 {
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width * 3, 0)];
     [scrollView setPagingEnabled:YES];  //视图整页显示
@@ -43,20 +45,23 @@
     scrollView.delegate = self;
     
     UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
-    [imageview setContentMode:UIViewContentModeScaleToFill];
+    [imageview setContentMode:UIViewContentModeScaleAspectFit];
+    imageview.clipsToBounds = YES;
     [imageview setImage:[UIImage imageNamed:@"1.jpg"]];
     [scrollView addSubview:imageview];
     //[imageview release];
     
     UIImageView *imageview1 = [[UIImageView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
-    [imageview1 setContentMode:UIViewContentModeScaleToFill];
+    [imageview1 setContentMode:UIViewContentModeScaleAspectFit];
+    imageview1.clipsToBounds = YES;
     [imageview1 setImage:[UIImage imageNamed:@"2.jpg"]]; 
     [scrollView addSubview:imageview1];
     //[imageview1 release];
     
     UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(2 * scrollView.frame.size.width, 0,  scrollView.frame.size.width, scrollView.frame.size.height)];
-    [imageview2 setImage:[UIImage imageNamed:@"3.png"]];
-    [imageview2 setContentMode:UIViewContentModeScaleToFill];
+    [imageview2 setImage:[UIImage imageNamed:@"3.jpg"]];
+    [imageview2 setContentMode:UIViewContentModeScaleAspectFit];
+    imageview2.clipsToBounds = YES;
     imageview2.userInteractionEnabled = YES;
     [scrollView addSubview:imageview2];
     //[imageview2 release];
@@ -76,6 +81,11 @@
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height - 60, 320, 20)];
     self.pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
     [self.pageControl setBackgroundColor:[UIColor clearColor]];
+    if ([self.pageControl respondsToSelector:@selector(pageIndicatorTintColor)]) {
+        self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    }
+    //[self pageControl ];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = 3;
     [self.view addSubview:self.pageControl];
