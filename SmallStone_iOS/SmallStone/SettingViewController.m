@@ -22,6 +22,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		NSUserDefaults * Setting = [NSUserDefaults standardUserDefaults];
+		serviceIp.text = [Setting objectForKey:@"serviceIp"];
+		nickname.text = [Setting objectForKey:@"nickname"];
     }
     return self;
 }
@@ -45,7 +48,12 @@
 
 -(void) saveButtonAction:(id)sender
 {
-	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:serviceIp.text forKey:@"serviceIp"];
+	[defaults setObject:nickname.text forKey:@"nickname"];
+	[defaults synchronize];
+
+	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 }
 
 -(void) textFieldDoneEditing:(id)sender
