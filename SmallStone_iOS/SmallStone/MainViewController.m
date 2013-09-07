@@ -10,6 +10,7 @@
 #import "GameViewController.h"
 #import "StoneWallViewController.h"
 #import "RankViewController.h"
+#import "SettingViewController.h"
 
 static CGFloat const kButtonWidth =     120.0f;
 static CGFloat const kButtonHeight =    50.0f;
