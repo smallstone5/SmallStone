@@ -53,10 +53,9 @@
 
 @property (nonatomic, strong) NSMutableArray *          stoneViews;
 @property (nonatomic, strong) NSMutableArray *          connectedStoneViews;
+@property (nonatomic, strong) NSMutableArray *          clearedStoneViews;
 @property (nonatomic, readonly) BOOL                    isStopped;
 @property (nonatomic, readonly) BOOL                    isCleared;          //是否已全部消除
-
-
 
 @property (nonatomic, weak) id<StoneWallViewDelegate>   delegate;
 

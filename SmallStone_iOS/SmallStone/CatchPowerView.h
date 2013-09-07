@@ -11,10 +11,12 @@
 
 @interface CatchPowerView : UIView
 
+
+
 @property (nonatomic, strong) UIColor *     progressBGColor;        //进度的背景颜色
 @property (nonatomic, strong) UIColor *     progressColor;          //进度的背景颜色
 @property (nonatomic, assign) CGFloat       progress;               //小于等于1.0
-
+@property (nonatomic, assign) CGFloat       strokeWidth;            //进度线的宽度
 
 
 
