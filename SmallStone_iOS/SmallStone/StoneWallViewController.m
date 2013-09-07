@@ -7,6 +7,7 @@
 //
 
 #import "StoneWallViewController.h"
+#import "CatchPowerView.h"
 
 @interface StoneWallViewController ()
 
@@ -34,6 +35,12 @@
     [self.backButton setTitle:NSLocalizedString(@"Back", @"Back") forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
+
+
+    CatchPowerView * powerView = [[CatchPowerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 10, 80, 64)];
+    powerView.progress = 0.8;
+    [self.view addSubview:powerView];
+
 
     StoneWall * wall = [[StoneWall alloc] init];
     wall.matrixRow = 3;

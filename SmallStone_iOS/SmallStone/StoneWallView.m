@@ -155,6 +155,12 @@
 - (void)resetStoneViews
 {
     for (Stone * aStone in self.stoneWall.stoneList) {
+        
+        if (aStone.point.x > self.stoneWall.matrixColumn
+            || aStone.point.y > self.stoneWall.matrixRow) {
+            continue;
+        }
+
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
         CGFloat originX = aStone.point.x * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);
         CGFloat originY = aStone.point.y * (self.stoneWall.stoneSize + self.stoneWall.stoneSpacing);

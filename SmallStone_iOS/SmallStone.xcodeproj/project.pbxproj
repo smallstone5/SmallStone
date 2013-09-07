@@ -24,6 +24,7 @@
 		A1EAA80017D9F66B00EDF3B4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EAA7FE17D9F66B00EDF3B4 /* SettingViewController.m */; };
 		A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EAA7FF17D9F66B00EDF3B4 /* SettingViewController.xib */; };
 		ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED0D70B417D8D0D4002D3353 /* StoneWallView.m */; };
+		ED4C01A817DACDAB002DA400 /* CatchPowerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4C01A717DACDAB002DA400 /* CatchPowerView.m */; };
 		ED8AA0F117D8135C0070BFF0 /* StoneWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */; };
 		ED8AA0F417D813790070BFF0 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8AA0F317D813790070BFF0 /* StoneView.m */; };
 		ED8AA0F817D813CB0070BFF0 /* Stone.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8AA0F717D813CB0070BFF0 /* Stone.m */; };
@@ -99,6 +100,8 @@
 		ED0D70B317D8D0D4002D3353 /* StoneWallView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneWallView.h; sourceTree = "<group>"; };
 		ED0D70B417D8D0D4002D3353 /* StoneWallView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneWallView.m; sourceTree = "<group>"; };
 		ED4C01A517DACB79002DA400 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
+		ED4C01A617DACDAB002DA400 /* CatchPowerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchPowerView.h; sourceTree = "<group>"; };
+		ED4C01A717DACDAB002DA400 /* CatchPowerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatchPowerView.m; sourceTree = "<group>"; };
 		ED8AA0EF17D8135C0070BFF0 /* StoneWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneWallViewController.h; sourceTree = "<group>"; };
 		ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneWallViewController.m; sourceTree = "<group>"; };
 		ED8AA0F317D813790070BFF0 /* StoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneView.m; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				EDA60D3C17D71C1400B0A63C /* AppDelegate.h */,
 				EDA60D3D17D71C1400B0A63C /* AppDelegate.m */,
 				9733AAF417DA19DA00791D4D /* Ball */,
+				ED4C01A617DACDAB002DA400 /* CatchPowerView.h */,
+				ED4C01A717DACDAB002DA400 /* CatchPowerView.m */,
 				9733AAF817DA221000791D4D /* CommonType.h */,
 				9733AAF917DA221000791D4D /* CommonType.m */,
 				ED8AA0F517D813B50070BFF0 /* GameModel */,
@@ -465,6 +470,7 @@
 				9733AAF717DA19F300791D4D /* BaseBall.m in Sources */,
 				9733AAFA17DA221000791D4D /* CommonType.m in Sources */,
 				9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */,
+				ED4C01A817DACDAB002DA400 /* CatchPowerView.m in Sources */,
 				9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */,
 				9733AB1817DA384200791D4D /* Level1.m in Sources */,
 			);
