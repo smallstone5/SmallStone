@@ -19,3 +19,6 @@
 
 #define kDefaultStoneSize               36.0f                       //石子的大小
 #define kDefaultStoneSpacing            4.0f                        //石子间的空隙
+#define kMinSpeedScale                  0.5f                        //最小速度放大系数
+#define kScoreScale                     1000                        //分数放大系数
+#define kStoneTapScale                  0.3f                        //单个石头预估时间
