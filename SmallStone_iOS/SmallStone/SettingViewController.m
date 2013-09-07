@@ -54,6 +54,8 @@
 	//请求后台创建该用户名
 	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
 	
+	[[[UIAlertView alloc] initWithTitle:@"" message:@"昵称设置成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+	
 }
 
 -(void)sendCreateData
