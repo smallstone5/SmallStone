@@ -22,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		
     }
     return self;
 }
@@ -29,6 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
+	serviceIp.text = [Setting objectForKey:@"serviceIp"];
+	nickname.text = [Setting objectForKey:@"nickname"];
+	NSLog(@"%@", [Setting objectForKey:@"serviceIp"]);
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,7 +50,12 @@
 
 -(void) saveButtonAction:(id)sender
 {
-	NSLog(@"Tencent");
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:serviceIp.text forKey:@"serviceIp"];
+	[defaults setObject:nickname.text forKey:@"nickname"];
+	[defaults synchronize];
+
+	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 }
 
 -(void) textFieldDoneEditing:(id)sender
