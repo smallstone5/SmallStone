@@ -9,6 +9,7 @@
 #import "BaseLevel.h"
 #import "CommonType.h"
 #import "BaseBall.h"
+#import "StoneWallView.h"
 
 @implementation BaseLevel
 @synthesize state = _state;
@@ -21,6 +22,8 @@
 @synthesize timeScale = _timeScale;
 @synthesize verticalScale = _verticalScale;
 @synthesize speedScale = _speedScale;
+@synthesize score = _score;
+@synthesize checkDelay = _checkDelay;
 
 - (id) init
 {
@@ -52,6 +55,17 @@
     _startTick = CFAbsoluteTimeGetCurrent();
 }
 
+- (void) restartGame
+{
+    _state = GS_WaitForSwipe;
+    _speed = CGPointMake(0.0f, 0.0f);
+    _flyingTime = 0.0f;
+    _startTick = 0.0f;
+    _endTick = 0.0f;
+    _score = 0;
+    [_stoneWall reset];
+}
+
 - (void) gameOver
 {
     _state = GS_Loser;
@@ -69,6 +83,18 @@
 - (void) checkResult
 {
     _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
+    
+    if (_state == GS_Victory)
+    {
+        //成功,计算分数
+        NSLog(@"Duration: %f\n", _endTick - _startTick);
+        _score = (NSInteger)(_minPlayTime * _maxScore / (_endTick - _startTick));
+    }
+    else if (_state == GS_Loser)
+    {
+        //失败
+        _score = -1;
+    }
 }
 
 - (BOOL) isOutOfBounds
