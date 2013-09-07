@@ -7,6 +7,7 @@
 //
 
 #import "SettingViewController.h"
+#import "UserManager.h"
 
 @interface SettingViewController ()
 
@@ -31,8 +32,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
-	nickname.text = [Setting objectForKey:@"nickname"];
+	nickname.text = [UserManager userName];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -49,9 +49,7 @@
 
 -(void) saveButtonAction:(id)sender
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:nickname.text forKey:@"nickname"];
-	[defaults synchronize];
+    [UserManager setUserName:nickname.text];
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 	//请求后台创建该用户名
 	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
