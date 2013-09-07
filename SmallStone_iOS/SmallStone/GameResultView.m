@@ -8,6 +8,7 @@
 
 #import "GameResultView.h"
 #import "CommonType.h"
+#import <QuartzCore/QuartzCore.h>
 
 static NSInteger const kCoverViewTag  =  171522;
 
