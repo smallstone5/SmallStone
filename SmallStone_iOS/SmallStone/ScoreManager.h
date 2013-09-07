@@ -18,5 +18,4 @@
 
 - (void)reportScore:(NSUInteger)score;
 
-
 @end

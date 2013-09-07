@@ -16,6 +16,10 @@
  */
 + (void)setUserName:(NSString *)userName;
 
++ (void)setUserDefaults:(NSString *)key value:(NSString *)val;
+
++ (NSString *)getUserDefaults:(NSString *)key;
+
 /*
  * 获取用户名称
  *  @return 

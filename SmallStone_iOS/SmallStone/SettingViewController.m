@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "UserManager.h"
+#import "ScoreManager.h"
 
 @interface SettingViewController ()
 
@@ -49,12 +50,21 @@
 
 -(void) saveButtonAction:(id)sender
 {
-    [UserManager setUserName:nickname.text];
+	NSString *alertStr = nil;
+	if([nickname.text length] == 0) {
+		alertStr = @"昵称不能为空！";
+		[[[UIAlertView alloc] initWithTitle:@"" message:alertStr delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+	} else {
+		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
+		[UserManager setUserName:nickname.text];
+		[[ScoreManager alloc] reportScore:0];
+		alertStr = @"昵称设置成功！";
+	}
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 	//请求后台创建该用户名
 	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
 	
-	[[[UIAlertView alloc] initWithTitle:@"" message:@"昵称设置成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+	
 	
 }
 

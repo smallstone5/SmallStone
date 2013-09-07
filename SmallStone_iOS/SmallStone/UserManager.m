@@ -13,16 +13,25 @@
 
 + (void)setUserName:(NSString *)userName
 {
+	[self setUserDefaults:@"nickname" value:userName];
+}
+
++(void) setUserDefaults:(NSString *)key value:(NSString *)val
+{
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:userName forKey:@"nickname"];
+	[defaults setObject:val forKey:key];
 	[defaults synchronize];
 }
 
++(NSString *) getUserDefaults:(NSString *)key
+{
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults objectForKey:key];
 
+}
 + (NSString *)userName
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	return [defaults objectForKey:@"nickname"];
+	return [self getUserDefaults:@"nickname"];
 }
 
 
