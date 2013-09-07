@@ -43,6 +43,9 @@
 - (void)reportScore:(NSUInteger)score
 {
     NSString * userName = [UserManager userName];
+    if (nil == userName) {
+        userName = [[UIDevice currentDevice] name];
+    }
     NSString *appUrl = [NSString stringWithFormat:@"http://180.153.0.208/index.php?o=save"
                         @"&id=%@&name=%@&score=%d", [CommonUtility getDeviceId], userName, score];
     NSURL *url = [NSURL URLWithString:appUrl];
@@ -57,13 +60,14 @@
 //实现连接失败的委托方法
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    NSLog(@"reportScore 网络连接失败");
+    NSLog(@"reportScore connect failed(%@)", error);
 }
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-
+    NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"reportScore statusCode:%d", httpResponse.statusCode);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
