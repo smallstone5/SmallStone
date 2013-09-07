@@ -45,7 +45,7 @@
 
 -(void) saveButtonAction:(id)sender
 {
-	NSLog(@"Tencent");
+	
 }
 
 -(void) textFieldDoneEditing:(id)sender
