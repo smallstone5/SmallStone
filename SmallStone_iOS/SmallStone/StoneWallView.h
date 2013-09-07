@@ -53,8 +53,15 @@
 
 @property (nonatomic, strong) NSMutableArray *          stoneViews;
 @property (nonatomic, strong) NSMutableArray *          connectedStoneViews;
+@property (nonatomic, readonly) BOOL                    isStopped;
+
+
 
 @property (nonatomic, weak) id<StoneWallViewDelegate>   delegate;
+
+
+
+
 
 /*
  * 使用石子墙初始化view
@@ -62,5 +69,23 @@
  *  @return 
  */
 - (id)initWithStoneWall:(StoneWall *)stoneWall;
+
+
+
+/*
+ * 重置当前stoneWallView的关卡
+ */
+- (void)reset;
+
+
+
+/*
+ * 停止操作，包括连接消除等操作
+ */
+- (void)stop;
+
+
+
+
 
 @end

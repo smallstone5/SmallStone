@@ -19,9 +19,13 @@ static CGFloat const kStoneSpacing = 4.0f;
 
 
 @interface StoneWallView()
+{
+    BOOL            _isStopped;
+}
 
 @property (nonatomic, strong) StoneLinkView *       linkView;
 @property (nonatomic, strong) AVAudioPlayer *       audioPlayer;
+
 
 
 @end
@@ -55,7 +59,7 @@ static CGFloat const kStoneSpacing = 4.0f;
         self.linkView.backgroundColor = [UIColor clearColor];
         [self addSubview:self.linkView];
 
-        [self initStoneViews];
+        [self reset];
     }
 
     return self;
@@ -101,20 +105,52 @@ static CGFloat const kStoneSpacing = 4.0f;
     [self clearConnectedStones];
 }
 
+#pragma mark - Getter
+- (BOOL)isStopped
+{
+    return _isStopped;
+}
 
+
+#pragma mark - Public
+- (void)stop
+{
+    _isStopped = YES;
+    if (self.connectedStoneViews.count == 0) {
+        return;
+    }
+
+    for (StoneView * aStoneView in self.connectedStoneViews) {
+        aStoneView.state = kStoneStateNormal;
+    };
+
+    [self.linkView clear];
+}
+
+
+
+- (void)reset
+{
+    _isStopped = NO;
+    [self resetWall];
+    [self resetStoneViews];
+}
 
 #pragma mark - Private
 
 - (void)resetWall
 {
+    for (StoneView * aStoneView in self.connectedStoneViews) {
+        aStoneView.state = kStoneStateNormal;
+    };
+
     self.stoneViews = [[NSMutableArray alloc] init];
     self.connectedStoneViews = [NSMutableArray array];
     [self.linkView clear];
 }
 
-- (void)initStoneViews
+- (void)resetStoneViews
 {
-    [self resetWall];
     for (Stone * aStone in self.stoneWall.stoneList) {
         StoneView * aStoneView = [[StoneView alloc] initWithStone:aStone];
         CGFloat originX = aStone.point.x * (kStoneSize.width + kStoneSpacing);
@@ -124,14 +160,16 @@ static CGFloat const kStoneSpacing = 4.0f;
         [self.stoneViews addObject:aStoneView];
         [self addSubview:aStoneView];
     }
-
-
 }
 
 
 //点击到某一点，查看点击点是否有stoneView来连接
 - (void)touchStoneAtPoint:(CGPoint)point
 {
+    if (self.isStopped) {
+        return;
+    }
+    
     StoneView * touchedStoneView = nil;
     for (StoneView * aStoneView in self.stoneViews) {
         if (CGRectContainsPoint(aStoneView.frame, point)) {
@@ -179,6 +217,10 @@ static CGFloat const kStoneSpacing = 4.0f;
 //将stoneView连接起来
 - (void)connectStoneView:(StoneView *)stoneView
 {
+    if (self.isStopped) {
+        return;
+    }
+
     if ([self canConnectToStoneView:stoneView]) {
         [self.connectedStoneViews addObject:stoneView];
         stoneView.state = kStoneStateShaking;
@@ -195,6 +237,10 @@ static CGFloat const kStoneSpacing = 4.0f;
 //将stoneView从连接队列清除
 - (void)disconnectStoneView:(StoneView *)stoneView
 {
+    if (self.isStopped) {
+        return;
+    }
+
     [self.connectedStoneViews removeObject:stoneView];
     stoneView.state = kStoneStateNormal;
     [self.linkView disconnectLinkPoint:stoneView.center];
@@ -208,6 +254,9 @@ static CGFloat const kStoneSpacing = 4.0f;
 //消除所有连接的石子
 - (void)clearConnectedStones
 {
+    if (self.isStopped) {
+        return;
+    }
 
     if (self.connectedStoneViews.count == 0) {
         return;
