@@ -120,8 +120,10 @@ static CGFloat const kButtonSpacing =   10.0f;
 #pragma newrank - Action
 -(void) rankNewAction:(UIButton *)button
 {
-    RankViewController * wallViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
-    [self presentViewController:wallViewController animated:YES completion:nil];
+    RankViewController * rankViewController = [[RankViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:rankViewController];
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
 }
 
 -(void) settingAction:(UIButton *)button

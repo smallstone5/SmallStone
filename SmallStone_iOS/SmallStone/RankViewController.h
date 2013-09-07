@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *rankTable;
 @property (strong, nonatomic) NSArray *rankData;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
 - (IBAction)goBack:(id)sender;
+
 @end
