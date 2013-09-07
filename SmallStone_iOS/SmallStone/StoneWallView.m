@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) StoneLinkView *       linkView;
 @property (nonatomic, strong) AVAudioPlayer *       audioPlayer;
+@property (nonatomic, assign) NSUInteger            clearCount;
 
 
 
@@ -108,6 +109,11 @@
 }
 
 
+- (BOOL)isCleared
+{
+    return (self.stoneViews.count == 0);
+}
+
 #pragma mark - Public
 - (void)stop
 {
@@ -131,6 +137,7 @@
     [self resetWall];
     [self resetStoneViews];
 }
+
 
 #pragma mark - Private
 
@@ -269,6 +276,7 @@
         [self.delegate stoneWallView:self didClearStoneViews:self.connectedStoneViews];
     }
 
+    [self.stoneViews removeObjectsInArray:self.connectedStoneViews];
     [self.connectedStoneViews removeAllObjects];
 }
 
