@@ -16,6 +16,7 @@
     if (self = [super init])
     {
         _ballSize = 40.0f;
+        _acceleration = CGPointMake(0.0f, 10000.0f);
     }
     
     return self;

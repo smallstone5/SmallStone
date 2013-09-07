@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "GameSetting.h"
 #import "BaseLevel.h"
+#import "BaseBall.h"
 
 #import "Level1.h"
 
@@ -40,7 +41,6 @@
     [self.displayLink setPaused: YES];
     
     _ball = [_level createBall];
-    _ball.delegate = self;
     [self.view addSubview: _ball];
 }
 
@@ -80,11 +80,24 @@
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan: touches withEvent: event];
-    if (_gameStart)
-        return;
-    
     UITouch *touch = [touches anyObject];
-    _ptStart = ConvertPtTopLeftToBottomLeft([touch locationInView: self.view]);
+    CGPoint touchPoint = [touch locationInView: self.view];
+    if (_gameStart) {
+        CGPoint ballCenter = _ball.center;
+        CGFloat deltaX = touchPoint.x - ballCenter.x;
+        CGFloat deltaY = touchPoint.y - ballCenter.y;
+        if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
+        {
+            //点击到小球
+            [self.displayLink setPaused: YES];
+            [self performSelector: @selector(onResult) withObject: nil afterDelay: 1.5];
+            [_ball bomb];
+        }
+        
+        return;
+    }
+        
+    _ptStart = ConvertPtTopLeftToBottomLeft(touchPoint);
     _tmStart = CFAbsoluteTimeGetCurrent();
 }
 
@@ -108,20 +121,13 @@
 
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
     _ball.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
-    _ball.acceleration = CGPointMake(0.0f, 10000.0f);
+    _ball.acceleration = _level.acceleration;
     _ball.flyingTime = 0.0f;
     [_level resetBall: _ball];
     _lastTimeStamp = 0.0f;
     
     [self.displayLink setPaused: NO];
     _gameStart = YES;
-}
-
-- (void) ballDidTapped: (BaseBall *) ball
-{
-    [self.displayLink setPaused: YES];
-    _ball.image = nil;
-    [self performSelector: @selector(onResult) withObject: nil afterDelay: 1.5];
 }
 
 - (void) onResult

@@ -15,7 +15,6 @@
 @synthesize flyingTime = _flyingTime;
 @synthesize timeScale = _timeScale;
 @synthesize verticalScale = _verticalScale;
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -47,17 +46,15 @@
     
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void) bomb
 {
-//    [super touchesBegan: touches withEvent: event];
-    if ([self.delegate respondsToSelector: @selector(ballDidTapped:)])
-        [self.delegate ballDidTapped: self];
+    self.image = nil;
     [self startAnimating];
 }
 
 - (void) dealloc
 {
-    self.delegate = nil;
+
 }
 
 @end

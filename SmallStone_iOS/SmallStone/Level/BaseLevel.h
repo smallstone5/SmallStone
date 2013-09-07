@@ -10,10 +10,13 @@
 
 @class BaseBall;
 @interface BaseLevel : NSObject {
-    CGFloat _ballSize;
+    CGFloat _ballSize;                  //小球大小
+    CGPoint _acceleration;
+    
 }
 
 @property (nonatomic) CGFloat ballSize;
+@property (nonatomic) CGPoint acceleration;
 
 - (BaseBall *) createBall;
 - (void) resetBall: (BaseBall *) ball;
