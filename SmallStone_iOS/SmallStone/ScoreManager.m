@@ -40,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-        [self clearScoreData];  //测试代码
+//        [self clearScoreData];  //测试代码
         [self loadScoreList];
     }
 
@@ -69,14 +69,17 @@
 
     NSNumber * scoreNumber = [NSNumber numberWithInt:score];
     if (level > self.scoreList.count) {
+        _nextLevel = self.scoreList.count;
         return NO;
 
     } else if (level == self.scoreList.count){
         [self.scoreList addObject:scoreNumber];
-        [self updateCurrentLevel:level];
+        [self updateTopLevel:level];
+        _nextLevel = level + 1;
 
     } else {
 
+        _nextLevel = level + 1;
         NSNumber * oldScoreNumber = self.scoreList[level];
         if ([oldScoreNumber unsignedIntegerValue] > score) {
             return NO;
@@ -122,6 +125,12 @@
     [urlConnection start];
 }
 
+
+- (void)resetNextLevel
+{
+    _nextLevel = 0;
+}
+
 - (void)clearScoreData
 {
     self.scoreList = [NSMutableArray array];
@@ -131,6 +140,7 @@
     [defaults removeObjectForKey:SCORE_LIST_KEY];
     [defaults synchronize];
 }
+
 
 
 
@@ -147,9 +157,8 @@
 }
 
 
-- (void)updateCurrentLevel:(NSUInteger)level
+- (void)updateTopLevel:(NSUInteger)level
 {
-    _nextLevel = level + 1;
     if (_topLevel < level) {
         _topLevel = level;
     }
