@@ -262,7 +262,7 @@
 
         [UIView animateWithDuration:0.8
                               delay: i * 0.05
-                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionTransitionFlipFromTop
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionTransitionFlipFromTop | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              starView.center = powerViewCenter;
                          } completion:^(BOOL finished) {
