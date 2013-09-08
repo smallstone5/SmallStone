@@ -77,9 +77,6 @@
     [self.resultView.backToMainButton addTarget:self action:@selector(backToMainAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.resultView.restartButton addTarget:self action:@selector(restartAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.resultView.nextLevelButton addTarget:self action:@selector(nextLevelAction:) forControlEvents:UIControlEventTouchUpInside];
-
-
-
 }
 
 - (void)didReceiveMemoryWarning
