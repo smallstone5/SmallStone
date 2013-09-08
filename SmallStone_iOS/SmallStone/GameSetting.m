@@ -18,6 +18,16 @@ LevelData g_levelList[] = {
         kDefaultTimeScale,          //timeScale
         kDefaultVerticalScale       //verticalScale
     },
+    
+    {                               //Level2
+        3,                          //stoneRow
+        4,                          //stoneColumn
+        2,                          //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {0.5f, 1.0f},               //speedScale
+        kDefaultTimeScale,          //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
 };
 
 NSUInteger g_levelCount = sizeof(g_levelList) / sizeof(LevelData);

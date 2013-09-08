@@ -8,6 +8,7 @@
 
 #import "LevelManager.h"
 #import "GameSetting.h"
+#import "ScoreManager.h"
 #import "Level1.h"
 static LevelManager * __strong g_LevelManager;
 
@@ -33,6 +34,9 @@ static LevelManager * __strong g_LevelManager;
 
 - (BaseLevel *) makeCurrentLevel
 {
-    return nil;
+    NSUInteger levelIndex = [[ScoreManager defaultManager] topLevel];
+    BaseLevel *level = [[Level1 alloc] initWithLevelData: &g_levelList[levelIndex]];
+    level.levelIndex = levelIndex;
+    return level;
 }
 @end

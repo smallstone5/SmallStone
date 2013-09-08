@@ -97,4 +97,9 @@
     
 }
 
+- (void) dealloc
+{
+    NSLog(@"Level dealloc\n");
+}
+
 @end
