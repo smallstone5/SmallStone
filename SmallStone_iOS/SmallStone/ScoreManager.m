@@ -40,7 +40,7 @@ static NSUInteger const kMaxLevel   =   200;
 {
     self = [super init];
     if (self) {
-        [self clearScoreData];
+//        [self clearScoreData]; 测试代码
         [self loadScoreList];
     }
 
