@@ -57,6 +57,7 @@
         [self addSubview:self.linkView];
 
         [self reset];
+        _isStopped = YES;
     }
 
     return self;

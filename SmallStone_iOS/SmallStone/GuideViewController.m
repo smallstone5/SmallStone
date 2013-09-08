@@ -75,6 +75,9 @@
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];
     [imageview2 addSubview:button];
     
+	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
+	nicknameLabel.text = @"设置昵称：";
+	[imageview2 addSubview:nicknameLabel];
     [self.view addSubview:scrollView];
     //[scrollView release];
     
