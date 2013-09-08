@@ -13,8 +13,7 @@
 #import "StoneWallView.h"
 #import "CatchPowerView.h"
 #import "GameResultView.h"
-
-#import "Level1.h"
+#import "LevelManager.h"
 
 
 
@@ -33,7 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _level = [[Level1 alloc] initWithLevelData: &g_levelList[0]];             //直接创建Level1
+        _level = [[LevelManager sharedInstance] makeCurrentLevel];             //直接创建Level1
     }
     return self;
 }
@@ -178,6 +177,14 @@
 - (void)nextLevelAction:(id)sender
 {
     [self.resultView hideResultView];
+    _lastTimeStamp = 0.0f;
+    [_level.ball removeFromSuperview];
+    [_level.stoneWall removeFromSuperview];
+    
+    
+    _level = [[LevelManager sharedInstance] makeCurrentLevel];
+    [self.view addSubview: _level.ball];
+    [self.view addSubview: _level.stoneWall];
 }
 
 
