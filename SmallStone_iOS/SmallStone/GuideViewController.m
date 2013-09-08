@@ -8,6 +8,9 @@
 
 #import "GuideViewController.h"
 #import "MainViewController.h"
+#import "CommonUtility.h"
+#import "ScoreManager.h"
+#import "UserManager.h"
 
 @interface GuideViewController ()
 
@@ -77,7 +80,13 @@
     
 	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
 	nicknameLabel.text = @"设置昵称：";
+	[nicknameLabel setFrame:CGRectMake(20, 100, 130, 30)];
+	[nicknameLabel setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.9]];
 	[imageview2 addSubview:nicknameLabel];
+	
+	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(120, 100, 130, 30)];
+	self.nicknameField.text = [[UIDevice currentDevice] name];
+	[imageview2 addSubview:self.nicknameField];
     [self.view addSubview:scrollView];
     //[scrollView release];
     
@@ -97,6 +106,8 @@
 //进入游戏主界面
 - (void)gotoMain
 {
+	[UserManager setUserName:self.nicknameField.text];
+	[[ScoreManager alloc] reportScore:0];
     [self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
 }
 
