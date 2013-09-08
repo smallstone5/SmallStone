@@ -116,12 +116,8 @@
 												 name:REPORT_CHANGE_USER_NAME_NOTIFICATION
 											   object:nil];
 	[UserManager setUserName:self.nicknameField.text];
-<<<<<<< HEAD
 	[UserManager setUserDefaults:@"oldName" value:nil];
 	[[ScoreManager defaultManager] reportTotalScore];
-=======
-    [self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
->>>>>>> c12f36e279d76cc477bc0cc810bf4caba2536600
 }
 
 
