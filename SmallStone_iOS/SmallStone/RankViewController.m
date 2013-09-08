@@ -308,7 +308,7 @@
         {
             //自定义button
             UIButton *button;
-            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"NO%d", index]];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"No%d.png", index]];
             button = [UIButton buttonWithType:UIButtonTypeCustom];
             CGRect frame = CGRectMake(0, 0, 45, 45);
             button.frame = frame;
