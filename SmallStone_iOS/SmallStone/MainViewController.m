@@ -13,7 +13,7 @@
 #import "SettingViewController.h"
 #import "ScoreManager.h"
 
-static CGFloat const kButtonWidth =     120.0f;
+static CGFloat const kButtonWidth =     150.0f;
 static CGFloat const kButtonHeight =    50.0f;
 static CGFloat const kButtonSpacing =   10.0f;
 
@@ -31,12 +31,13 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     self.backgroupView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.backgroupView.image = [UIImage imageNamed:@"bg.jpg"];
     self.backgroupView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.backgroupView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:self.backgroupView];
     
     
-    CGRect buttonFrame = CGRectMake((self.view.frame.size.width - kButtonWidth)/2, 80, kButtonWidth, kButtonHeight);
+    CGRect buttonFrame = CGRectMake((self.view.frame.size.width - kButtonWidth)/2, 40, kButtonWidth, kButtonHeight);
     
     //排名 Rank
 	/*
@@ -55,8 +56,8 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.createGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.createGameButton.frame = buttonFrame;
     self.createGameButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.createGameButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.createGameButton setTitle:NSLocalizedString(@"新游戏", @"新游戏") forState:UIControlStateNormal];
+    [self.createGameButton setBackgroundImage:[UIImage imageNamed:@"newgame.png"] forState:UIControlStateNormal];
+    //[self.createGameButton setTitle:NSLocalizedString(@"新游戏", @"新游戏") forState:UIControlStateNormal];
     [self.createGameButton addTarget:self action:@selector(createGameAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.createGameButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.createGameButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
@@ -82,8 +83,8 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.settingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.settingButton.frame = buttonFrame;
     self.settingButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.settingButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.settingButton setTitle:NSLocalizedString(@"设置", @"设置") forState:UIControlStateNormal];
+    [self.settingButton setBackgroundImage:[UIImage imageNamed:@"setting.png"] forState:UIControlStateNormal];
+    //[self.settingButton setTitle:NSLocalizedString(@"设置", @"设置") forState:UIControlStateNormal];
 	[self.settingButton addTarget:self action:@selector(settingAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.settingButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.settingButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
@@ -106,8 +107,8 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.ranknewButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.ranknewButton.frame = buttonFrame;
     self.levelButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [self.ranknewButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.ranknewButton setTitle:NSLocalizedString(@"排行榜", @"排行榜") forState:UIControlStateNormal];
+    [self.ranknewButton setBackgroundImage:[UIImage imageNamed:@"rank.png"] forState:UIControlStateNormal];
+    //[self.ranknewButton setTitle:NSLocalizedString(@"排行榜", @"排行榜") forState:UIControlStateNormal];
     [self.ranknewButton addTarget:self action:@selector(rankNewAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.ranknewButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.ranknewButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
