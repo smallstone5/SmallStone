@@ -58,14 +58,7 @@
 		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
 		[UserManager setUserName:nickname.text];
 		[[ScoreManager alloc] reportScore:0];
-		alertStr = @"昵称设置成功！";
 	}
-	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
-	//请求后台创建该用户名
-	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
-	
-	
-	
 }
 
 -(void)sendCreateData
