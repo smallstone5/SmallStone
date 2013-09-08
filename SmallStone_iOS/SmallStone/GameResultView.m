@@ -108,6 +108,7 @@ static NSInteger const kCoverViewTag  =  171522;
         self.nextLevelButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
         [self.nextLevelButton setTintColor:UIColorFromRGB(0x2ECC71)];
         self.nextLevelButton.titleLabel.font = buttonFont;
+        [self.nextLevelButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
         [self.nextLevelButton setTitle:NSLocalizedString(@"Next", @"Next") forState:UIControlStateNormal];
         [self addSubview:self.nextLevelButton];
 
@@ -153,9 +154,6 @@ static NSInteger const kCoverViewTag  =  171522;
                          self.layer.shadowOffset = CGSizeMake(0, 1);
                          self.layer.shadowOpacity = 0.4f;
                          self.layer.shadowPath = CGPathCreateWithRect(self.bounds, NULL);
-                         
-
-
                      }];
 }
 

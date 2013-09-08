@@ -45,22 +45,24 @@
     [super viewDidLoad];
 
 
-    CGRect resultLabelFrame = CGRectMake(0, 10, self.view.bounds.size.width, 40);
-    self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
-    self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-    self.levelLabel.backgroundColor = [UIColor clearColor];
-    self.levelLabel.textColor = [UIColor darkTextColor];
-    self.levelLabel.textAlignment = UITextAlignmentCenter;
-    self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.levelLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:36];
-    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
-    [self.view addSubview:self.levelLabel];
-
     self.powerView = [[CatchPowerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 10, 64, 64)];
     self.powerView.backgroundColor = [UIColor clearColor];
     self.powerView.progressBGColor = [UIColor colorWithWhite:0.8 alpha:0.8];
     self.powerView.progress = 0.0;
     [self.view addSubview:self.powerView];
+
+
+    CGRect resultLabelFrame = self.powerView.bounds;
+    self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
+    self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.levelLabel.backgroundColor = [UIColor clearColor];
+    self.levelLabel.textColor = [UIColor colorWithWhite:1 alpha:0.8];
+    self.levelLabel.textAlignment = UITextAlignmentCenter;
+    self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.levelLabel.font = [UIFont boldSystemFontOfSize:32];
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
+    [self.powerView addSubview:self.levelLabel];
+
 
     self.level.stoneWall.delegate = self;
 
@@ -194,11 +196,12 @@
     _lastTimeStamp = 0.0f;
     [_level.ball removeFromSuperview];
     [_level.stoneWall removeFromSuperview];
+    [self resetPowerPogress];
     
     
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
     _level.stoneWall.delegate = self;
-    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
     [self.view addSubview: _level.ball];
     [self.view addSubview: _level.stoneWall];
 }
