@@ -60,8 +60,8 @@ LevelData g_levelList[] = {
     },
     
     {                               //Level6
-        3,                          //stoneRow
-        4,                          //stoneColumn
+        4,                          //stoneRow
+        5,                          //stoneColumn
         6,                          //stoneCount
         {0.0f, 8000.0f},            //acceleration
         {0.6f, 1.0f},               //speedScale
@@ -70,8 +70,8 @@ LevelData g_levelList[] = {
     },
     
     {                               //Level7
-        3,                          //stoneRow
-        4,                          //stoneColumn
+        4,                          //stoneRow
+        5,                          //stoneColumn
         7,                          //stoneCount
         {0.0f, 8000.0f},            //acceleration
         {0.6f, 1.0f},               //speedScale
@@ -80,32 +80,82 @@ LevelData g_levelList[] = {
     },
     
     {                               //Level8
-        3,                          //stoneRow
-        4,                          //stoneColumn
+        4,                          //stoneRow
+        5,                          //stoneColumn
         8,                          //stoneCount
         {0.0f, 8000.0f},            //acceleration
         {0.7f, 1.0f},               //speedScale
-        kDefaultTimeScale,          //timeScale
+        0.09,          //timeScale
         kDefaultVerticalScale       //verticalScale
     },
     
     {                               //Level9
-        3,                          //stoneRow
-        4,                          //stoneColumn
+        4,                          //stoneRow
+        5,                          //stoneColumn
         9,                          //stoneCount
         {0.0f, 8000.0f},            //acceleration
         {0.7f, 1.0f},               //speedScale
-        kDefaultTimeScale,          //timeScale
+        0.1,          //timeScale
         kDefaultVerticalScale       //verticalScale
     },
     
     {                               //Level10
-        3,                          //stoneRow
-        4,                          //stoneColumn
+        4,                          //stoneRow
+        5,                          //stoneColumn
         10,                         //stoneCount
         {0.0f, 8000.0f},            //acceleration
         {0.7f, 1.0f},               //speedScale
-        kDefaultTimeScale,          //timeScale
+        0.1,          //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+    
+    {                               //Level11
+        4,                          //stoneRow
+        5,                          //stoneColumn
+        6,                         //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {1.0f, 1.0f},               //speedScale
+        0.1,          //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+    
+    {                               //Level12
+        4,                          //stoneRow
+        5,                          //stoneColumn
+        7,                         //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {1.0f, 1.0f},               //speedScale
+        0.1,                        //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+    
+    {                               //Level13
+        4,                          //stoneRow
+        5,                          //stoneColumn
+        8,                         //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {1.0f, 1.0f},               //speedScale
+        0.1,                        //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+    
+    {                               //Level14
+        4,                          //stoneRow
+        5,                          //stoneColumn
+        9,                         //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {1.0f, 1.0f},               //speedScale
+        0.1,                        //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+    
+    {                               //Level15
+        4,                          //stoneRow
+        5,                          //stoneColumn
+        10,                         //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {1.0f, 1.0f},               //speedScale
+        0.1,                        //timeScale
         kDefaultVerticalScale       //verticalScale
     },
 };
