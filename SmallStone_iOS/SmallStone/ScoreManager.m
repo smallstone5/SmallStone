@@ -40,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-//        [self clearScoreData]; 测试代码
+//        [self clearScoreData];  //测试代码
         [self loadScoreList];
     }
 
@@ -142,7 +142,8 @@
     if (nil == self.scoreList) {
         self.scoreList = [NSMutableArray array];
     }
-    _topLevel = MAX(self.scoreList.count - 1, 0);
+    NSInteger savedLevel = self.scoreList.count - 1;
+    _topLevel = MAX(savedLevel, 0);
 }
 
 
@@ -151,7 +152,6 @@
     if (_topLevel < level) {
         _topLevel = level;
     }
-
 }
 
 
