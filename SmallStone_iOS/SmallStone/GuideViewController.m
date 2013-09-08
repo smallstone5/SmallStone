@@ -92,13 +92,13 @@
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];
     [imageview4 addSubview:button];
     
-	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 60, 30)];
+	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 100, 60, 30)];
 	nicknameLabel.text = @"昵称:";
 	//[nicknameLabel setFrame:CGRectMake(20, 100, 130, 30)];
 	[nicknameLabel setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.9]];
 	[imageview4 addSubview:nicknameLabel];
 	
-	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(80, 50, 200, 30)];
+	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(80, 100, 200, 30)];
 	self.nicknameField.text = [[UIDevice currentDevice] name];
     self.nicknameField.borderStyle = UITextBorderStyleRoundedRect;
 	self.nicknameField.delegate = self;
