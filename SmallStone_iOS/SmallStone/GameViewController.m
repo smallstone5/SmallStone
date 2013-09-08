@@ -56,10 +56,10 @@
     self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
     self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.levelLabel.backgroundColor = [UIColor clearColor];
-    self.levelLabel.textColor = [UIColor colorWithWhite:1 alpha:0.8];
+    self.levelLabel.textColor = [UIColor darkGrayColor];
     self.levelLabel.textAlignment = UITextAlignmentCenter;
     self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.levelLabel.font = [UIFont boldSystemFontOfSize:32];
+    self.levelLabel.font = [UIFont boldSystemFontOfSize:30];
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
     [self.powerView addSubview:self.levelLabel];
 
