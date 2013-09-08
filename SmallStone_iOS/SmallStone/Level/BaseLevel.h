@@ -35,6 +35,7 @@ typedef enum _GameState {
     CGFloat _minPlayTime;
     NSInteger _maxScore;
     NSInteger _stoneCount;
+    CGPoint _startPos;
 }
 
 @property (nonatomic) GameState state;

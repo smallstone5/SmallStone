@@ -41,8 +41,8 @@
 - (void) updateData: (CFTimeInterval) delta
 {
     _flyingTime += _timeScale * delta;
-    CGFloat x = _speed.x * _speedScale.x * _flyingTime + _acceleration.x * _flyingTime * _flyingTime;
-    CGFloat y = (_speed.y * _speedScale.y * _flyingTime - _acceleration.y * _flyingTime * _flyingTime) * _verticalScale;
+    CGFloat x = _startPos.x + _speed.x * _speedScale.x * _flyingTime + _acceleration.x * _flyingTime * _flyingTime;
+    CGFloat y = _startPos.y + (_speed.y * _speedScale.y * _flyingTime - _acceleration.y * _flyingTime * _flyingTime) * _verticalScale;
     _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(x, y));
 }
 

@@ -10,5 +10,5 @@
 
 @interface Level1 : BaseLevel
 
-
+- (id) initWithStoneCount: (NSInteger) count;
 @end

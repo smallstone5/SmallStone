@@ -33,7 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _level = [[Level1 alloc] init];             //直接创建Level1
+        _level = [[Level1 alloc] initWithStoneCount: 1];             //直接创建Level1
     }
     return self;
 }

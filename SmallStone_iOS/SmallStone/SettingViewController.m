@@ -71,12 +71,6 @@
         [[ScoreManager defaultManager] reportTotalScore];
 		alertStr = @"昵称设置成功！";
 	}
-	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
-	//请求后台创建该用户名
-	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
-	
-	
-	
 }
 
 -(void)sendCreateData
