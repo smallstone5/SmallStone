@@ -13,7 +13,7 @@
 
 @implementation Level1
 
-- (id) init
+- (id) initWithStoneCount: (NSInteger) count
 {
     if (self = [super init])
     {
@@ -23,14 +23,14 @@
         _timeScale = kDefaultTimeScale;
         _verticalScale = kDefaultVerticalScale;
         _speedScale = CGPointMake(0.5f, 1.0f);
-        _stoneCount = 1;
+        _stoneCount = count;
         _minPlayTime = kStoneTapScale * (_stoneCount + 1);
         _maxScore = kScoreScale * (_stoneCount + 1) * (_speedScale.x / kMinSpeedScale) * (_speedScale.x / kMinSpeedScale);
         
-        
         //创建小球
         _ball = [[BaseBall alloc] initWithFrame: CGRectMake(0.0f, 0.0f, _ballSize, _ballSize)];
-        _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
+        _startPos = CGPointMake(_ballSize/2, _ballSize/2);
+        _ball.center = ConvertPtBottomLeftToTopLeft(_startPos);
         _ball.image = [UIImage imageNamed: @"ball"];
         _ball.animationImages = [NSArray arrayWithObjects:
                                  [UIImage imageNamed: @"Bomb0"],
@@ -74,6 +74,7 @@
 - (void) restartGame
 {
     [super restartGame];
+    _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(_ballSize/2, _ballSize/2));
     _ball.image = [UIImage imageNamed: @"ball.png"];
 }
 
