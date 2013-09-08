@@ -44,54 +44,60 @@
 
 - (void)initGuide
 {
+    NSInteger pageNum = 4;
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width * 3, 0)];
+    [scrollView setContentSize:CGSizeMake(self.view.bounds.size.width * pageNum, 0)];
     [scrollView setPagingEnabled:YES];  //视图整页显示
     //[scrollView setBounces:NO]; //避免弹跳效果,避免把根视图露出来
     scrollView.delegate = self;
     
-    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
-    [imageview setContentMode:UIViewContentModeScaleAspectFit];
-    imageview.clipsToBounds = YES;
-    [imageview setImage:[UIImage imageNamed:@"1.jpg"]];
-    [scrollView addSubview:imageview];
-    //[imageview release];
-    
-    UIImageView *imageview1 = [[UIImageView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
+    UIImageView *imageview1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
     [imageview1 setContentMode:UIViewContentModeScaleAspectFit];
     imageview1.clipsToBounds = YES;
-    [imageview1 setImage:[UIImage imageNamed:@"2.jpg"]]; 
+    [imageview1 setImage:[UIImage imageNamed:@"1.jpg"]];
     [scrollView addSubview:imageview1];
-    //[imageview1 release];
     
-    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(2 * scrollView.frame.size.width, 0,  scrollView.frame.size.width, scrollView.frame.size.height)];
-    [imageview2 setImage:[UIImage imageNamed:@"3.jpg"]];
+    UIImageView *imageview2 = [[UIImageView alloc] initWithFrame:CGRectMake(scrollView.frame.size.width, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
     [imageview2 setContentMode:UIViewContentModeScaleAspectFit];
     imageview2.clipsToBounds = YES;
-    imageview2.userInteractionEnabled = YES;
+    [imageview2 setImage:[UIImage imageNamed:@"2.jpg"]];
     [scrollView addSubview:imageview2];
-    //[imageview2 release];
+    
+    UIImageView *imageview3 = [[UIImageView alloc] initWithFrame:CGRectMake(2 * scrollView.frame.size.width, 0,  scrollView.frame.size.width, scrollView.frame.size.height)];
+    [imageview3 setImage:[UIImage imageNamed:@"3.jpg"]];
+    [imageview3 setContentMode:UIViewContentModeScaleAspectFit];
+    imageview3.clipsToBounds = YES;
+    imageview3.userInteractionEnabled = YES;
+    [scrollView addSubview:imageview3];
+    
+    UIImageView *imageview4 = [[UIImageView alloc] initWithFrame:CGRectMake(3 * scrollView.frame.size.width, 0,  scrollView.frame.size.width, scrollView.frame.size.height)];
+    [imageview4 setImage:[UIImage imageNamed:@"4.jpg"]];
+    [imageview4 setContentMode:UIViewContentModeScaleAspectFit];
+    imageview4.clipsToBounds = YES;
+    imageview4.userInteractionEnabled = YES;
+    [scrollView addSubview:imageview4];
     
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];//在imageview2上加载一个透明的button
-    [button setTitle:@"开始体验" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(50, 200, 230, 37)];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"tiyan.png"] forState:UIControlStateNormal];
+    [button setFrame:CGRectMake(100, 100, 150, 40)];
     [button setTitleColor:[UIColor colorWithRed:255 green:0 blue:0 alpha:1.0] forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.5]];
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];
-    [imageview2 addSubview:button];
+    [imageview4 addSubview:button];
     
-	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
-	nicknameLabel.text = @"设置昵称：";
-	[nicknameLabel setFrame:CGRectMake(20, 100, 130, 30)];
+	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 60, 30)];
+	nicknameLabel.text = @"昵称:";
+	//[nicknameLabel setFrame:CGRectMake(20, 100, 130, 30)];
 	[nicknameLabel setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.9]];
-	[imageview2 addSubview:nicknameLabel];
+	[imageview4 addSubview:nicknameLabel];
 	
-	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(120, 100, 130, 30)];
+	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(80, 50, 200, 30)];
 	self.nicknameField.text = [[UIDevice currentDevice] name];
-	[imageview2 addSubview:self.nicknameField];
+    self.nicknameField.borderStyle = UITextBorderStyleRoundedRect;
+	[imageview4 addSubview:self.nicknameField];
     [self.view addSubview:scrollView];
     //[scrollView release];
     
@@ -104,7 +110,7 @@
     }
     //[self pageControl ];
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = 3;
+    self.pageControl.numberOfPages = pageNum;
     [self.view addSubview:self.pageControl];
 }
 
