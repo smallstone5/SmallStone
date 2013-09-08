@@ -62,11 +62,6 @@ static NSUInteger const kMaxLevel   =   200;
 #pragma mark - Public
 - (BOOL)saveScore:(NSUInteger)score atLevel:(NSUInteger)level
 {
-    if (nil == self.scoreList) {
-        [self loadScoreList];
-    }
-
-
     NSNumber * scoreNumber = [NSNumber numberWithInt:score];
     if (level > self.scoreList.count) {
         return NO;
@@ -96,10 +91,6 @@ static NSUInteger const kMaxLevel   =   200;
 
 - (NSUInteger)scoreAtLevel:(NSUInteger)level
 {
-    if (nil == self.scoreList) {
-        [self loadScoreList];
-    }
-
     if (level >= self.scoreList.count) {
         return 0;
     }
@@ -130,7 +121,7 @@ static NSUInteger const kMaxLevel   =   200;
 
 - (void)clearScoreData
 {
-    self.scoreList = nil;
+    self.scoreList = [NSMutableArray array];
     _topLevel = 0;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SCORE_LIST_KEY];
