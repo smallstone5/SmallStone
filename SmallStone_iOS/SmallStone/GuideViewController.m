@@ -36,6 +36,11 @@
     [self initGuide];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)initGuide
 {
@@ -72,7 +77,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];//在imageview2上加载一个透明的button
     [button setTitle:@"开始体验" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(50, 100, 230, 37)];
+    [button setFrame:CGRectMake(50, 200, 230, 37)];
     [button setTitleColor:[UIColor colorWithRed:255 green:0 blue:0 alpha:1.0] forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.5]];
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];
@@ -106,9 +111,15 @@
 //进入游戏主界面
 - (void)gotoMain
 {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didChangeUserName:)
+												 name:REPORT_CHANGE_USER_NAME_NOTIFICATION
+											   object:nil];
 	[UserManager setUserName:self.nicknameField.text];
-    [self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
+	[UserManager setUserDefaults:@"oldName" value:nil];
+	[[ScoreManager defaultManager] reportTotalScore];
 }
+
 
 
 //滑动翻页
@@ -124,6 +135,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - NSNotification
+- (void)didChangeUserName:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    NSInteger errorCode = [[userInfo objectForKey:@"errorCode"] integerValue];
+	
+    NSString *tips = nil;
+	if(errorCode == kUserNameExistError) {
+		tips = @"该昵称已存在！";
+		[UserManager setUserDefaults:@"nickname" value:[UserManager getUserDefaults:@"oldName"]];
+		[[[UIAlertView alloc] initWithTitle:@"" message:tips delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+		
+	} else if (errorCode == 0) {
+		[UserManager setUserDefaults:@"oldName" value:nil];
+		[self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
+	}
 }
 
 @end
