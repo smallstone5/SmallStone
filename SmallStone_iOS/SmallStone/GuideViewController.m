@@ -107,7 +107,6 @@
 - (void)gotoMain
 {
 	[UserManager setUserName:self.nicknameField.text];
-	[[ScoreManager alloc] reportScore:0];
     [self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
 }
 

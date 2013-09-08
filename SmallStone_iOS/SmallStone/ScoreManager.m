@@ -51,19 +51,9 @@ static NSUInteger const kMaxLevel   =   200;
 - (NSUInteger)totalScore
 {
     NSUInteger totalScore = 0;
-    NSUInteger level = 0;
-    do {
-        
-        NSNumber * scoreNumber = self.scoreList[level];
-        NSUInteger score = [scoreNumber unsignedIntegerValue];
-        if (score > 0) {
-            totalScore += score;
-        } else {
-            break;
-        }
-
-        level++;
-    } while (level < kMaxLevel);
+    for (NSNumber * scoreNumber in self.scoreList) {
+        totalScore += [scoreNumber integerValue];
+    }
 
     return totalScore;
 }
@@ -76,18 +66,24 @@ static NSUInteger const kMaxLevel   =   200;
         [self loadScoreList];
     }
 
-    if (level >= self.scoreList.count) {
-        return NO;
-    }
 
-    NSNumber * oldScoreNumber = self.scoreList[level];
-    if ([oldScoreNumber unsignedIntegerValue] > score) {
-        return NO;
-    }
-
-    [self updateTopLevel:level];
     NSNumber * scoreNumber = [NSNumber numberWithInt:score];
-    [self.scoreList replaceObjectAtIndex:level withObject:scoreNumber];
+    if (level > self.scoreList.count) {
+        return NO;
+
+    } else if (level == self.scoreList.count){
+        [self.scoreList addObject:scoreNumber];
+        [self updateTopLevel:level];
+
+    } else {
+
+        NSNumber * oldScoreNumber = self.scoreList[level];
+        if ([oldScoreNumber unsignedIntegerValue] > score) {
+            return NO;
+        }
+        [self.scoreList replaceObjectAtIndex:level withObject:scoreNumber];
+    }
+
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:self.scoreList forKey:SCORE_LIST_KEY];
     [defaults synchronize];
@@ -148,15 +144,9 @@ static NSUInteger const kMaxLevel   =   200;
 {
     self.scoreList = [[NSUserDefaults standardUserDefaults] objectForKey:SCORE_LIST_KEY];
     if (nil == self.scoreList) {
-        self.scoreList = [NSMutableArray arrayWithCapacity:kMaxLevel];
-        NSNumber * zeroNumber = [NSNumber numberWithInt:0];
-        NSUInteger level = 0;
-        while (level < kMaxLevel) {
-            [self.scoreList addObject:[zeroNumber copy]];
-            [self updateTopLevel:_topLevel];
-            level++;
-        }
+        self.scoreList = [NSMutableArray array];
     }
+    _topLevel = MAX(self.scoreList.count - 1, 0);
 }
 
 
