@@ -18,6 +18,7 @@
     if (self) {
         // Initialization code
         self.userInteractionEnabled = YES;
+        self.contentMode = UIViewContentModeCenter;
         
     }
     return self;

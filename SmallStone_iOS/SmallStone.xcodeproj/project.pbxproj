@@ -18,6 +18,7 @@
 		971427ED17DC1627003D4E15 /* Bomb4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427E617DC1627003D4E15 /* Bomb4@2x.png */; };
 		971427EE17DC1627003D4E15 /* Bomb5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427E717DC1627003D4E15 /* Bomb5@2x.png */; };
 		971427EF17DC1627003D4E15 /* Bomb6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427E817DC1627003D4E15 /* Bomb6@2x.png */; };
+		971427F117DC1BC7003D4E15 /* ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427F017DC1BC7003D4E15 /* ball@2x.png */; };
 		9733AAF317DA156600791D4D /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9733AAF217DA156600791D4D /* RankViewController.xib */; };
 		9733AAF717DA19F300791D4D /* BaseBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF617DA19F300791D4D /* BaseBall.m */; };
 		9733AAFA17DA221000791D4D /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF917DA221000791D4D /* CommonType.m */; };
@@ -109,6 +110,7 @@
 		971427E617DC1627003D4E15 /* Bomb4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bomb4@2x.png"; sourceTree = "<group>"; };
 		971427E717DC1627003D4E15 /* Bomb5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bomb5@2x.png"; sourceTree = "<group>"; };
 		971427E817DC1627003D4E15 /* Bomb6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bomb6@2x.png"; sourceTree = "<group>"; };
+		971427F017DC1BC7003D4E15 /* ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball@2x.png"; sourceTree = "<group>"; };
 		9733AAF217DA156600791D4D /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		9733AAF517DA19F300791D4D /* BaseBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBall.h; sourceTree = "<group>"; };
 		9733AAF617DA19F300791D4D /* BaseBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBall.m; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		9733AB0517DA37FC00791D4D /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				971427F017DC1BC7003D4E15 /* ball@2x.png */,
 				971427DA17DB45CA003D4E15 /* btn_back.png */,
 				971427DB17DB45CA003D4E15 /* btn_back@2x.png */,
 				971427DC17DB45CA003D4E15 /* button.png */,
@@ -540,6 +543,7 @@
 				971427ED17DC1627003D4E15 /* Bomb4@2x.png in Resources */,
 				971427EE17DC1627003D4E15 /* Bomb5@2x.png in Resources */,
 				971427EF17DC1627003D4E15 /* Bomb6@2x.png in Resources */,
+				971427F117DC1BC7003D4E15 /* ball@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

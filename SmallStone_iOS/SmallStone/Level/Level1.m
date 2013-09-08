@@ -31,7 +31,7 @@
         //创建小球
         _ball = [[BaseBall alloc] initWithFrame: CGRectMake(0.0f, 0.0f, _ballSize, _ballSize)];
         _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
-        _ball.image = [UIImage imageNamed: @"ball.png"];
+        _ball.image = [UIImage imageNamed: @"ball"];
         _ball.animationImages = [NSArray arrayWithObjects:
                                  [UIImage imageNamed: @"Bomb0"],
                                  [UIImage imageNamed: @"Bomb1"],
