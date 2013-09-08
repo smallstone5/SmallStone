@@ -15,6 +15,8 @@
 #import "GameResultView.h"
 #import "LevelManager.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
 
 
 @interface GameViewController () <StoneWallViewDelegate>
@@ -113,6 +115,7 @@
         CGFloat deltaY = touchPoint.y - ballCenter.y;
         if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
         {
+            [self playBallExplosionSound];
             //点击到小球
             if (_level.stoneWall.isCleared)
                 [_level victory];
@@ -212,6 +215,16 @@
 - (void)showGameResult
 {
     [self.resultView showScore:_level.score onView:self.view];
+}
+
+- (void)playBallExplosionSound
+{
+    SystemSoundID soundID;
+    NSString * audioName = @"balloon_pop";
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:audioName ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
 }
 
 #pragma mark - StoneWallViewDelegate

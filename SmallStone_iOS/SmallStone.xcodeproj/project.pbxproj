@@ -68,6 +68,7 @@
 		EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA60D5517D72C0000B0A63C /* QuartzCore.framework */; };
 		EDA60D5A17D733AB00B0A63C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5817D733AB00B0A63C /* Icon.png */; };
 		EDA60D5B17D733AB00B0A63C /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA60D5917D733AB00B0A63C /* Icon@2x.png */; };
+		EDAE4BFE17DC4E4200317CAD /* balloon_pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDAE4BFD17DC4E4200317CAD /* balloon_pop.mp3 */; };
 		EDE4F6BD17D987D0004F3057 /* StoneLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */; };
 		EDE4F6C217D9BD53004F3057 /* stone_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE4F6BE17D9BD53004F3057 /* stone_blue.png */; };
 		EDE4F6C317D9BD53004F3057 /* stone_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EDE4F6BF17D9BD53004F3057 /* stone_blue@2x.png */; };
@@ -188,6 +189,7 @@
 		EDA60D5517D72C0000B0A63C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EDA60D5817D733AB00B0A63C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = SmallStone/Icon.png; sourceTree = "<group>"; };
 		EDA60D5917D733AB00B0A63C /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "SmallStone/Icon@2x.png"; sourceTree = "<group>"; };
+		EDAE4BFD17DC4E4200317CAD /* balloon_pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = balloon_pop.mp3; sourceTree = "<group>"; };
 		EDE4F6BB17D987D0004F3057 /* StoneLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneLinkView.h; sourceTree = "<group>"; };
 		EDE4F6BC17D987D0004F3057 /* StoneLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoneLinkView.m; sourceTree = "<group>"; };
 		EDE4F6BE17D9BD53004F3057 /* stone_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stone_blue.png; path = SmallStone/stone_blue.png; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 		EDE4F6C917D9CAE6004F3057 /* audio */ = {
 			isa = PBXGroup;
 			children = (
+				EDAE4BFD17DC4E4200317CAD /* balloon_pop.mp3 */,
 				EDE4F6CA17D9CAE6004F3057 /* clear.mp3 */,
 				EDE4F6CB17D9CAE6004F3057 /* connect_1.mp3 */,
 				EDE4F6CC17D9CAE6004F3057 /* connect_10.mp3 */,
@@ -536,6 +539,7 @@
 				EDE4F6C517D9BD53004F3057 /* stone_pink@2x.png in Resources */,
 				FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */,
 				FD18F5BF17DAF11600A231C0 /* No2.png in Resources */,
+				EDAE4BFE17DC4E4200317CAD /* balloon_pop.mp3 in Resources */,
 				FD18F5C117DAF13000A231C0 /* No3.png in Resources */,
 				ED107F7217DB2F340006A030 /* score_orange_sun.png in Resources */,
 				A1EAA80117D9F66B00EDF3B4 /* SettingViewController.xib in Resources */,
