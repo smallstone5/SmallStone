@@ -102,16 +102,23 @@ CGFloat DegressToRadians(CGFloat degress)
 
         case kStoneStateCleared:
         {
+            [UIView animateWithDuration:0.25
+                                  delay:0
+                                options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionTransitionFlipFromTop
+                             animations:^{
+                                 self.frame = CGRectMake(self.frame.origin.x + self.frame.size.width/2,
+                                                         self.frame.origin.y + self.frame.size.height/2, 0, 0);
+                             } completion:^(BOOL finished) {
+                                 [self removeFromSuperview];
+                             }];
             
-            CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"bounds"];
-            [animation setDuration:0.25];
-            [animation setFromValue:[NSValue valueWithCGRect:self.bounds]];
-            [animation setToValue:[NSValue valueWithCGRect:CGRectZero]];
-            [animation setRemovedOnCompletion:YES];
-            [self.layer addAnimation:animation forKey:@"StoneClearAnimation"];
+//            CABasicAnimation * animation = [CABasicAnimation animationWithKeyPath:@"bounds"];
+//            [animation setDuration:0.25];
+//            [animation setFromValue:[NSValue valueWithCGRect:self.bounds]];
+//            [animation setToValue:[NSValue valueWithCGRect:CGRectZero]];
+//            [animation setRemovedOnCompletion:YES];
+//            [self.layer addAnimation:animation forKey:@"StoneClearAnimation"];
 
-            self.frame = CGRectMake(self.frame.origin.x + self.frame.size.width/2,
-                                    self.frame.origin.y + self.frame.size.height/2, 0, 0);
         }
             break;
 

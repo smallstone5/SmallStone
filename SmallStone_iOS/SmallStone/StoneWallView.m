@@ -151,8 +151,9 @@
 
 - (void)resetWall
 {
-    for (StoneView * aStoneView in self.connectedStoneViews) {
+    for (StoneView * aStoneView in self.stoneViews) {
         aStoneView.state = kStoneStateNormal;
+        [aStoneView removeFromSuperview];
     };
 
     self.stoneViews = [[NSMutableArray alloc] init];
