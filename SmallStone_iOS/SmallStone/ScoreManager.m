@@ -69,14 +69,17 @@
 
     NSNumber * scoreNumber = [NSNumber numberWithInt:score];
     if (level > self.scoreList.count) {
+        _nextLevel = self.scoreList.count;
         return NO;
 
     } else if (level == self.scoreList.count){
         [self.scoreList addObject:scoreNumber];
         [self updateTopLevel:level];
+        _nextLevel = level + 1;
 
     } else {
 
+        _nextLevel = level + 1;
         NSNumber * oldScoreNumber = self.scoreList[level];
         if ([oldScoreNumber unsignedIntegerValue] > score) {
             return NO;
@@ -123,15 +126,21 @@
 }
 
 
+- (void)resetNextLevel
+{
+    _nextLevel = 0;
+}
 
 - (void)clearScoreData
 {
     self.scoreList = [NSMutableArray array];
     _topLevel = 0;
+    _nextLevel = 0;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SCORE_LIST_KEY];
     [defaults synchronize];
 }
+
 
 
 
@@ -144,6 +153,7 @@
     }
     NSInteger savedLevel = self.scoreList.count - 1;
     _topLevel = MAX(savedLevel, 0);
+    _nextLevel = self.scoreList.count;
 }
 
 

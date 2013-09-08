@@ -98,6 +98,10 @@
 		FD1191C517DC476E009E556A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C217DC476E009E556A /* 2.jpg */; };
 		FD1191C617DC476E009E556A /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C317DC476E009E556A /* 3.jpg */; };
 		FD1191C717DC476E009E556A /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C417DC476E009E556A /* 4.jpg */; };
+		FD1191D317DC57FA009E556A /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191D217DC57FA009E556A /* bg.jpg */; };
+		FD1191E117DC5F6F009E556A /* newgame.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1191DE17DC5F6F009E556A /* newgame.png */; };
+		FD1191E217DC5F6F009E556A /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1191DF17DC5F6F009E556A /* rank.png */; };
+		FD1191E317DC5F6F009E556A /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1191E017DC5F6F009E556A /* setting.png */; };
 		FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BC17DAF0FC00A231C0 /* No1.png */; };
 		FD18F5BF17DAF11600A231C0 /* No2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BE17DAF11600A231C0 /* No2.png */; };
 		FD18F5C117DAF13000A231C0 /* No3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5C017DAF13000A231C0 /* No3.png */; };
@@ -222,6 +226,10 @@
 		FD1191C217DC476E009E556A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		FD1191C317DC476E009E556A /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		FD1191C417DC476E009E556A /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		FD1191D217DC57FA009E556A /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
+		FD1191DE17DC5F6F009E556A /* newgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newgame.png; sourceTree = "<group>"; };
+		FD1191DF17DC5F6F009E556A /* rank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rank.png; sourceTree = "<group>"; };
+		FD1191E017DC5F6F009E556A /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		FD18F5BC17DAF0FC00A231C0 /* No1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No1.png; sourceTree = "<group>"; };
 		FD18F5BE17DAF11600A231C0 /* No2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No2.png; sourceTree = "<group>"; };
 		FD18F5C017DAF13000A231C0 /* No3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No3.png; sourceTree = "<group>"; };
@@ -357,6 +365,7 @@
 				9733AAF417DA19DA00791D4D /* Ball */,
 				ED4C01A617DACDAB002DA400 /* CatchPowerView.h */,
 				ED4C01A717DACDAB002DA400 /* CatchPowerView.m */,
+				EDA60D5117D7296000B0A63C /* GameViewController.m */,
 				9733AAF817DA221000791D4D /* CommonType.h */,
 				9733AAF917DA221000791D4D /* CommonType.m */,
 				ED8AA0F517D813B50070BFF0 /* GameModel */,
@@ -365,7 +374,6 @@
 				9733AAFB17DA254A00791D4D /* GameSetting.h */,
 				9733AAFC17DA254A00791D4D /* GameSetting.m */,
 				EDA60D5017D7296000B0A63C /* GameViewController.h */,
-				EDA60D5117D7296000B0A63C /* GameViewController.m */,
 				EDA60D5217D7296000B0A63C /* GameViewController.xib */,
 				FDBA98FB17D9B5D90061804F /* GuideViewController.h */,
 				FDBA98FC17D9B5D90061804F /* GuideViewController.m */,
@@ -415,6 +423,10 @@
 		EDA60D5717D7339100B0A63C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FD1191DE17DC5F6F009E556A /* newgame.png */,
+				FD1191DF17DC5F6F009E556A /* rank.png */,
+				FD1191E017DC5F6F009E556A /* setting.png */,
+				FD1191D217DC57FA009E556A /* bg.jpg */,
 				FD1191C217DC476E009E556A /* 2.jpg */,
 				FD1191C317DC476E009E556A /* 3.jpg */,
 				FD1191C417DC476E009E556A /* 4.jpg */,
@@ -574,6 +586,10 @@
 				FD1191C517DC476E009E556A /* 2.jpg in Resources */,
 				FD1191C617DC476E009E556A /* 3.jpg in Resources */,
 				FD1191C717DC476E009E556A /* 4.jpg in Resources */,
+				FD1191D317DC57FA009E556A /* bg.jpg in Resources */,
+				FD1191E117DC5F6F009E556A /* newgame.png in Resources */,
+				FD1191E217DC5F6F009E556A /* rank.png in Resources */,
+				FD1191E317DC5F6F009E556A /* setting.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

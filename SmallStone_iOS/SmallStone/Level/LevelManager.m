@@ -34,9 +34,9 @@ static LevelManager * __strong g_LevelManager;
 
 - (BaseLevel *) makeCurrentLevel
 {
-    NSUInteger levelIndex = [[ScoreManager defaultManager] topLevel];
+    NSUInteger levelIndex = MIN([[ScoreManager defaultManager] nextLevel], g_levelCount - 1);
     BaseLevel *level = [[Level1 alloc] initWithLevelData: &g_levelList[levelIndex]];
-    level.levelIndex = MIN(g_levelCount-1, levelIndex + 1);
+    level.levelIndex = levelIndex;
     return level;
 }
 @end
