@@ -69,7 +69,6 @@
 		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
 		[UserManager setUserName:nickname.text];
         [[ScoreManager defaultManager] reportTotalScore];
-		alertStr = @"昵称设置成功！";
 	}
 }
 
