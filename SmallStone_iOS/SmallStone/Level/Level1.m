@@ -33,13 +33,13 @@
         _ball.center = ConvertPtBottomLeftToTopLeft(CGPointMake(-_ballSize/2, -_ballSize/2));
         _ball.image = [UIImage imageNamed: @"ball.png"];
         _ball.animationImages = [NSArray arrayWithObjects:
-                                 [UIImage imageNamed: @"Bomb0.png"],
-                                 [UIImage imageNamed: @"Bomb1.png"],
-                                 [UIImage imageNamed: @"Bomb2.png"],
-                                 [UIImage imageNamed: @"Bomb3.png"],
-                                 [UIImage imageNamed: @"Bomb4.png"],
-                                 [UIImage imageNamed: @"Bomb5.png"],
-                                 [UIImage imageNamed: @"Bomb6.png"],nil];
+                                 [UIImage imageNamed: @"Bomb0"],
+                                 [UIImage imageNamed: @"Bomb1"],
+                                 [UIImage imageNamed: @"Bomb2"],
+                                 [UIImage imageNamed: @"Bomb3"],
+                                 [UIImage imageNamed: @"Bomb4"],
+                                 [UIImage imageNamed: @"Bomb5"],
+                                 [UIImage imageNamed: @"Bomb6"],nil];
         _ball.animationDuration = 0.8f;
         _ball.animationRepeatCount = 1;
         
