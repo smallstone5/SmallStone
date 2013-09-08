@@ -20,6 +20,7 @@
 		971427EF17DC1627003D4E15 /* Bomb6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427E817DC1627003D4E15 /* Bomb6@2x.png */; };
 		971427F117DC1BC7003D4E15 /* ball@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427F017DC1BC7003D4E15 /* ball@2x.png */; };
 		971427F417DC2B50003D4E15 /* LevelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 971427F317DC2B50003D4E15 /* LevelManager.m */; };
+		971427F717DC57A6003D4E15 /* BallProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 971427F617DC57A6003D4E15 /* BallProgress.m */; };
 		9733AAF317DA156600791D4D /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9733AAF217DA156600791D4D /* RankViewController.xib */; };
 		9733AAF717DA19F300791D4D /* BaseBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF617DA19F300791D4D /* BaseBall.m */; };
 		9733AAFA17DA221000791D4D /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF917DA221000791D4D /* CommonType.m */; };
@@ -104,6 +105,7 @@
 		FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BC17DAF0FC00A231C0 /* No1.png */; };
 		FD18F5BF17DAF11600A231C0 /* No2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BE17DAF11600A231C0 /* No2.png */; };
 		FD18F5C117DAF13000A231C0 /* No3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5C017DAF13000A231C0 /* No3.png */; };
+		FD8D7AAE17DC6346001C100A /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = FD8D7AAD17DC6346001C100A /* continue.png */; };
 		FDBA98FE17D9B5D90061804F /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA98FC17D9B5D90061804F /* GuideViewController.m */; };
 		FDBA990917D9BDC00061804F /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDBA990717D9BDC00061804F /* RankViewController.m */; };
 /* End PBXBuildFile section */
@@ -123,6 +125,8 @@
 		971427F017DC1BC7003D4E15 /* ball@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ball@2x.png"; sourceTree = "<group>"; };
 		971427F217DC2B50003D4E15 /* LevelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelManager.h; sourceTree = "<group>"; };
 		971427F317DC2B50003D4E15 /* LevelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelManager.m; sourceTree = "<group>"; };
+		971427F517DC57A6003D4E15 /* BallProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BallProgress.h; path = SmallStone/Ball/BallProgress.h; sourceTree = SOURCE_ROOT; };
+		971427F617DC57A6003D4E15 /* BallProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BallProgress.m; path = SmallStone/Ball/BallProgress.m; sourceTree = SOURCE_ROOT; };
 		9733AAF217DA156600791D4D /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		9733AAF517DA19F300791D4D /* BaseBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBall.h; sourceTree = "<group>"; };
 		9733AAF617DA19F300791D4D /* BaseBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBall.m; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 		FD18F5BC17DAF0FC00A231C0 /* No1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No1.png; sourceTree = "<group>"; };
 		FD18F5BE17DAF11600A231C0 /* No2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No2.png; sourceTree = "<group>"; };
 		FD18F5C017DAF13000A231C0 /* No3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No3.png; sourceTree = "<group>"; };
+		FD8D7AAD17DC6346001C100A /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continue.png; sourceTree = "<group>"; };
 		FDBA98FB17D9B5D90061804F /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		FDBA98FC17D9B5D90061804F /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		FDBA990617D9BDC00061804F /* RankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
@@ -316,6 +321,8 @@
 				ED8AA0F717D813CB0070BFF0 /* Stone.m */,
 				ED8AA0F917D813DD0070BFF0 /* StoneWall.h */,
 				ED8AA0FA17D813DD0070BFF0 /* StoneWall.m */,
+				971427F517DC57A6003D4E15 /* BallProgress.h */,
+				971427F617DC57A6003D4E15 /* BallProgress.m */,
 			);
 			path = GameModel;
 			sourceTree = "<group>";
@@ -418,6 +425,7 @@
 		EDA60D5717D7339100B0A63C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FD8D7AAD17DC6346001C100A /* continue.png */,
 				FD1191DE17DC5F6F009E556A /* newgame.png */,
 				FD1191DF17DC5F6F009E556A /* rank.png */,
 				FD1191E017DC5F6F009E556A /* setting.png */,
@@ -585,6 +593,7 @@
 				FD1191E117DC5F6F009E556A /* newgame.png in Resources */,
 				FD1191E217DC5F6F009E556A /* rank.png in Resources */,
 				FD1191E317DC5F6F009E556A /* setting.png in Resources */,
+				FD8D7AAE17DC6346001C100A /* continue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,6 +628,7 @@
 				9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */,
 				9733AB1817DA384200791D4D /* Level1.m in Sources */,
 				971427F417DC2B50003D4E15 /* LevelManager.m in Sources */,
+				971427F717DC57A6003D4E15 /* BallProgress.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

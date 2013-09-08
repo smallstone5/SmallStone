@@ -113,6 +113,8 @@
 - (void) gameDraw
 {
     [_level gameDraw];
+    if (_level.state == GS_Start)
+        [_ballProgress gameDraw: _level.ball.center];
 }
 
 #pragma mark - UIResponder
@@ -166,6 +168,7 @@
     CFAbsoluteTime tmDelta = CFAbsoluteTimeGetCurrent() - _tmStart;
     _level.speed = CGPointMake(deltaX / tmDelta, deltaY / tmDelta);
     [_level startGame];
+    _ballProgress.ballSize = _level.ballSize;
     
     [self.displayLink setPaused: NO];
 }
@@ -188,6 +191,7 @@
     _lastTimeStamp = 0.0f;
     [_level restartGame];
     [self resetPowerPogress];
+    [_ballProgress gameDraw: CGPointZero];
 }
 
 - (void)nextLevelAction:(id)sender
@@ -204,6 +208,7 @@
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
     [self.view addSubview: _level.ball];
     [self.view addSubview: _level.stoneWall];
+    [_ballProgress gameDraw: CGPointZero];
 }
 
 
