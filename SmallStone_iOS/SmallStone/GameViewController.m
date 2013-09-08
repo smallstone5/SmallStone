@@ -184,6 +184,7 @@
     
     
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
+    _level.stoneWall.delegate = self;
     [self.view addSubview: _level.ball];
     [self.view addSubview: _level.stoneWall];
 }
