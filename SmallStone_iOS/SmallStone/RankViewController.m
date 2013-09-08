@@ -261,7 +261,7 @@
         cell.imageView.image = [UIImage imageWithData:imageData];
         float scale = 40.0/cell.imageView.image.size.width;
         cell.imageView.transform = CGAffineTransformMakeScale(scale, scale);
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数: %@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数:%@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
     
         //选中时不设置颜色
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
