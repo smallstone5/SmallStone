@@ -160,10 +160,12 @@
     self.connectedStoneViews = [NSMutableArray array];
     self.clearedStoneViews = [NSMutableArray array];
     [self.linkView clear];
+
 }
 
 - (void)resetStoneViews
 {
+    [self.stoneWall reGenerateRandStones];
     for (Stone * aStone in self.stoneWall.stoneList) {
         
         if (aStone.point.x > self.stoneWall.matrixColumn

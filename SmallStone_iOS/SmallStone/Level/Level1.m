@@ -47,7 +47,7 @@
         StoneWall * wall = [[StoneWall alloc] init];
         wall.matrixRow = data->stoneRow;
         wall.matrixColumn = data->stoneColumn;
-        [wall generateRandStones:_stoneCount];
+        [wall setStonesCount:_stoneCount];
         
         _stoneWall = [[StoneWallView alloc] initWithStoneWall:wall];
         _stoneWall.frame = CGRectMake((g_rcScreen.size.width - _stoneWall.frame.size.width)/2,
