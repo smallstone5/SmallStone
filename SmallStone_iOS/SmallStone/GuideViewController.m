@@ -12,7 +12,7 @@
 #import "ScoreManager.h"
 #import "UserManager.h"
 
-@interface GuideViewController ()
+@interface GuideViewController () <UITextFieldDelegate>
 
 @end
 
@@ -101,6 +101,9 @@
 	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(80, 50, 200, 30)];
 	self.nicknameField.text = [[UIDevice currentDevice] name];
     self.nicknameField.borderStyle = UITextBorderStyleRoundedRect;
+	self.nicknameField.delegate = self;
+//	[self.nicknameField addTarget:self.nicknameField action:@selector(textFieldDoneEditing) foforControlEvents:UIControlEventTouchUpOutside]
+	
 	[imageview4 addSubview:self.nicknameField];
     [self.view addSubview:scrollView];
     //[scrollView release];
@@ -117,6 +120,19 @@
     self.pageControl.numberOfPages = pageNum;
     [self.view addSubview:self.pageControl];
 }
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+	NSLog(@"end");
+	return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[self.nicknameField resignFirstResponder];
+	return YES;
+}
+
 
 //进入游戏主界面
 - (void)gotoMain
@@ -141,6 +157,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) textFieldDoneEditing
+{
+	[self resignFirstResponder];
+}
+
+-(void) backgroundTap
+{
+	[self.nicknameField resignFirstResponder];
 }
 
 #pragma mark - NSNotification
