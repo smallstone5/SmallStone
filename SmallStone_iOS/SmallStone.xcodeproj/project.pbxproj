@@ -93,9 +93,9 @@
 		EDE4F6EF17D9D25B004F3057 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE4F6EE17D9D25B004F3057 /* AudioToolbox.framework */; };
 		FD1191B317DC25EA009E556A /* tiyan.png in Resources */ = {isa = PBXBuildFile; fileRef = FD1191B217DC25EA009E556A /* tiyan.png */; };
 		FD1191B517DC297B009E556A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191B417DC297B009E556A /* 1.jpg */; };
-		FD1191B917DC2C14009E556A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191B617DC2C14009E556A /* 2.jpg */; };
-		FD1191BA17DC2C14009E556A /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191B717DC2C14009E556A /* 3.jpg */; };
-		FD1191BB17DC2C14009E556A /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191B817DC2C14009E556A /* 4.jpg */; };
+		FD1191C517DC476E009E556A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C217DC476E009E556A /* 2.jpg */; };
+		FD1191C617DC476E009E556A /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C317DC476E009E556A /* 3.jpg */; };
+		FD1191C717DC476E009E556A /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD1191C417DC476E009E556A /* 4.jpg */; };
 		FD18F5BD17DAF0FC00A231C0 /* No1.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BC17DAF0FC00A231C0 /* No1.png */; };
 		FD18F5BF17DAF11600A231C0 /* No2.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5BE17DAF11600A231C0 /* No2.png */; };
 		FD18F5C117DAF13000A231C0 /* No3.png in Resources */ = {isa = PBXBuildFile; fileRef = FD18F5C017DAF13000A231C0 /* No3.png */; };
@@ -214,9 +214,9 @@
 		EDE4F6EE17D9D25B004F3057 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FD1191B217DC25EA009E556A /* tiyan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiyan.png; sourceTree = "<group>"; };
 		FD1191B417DC297B009E556A /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
-		FD1191B617DC2C14009E556A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		FD1191B717DC2C14009E556A /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		FD1191B817DC2C14009E556A /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		FD1191C217DC476E009E556A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		FD1191C317DC476E009E556A /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		FD1191C417DC476E009E556A /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
 		FD18F5BC17DAF0FC00A231C0 /* No1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No1.png; sourceTree = "<group>"; };
 		FD18F5BE17DAF11600A231C0 /* No2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No2.png; sourceTree = "<group>"; };
 		FD18F5C017DAF13000A231C0 /* No3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = No3.png; sourceTree = "<group>"; };
@@ -408,10 +408,10 @@
 		EDA60D5717D7339100B0A63C /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FD1191C217DC476E009E556A /* 2.jpg */,
+				FD1191C317DC476E009E556A /* 3.jpg */,
+				FD1191C417DC476E009E556A /* 4.jpg */,
 				FD1191B417DC297B009E556A /* 1.jpg */,
-				FD1191B617DC2C14009E556A /* 2.jpg */,
-				FD1191B717DC2C14009E556A /* 3.jpg */,
-				FD1191B817DC2C14009E556A /* 4.jpg */,
 				EDE4F6C917D9CAE6004F3057 /* audio */,
 				EDA60D5817D733AB00B0A63C /* Icon.png */,
 				EDA60D5917D733AB00B0A63C /* Icon@2x.png */,
@@ -562,9 +562,9 @@
 				971427F117DC1BC7003D4E15 /* ball@2x.png in Resources */,
 				FD1191B317DC25EA009E556A /* tiyan.png in Resources */,
 				FD1191B517DC297B009E556A /* 1.jpg in Resources */,
-				FD1191B917DC2C14009E556A /* 2.jpg in Resources */,
-				FD1191BA17DC2C14009E556A /* 3.jpg in Resources */,
-				FD1191BB17DC2C14009E556A /* 4.jpg in Resources */,
+				FD1191C517DC476E009E556A /* 2.jpg in Resources */,
+				FD1191C617DC476E009E556A /* 3.jpg in Resources */,
+				FD1191C717DC476E009E556A /* 4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
