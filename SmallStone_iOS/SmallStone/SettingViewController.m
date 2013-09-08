@@ -25,6 +25,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
+        UIButton *backButton = [UIButton buttonWithType:101];
+        [backButton addTarget:self action:@selector(backButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [backButton setTitle:@"返回" forState:UIControlStateNormal];
+
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        self.navigationItem.leftBarButtonItem = backItem;
+
+
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(didChangeUserName:)
                                                      name:REPORT_CHANGE_USER_NAME_NOTIFICATION
@@ -37,6 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+    self.title = NSLocalizedString(@"设置", @"设置");
 	nickname.text = [UserManager userName];
     // Do any additional setup after loading the view from its nib.
 }

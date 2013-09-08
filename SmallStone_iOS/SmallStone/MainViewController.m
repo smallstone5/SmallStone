@@ -158,8 +158,9 @@ static CGFloat const kButtonSpacing =   10.0f;
 -(void) settingAction:(UIButton *)button
 {
 	SettingViewController * settingController = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:[NSBundle mainBundle]];
-	settingController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self presentViewController:settingController animated:YES completion:nil];
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:settingController];
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
 }
 
 @end

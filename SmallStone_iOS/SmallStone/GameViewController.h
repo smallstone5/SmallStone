@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "BallProgress.h"
 
 @class BaseLevel;
 @interface GameViewController : UIViewController {
@@ -15,7 +16,7 @@
     CFTimeInterval _lastTimeStamp;
     CFTimeInterval _tmStart;
     CGPoint _ptStart;
-    
+    IBOutlet BallProgress *_ballProgress;
     
 }
 
