@@ -7,3 +7,17 @@
 //
 
 #import "GameSetting.h"
+
+LevelData g_levelList[] = {
+    {                               //Level1
+        3,                          //stoneRow
+        4,                          //stoneColumn
+        1,                          //stoneCount
+        {0.0f, 8000.0f},            //acceleration
+        {0.5f, 1.0f},               //speedScale
+        kDefaultTimeScale,          //timeScale
+        kDefaultVerticalScale       //verticalScale
+    },
+};
+
+NSUInteger g_levelCount = sizeof(g_levelList) / sizeof(LevelData);

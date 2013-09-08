@@ -7,8 +7,9 @@
 //
 
 #import "BaseLevel.h"
+#import "GameSetting.h"
 
 @interface Level1 : BaseLevel
 
-- (id) initWithStoneCount: (NSInteger) count;
+- (id) initWithLevelData: (LevelData*) data;
 @end
