@@ -37,18 +37,19 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    [[UIColor darkGrayColor] set];
     [@"x" drawAtPoint: CGPointMake(0, 0) withFont: _sysFont];
     [@"y" drawAtPoint: CGPointMake(0, 12) withFont: _sysFont];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-    [[UIColor redColor] set];
+    [[UIColor orangeColor] set];
     CGRect rcProgress = CGRectMake( 15, 0, self.bounds.size.width - 15, 10);
     CGRect rcX = rcProgress, rcY = rcProgress;
     CGFloat px = 1 - _position.x / (g_rcScreen.size.width + _ballSize / 2);
     rcX.size.width *=  px < 0 ? 0 : px;
     
     CGFloat py = (g_rcScreen.size.height - _position.y + _ballSize / 2) / (g_rcScreen.size.height + _ballSize / 2);
-    rcY.origin.y = 12;
+    rcY.origin.y = 15;
     rcY.size.width *= py < 0 ? 0 : py;
     
     CGContextFillRect(context, rcX);

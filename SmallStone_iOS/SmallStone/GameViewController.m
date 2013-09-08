@@ -206,8 +206,9 @@
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
     _level.stoneWall.delegate = self;
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
-    [self.view addSubview: _level.ball];
+    
     [self.view addSubview: _level.stoneWall];
+    [self.view addSubview: _level.ball];
     [_ballProgress gameDraw: CGPointZero];
 }
 
