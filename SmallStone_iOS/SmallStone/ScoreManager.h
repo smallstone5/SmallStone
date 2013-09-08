@@ -24,6 +24,7 @@ NS_ENUM(NSInteger, ReportScoreErrorCode)
 + (ScoreManager *)defaultManager;
 
 @property (nonatomic, readonly) NSUInteger          topLevel;       //玩家玩到的最大关卡
+@property (nonatomic, readonly) NSUInteger          nextLevel;      //玩家玩的下一个关卡
 @property (nonatomic, readonly) NSUInteger          totalScore;     //总分
 
 /*
@@ -48,6 +49,11 @@ NS_ENUM(NSInteger, ReportScoreErrorCode)
  */
 - (void)reportTotalScore;
 
+
+/*
+ * 重置下一关卡，从第一关开始玩起
+ */
+- (void)resetNextLevel;
 
 
 /*

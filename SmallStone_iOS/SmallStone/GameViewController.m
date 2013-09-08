@@ -15,10 +15,13 @@
 #import "GameResultView.h"
 #import "LevelManager.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
 
 
 @interface GameViewController () <StoneWallViewDelegate>
 
+@property (nonatomic, strong) UILabel *             levelLabel;
 @property (nonatomic, strong) CatchPowerView *      powerView;
 @property (nonatomic, strong) GameResultView *      resultView;
 @end
@@ -41,6 +44,18 @@
 {
     [super viewDidLoad];
 
+
+    CGRect resultLabelFrame = CGRectMake(0, 10, self.view.bounds.size.width, 40);
+    self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
+    self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    self.levelLabel.backgroundColor = [UIColor clearColor];
+    self.levelLabel.textColor = [UIColor darkTextColor];
+    self.levelLabel.textAlignment = UITextAlignmentCenter;
+    self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.levelLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:36];
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
+    [self.view addSubview:self.levelLabel];
+
     self.powerView = [[CatchPowerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 10, 64, 64)];
     self.powerView.backgroundColor = [UIColor clearColor];
     self.powerView.progressBGColor = [UIColor colorWithWhite:0.8 alpha:0.8];
@@ -62,9 +77,6 @@
     [self.resultView.backToMainButton addTarget:self action:@selector(backToMainAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.resultView.restartButton addTarget:self action:@selector(restartAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.resultView.nextLevelButton addTarget:self action:@selector(nextLevelAction:) forControlEvents:UIControlEventTouchUpInside];
-
-
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,6 +125,7 @@
         CGFloat deltaY = touchPoint.y - ballCenter.y;
         if (deltaX * deltaX + deltaY * deltaY < kMaxTapDistance)
         {
+            [self playBallExplosionSound];
             //点击到小球
             if (_level.stoneWall.isCleared)
                 [_level victory];
@@ -184,6 +197,8 @@
     
     
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
+    _level.stoneWall.delegate = self;
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
     [self.view addSubview: _level.ball];
     [self.view addSubview: _level.stoneWall];
 }
@@ -211,6 +226,16 @@
 - (void)showGameResult
 {
     [self.resultView showScore:_level.score onView:self.view];
+}
+
+- (void)playBallExplosionSound
+{
+    SystemSoundID soundID;
+    NSString * audioName = @"balloon_pop";
+    NSString * audioPath = [[NSBundle mainBundle] pathForResource:audioName ofType:@"mp3"];
+    NSURL * audioURL = [NSURL fileURLWithPath:audioPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)audioURL, &soundID);
+    AudioServicesPlaySystemSound (soundID);
 }
 
 #pragma mark - StoneWallViewDelegate

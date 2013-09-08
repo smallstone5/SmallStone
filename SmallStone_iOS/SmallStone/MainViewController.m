@@ -11,6 +11,7 @@
 #import "StoneWallViewController.h"
 #import "RankViewController.h"
 #import "SettingViewController.h"
+#import "ScoreManager.h"
 
 static CGFloat const kButtonWidth =     150.0f;
 static CGFloat const kButtonHeight =    50.0f;
@@ -64,17 +65,18 @@ static CGFloat const kButtonSpacing =   10.0f;
     
     
     //继续游戏 Continue
-	/*
+
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
     self.continueButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.continueButton.frame = buttonFrame;
     self.continueButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.continueButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.continueButton setTitle:NSLocalizedString(@"Continue", @"Continue") forState:UIControlStateNormal];
+    [self.continueButton setTitle:NSLocalizedString(@"继续游戏", @"继续游戏") forState:UIControlStateNormal];
     [self.continueButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.continueButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
+    [self.continueButton addTarget:self action:@selector(continueGameAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.continueButton];
-    */
+
     
     //设置 Setting
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
@@ -127,8 +129,18 @@ static CGFloat const kButtonSpacing =   10.0f;
     
 }
 
+
+- (void)continueGameAction:(UIButton *)button
+{
+    GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
+    gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController: gameController animated: YES completion: nil];
+}
+
+
 - (void)createGameAction:(UIButton *)button
 {
+    [[ScoreManager defaultManager] resetNextLevel];
     GameViewController *gameController = [[GameViewController alloc] initWithNibName: @"GameViewController" bundle: [NSBundle mainBundle]];
     gameController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController: gameController animated: YES completion: nil];
