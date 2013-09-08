@@ -10,6 +10,7 @@
 #import "CommonType.h"
 #import "BaseBall.h"
 #import "StoneWallView.h"
+#import "ScoreManager.h"
 
 @implementation BaseLevel
 @synthesize state = _state;
@@ -31,6 +32,7 @@
     {
         _state = GS_WaitForSwipe;
         _checkDelay = 1.0f;
+        _levelIndex = 0;
     }
     
     return self;
@@ -89,6 +91,7 @@
         //成功,计算分数
         NSLog(@"Duration: %f\n", _endTick - _startTick);
         _score = (NSInteger)(_minPlayTime * _maxScore / (_endTick - _startTick));
+        [[ScoreManager defaultManager] saveScore:_score atLevel:self.levelIndex];
     }
     else if (_state == GS_Loser)
     {

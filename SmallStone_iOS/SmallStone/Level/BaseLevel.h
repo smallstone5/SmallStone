@@ -49,6 +49,7 @@ typedef enum _GameState {
 @property (nonatomic) CGPoint speedScale;
 @property (nonatomic) NSInteger score;
 @property (nonatomic) CGFloat checkDelay;
+@property (nonatomic, assign) NSUInteger    levelIndex;         //关卡的序号，标记是第几关
 
 - (void) updateData: (CFTimeInterval) delta;
 - (void) gameDraw;
