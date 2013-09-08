@@ -15,6 +15,6 @@
 
 @property (retain, nonatomic) UIScrollView *pageScroll;
 @property (retain, nonatomic) UIPageControl *pageControl;
-
+@property (retain, nonatomic) UITextField *nicknameField;
 
 @end

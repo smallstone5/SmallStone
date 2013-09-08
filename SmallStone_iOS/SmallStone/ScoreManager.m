@@ -10,7 +10,15 @@
 #import "UserManager.h"
 #import "CommonUtility.h"
 
+
+#define SCORE_LIST_KEY           @"ScoreList"
+
+static NSUInteger const kMaxLevel   =   200;
+
 @interface ScoreManager() <NSURLConnectionDelegate>
+
+@property (nonatomic, strong) NSMutableArray *           scoreList;
+
 
 @end
 
@@ -32,28 +40,125 @@
 {
     self = [super init];
     if (self) {
-
+//        [self clearScoreData]; 测试代码
+        [self loadScoreList];
     }
 
     return self;
 }
 
+#pragma mark - Getter
+- (NSUInteger)totalScore
+{
+    NSUInteger totalScore = 0;
+    for (NSNumber * scoreNumber in self.scoreList) {
+        totalScore += [scoreNumber integerValue];
+    }
+
+    return totalScore;
+}
+
 
 #pragma mark - Public
-- (void)reportScore:(NSUInteger)score
+- (BOOL)saveScore:(NSUInteger)score atLevel:(NSUInteger)level
+{
+    if (nil == self.scoreList) {
+        [self loadScoreList];
+    }
+
+
+    NSNumber * scoreNumber = [NSNumber numberWithInt:score];
+    if (level > self.scoreList.count) {
+        return NO;
+
+    } else if (level == self.scoreList.count){
+        [self.scoreList addObject:scoreNumber];
+        [self updateTopLevel:level];
+
+    } else {
+
+        NSNumber * oldScoreNumber = self.scoreList[level];
+        if ([oldScoreNumber unsignedIntegerValue] > score) {
+            return NO;
+        }
+        [self.scoreList replaceObjectAtIndex:level withObject:scoreNumber];
+    }
+
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.scoreList forKey:SCORE_LIST_KEY];
+    [defaults synchronize];
+
+    [self reportTotalScore];
+    return YES;
+}
+
+
+
+- (NSUInteger)scoreAtLevel:(NSUInteger)level
+{
+    if (nil == self.scoreList) {
+        [self loadScoreList];
+    }
+
+    if (level >= self.scoreList.count) {
+        return 0;
+    }
+
+    NSNumber * scoreNumber = self.scoreList[level];
+    return [scoreNumber unsignedIntegerValue];
+}
+
+- (void)reportTotalScore
 {
     NSString * userName = [UserManager userName];
     if (nil == userName) {
         userName = [[UIDevice currentDevice] name];
     }
+
+    NSString * encodeUserName = [userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString * encodeDeviceId = [[CommonUtility getDeviceId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *appUrl = [NSString stringWithFormat:@"http://180.153.0.208/index.php?o=save"
-                        @"&id=%@&name=%@&score=%d", [CommonUtility getDeviceId], userName, score];
+                        @"&id=%@&name=%@&score=%d&level=%d", encodeDeviceId, encodeUserName, self.totalScore, self.topLevel];
     NSURL *url = [NSURL URLWithString:appUrl];
 	NSLog(@"%@", url);
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
     NSURLConnection *urlConnection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
     [urlConnection start];
 }
+
+
+
+- (void)clearScoreData
+{
+    self.scoreList = nil;
+    _topLevel = 0;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:SCORE_LIST_KEY];
+    [defaults synchronize];
+}
+
+
+
+#pragma mark - Private
+- (void)loadScoreList
+{
+    self.scoreList = [[NSUserDefaults standardUserDefaults] objectForKey:SCORE_LIST_KEY];
+    if (nil == self.scoreList) {
+        self.scoreList = [NSMutableArray array];
+    }
+    _topLevel = MAX(self.scoreList.count - 1, 0);
+}
+
+
+- (void)updateTopLevel:(NSUInteger)level
+{
+    if (_topLevel < level) {
+        _topLevel = level;
+    }
+
+}
+
+
 
 #pragma mark - NSURLConnection
 //实现连接失败的委托方法
@@ -74,19 +179,12 @@
     NSError *error;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
     NSLog(@"reportScore json:%@", json);
-	NSString *errorCode = [NSString stringWithFormat:@"%@", [json objectForKey:@"errCode"]];
-	NSString *tips = nil;
-	if([errorCode isEqual: @"-3"]) {
-		tips = @"该昵称已存在！";
-		[UserManager setUserDefaults:@"nickname" value:[UserManager getUserDefaults:@"oldName"]];
-	} else if ([errorCode isEqual: @"0"] && [UserManager getUserDefaults:@"oldName"] != nil) {
-		[UserManager setUserDefaults:@"oldName" value:nil];
-		tips = @"昵称设置成功！";
-	}
-	
-	if(tips != nil) {
-		[[[UIAlertView alloc] initWithTitle:@"" message:tips delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
-	}
+	NSInteger errorCode = [[json objectForKey:@"errCode"] integerValue];
+
+    NSNumber * errorCodeNum = [NSNumber numberWithInt:errorCode];
+    NSDictionary * userInfo = @{@"errorCode": errorCodeNum};
+    [[NSNotificationCenter defaultCenter] postNotificationName:REPORT_CHANGE_USER_NAME_NOTIFICATION object:nil userInfo:userInfo];
+
 }
 
 

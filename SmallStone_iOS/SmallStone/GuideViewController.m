@@ -8,6 +8,9 @@
 
 #import "GuideViewController.h"
 #import "MainViewController.h"
+#import "CommonUtility.h"
+#import "ScoreManager.h"
+#import "UserManager.h"
 
 @interface GuideViewController ()
 
@@ -33,6 +36,11 @@
     [self initGuide];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)initGuide
 {
@@ -69,7 +77,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];//在imageview2上加载一个透明的button
     [button setTitle:@"开始体验" forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(50, 100, 230, 37)];
+    [button setFrame:CGRectMake(50, 200, 230, 37)];
     [button setTitleColor:[UIColor colorWithRed:255 green:0 blue:0 alpha:1.0] forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.5]];
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];
@@ -77,7 +85,13 @@
     
 	UILabel *nicknameLabel = [[UILabel alloc] initWithFrame:self.view.bounds];
 	nicknameLabel.text = @"设置昵称：";
+	[nicknameLabel setFrame:CGRectMake(20, 100, 130, 30)];
+	[nicknameLabel setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.9]];
 	[imageview2 addSubview:nicknameLabel];
+	
+	self.nicknameField = [[UITextField alloc]initWithFrame:CGRectMake(120, 100, 130, 30)];
+	self.nicknameField.text = [[UIDevice currentDevice] name];
+	[imageview2 addSubview:self.nicknameField];
     [self.view addSubview:scrollView];
     //[scrollView release];
     
@@ -97,8 +111,15 @@
 //进入游戏主界面
 - (void)gotoMain
 {
-    [self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didChangeUserName:)
+												 name:REPORT_CHANGE_USER_NAME_NOTIFICATION
+											   object:nil];
+	[UserManager setUserName:self.nicknameField.text];
+	[UserManager setUserDefaults:@"oldName" value:nil];
+	[[ScoreManager defaultManager] reportTotalScore];
 }
+
 
 
 //滑动翻页
@@ -114,6 +135,24 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - NSNotification
+- (void)didChangeUserName:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    NSInteger errorCode = [[userInfo objectForKey:@"errorCode"] integerValue];
+	
+    NSString *tips = nil;
+	if(errorCode == kUserNameExistError) {
+		tips = @"该昵称已存在！";
+		[UserManager setUserDefaults:@"nickname" value:[UserManager getUserDefaults:@"oldName"]];
+		[[[UIAlertView alloc] initWithTitle:@"" message:tips delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+		
+	} else if (errorCode == 0) {
+		[UserManager setUserDefaults:@"oldName" value:nil];
+		[self presentViewController:[[MainViewController alloc] init] animated:YES completion:^(void){}];
+	}
 }
 
 @end

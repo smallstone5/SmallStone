@@ -24,8 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-		
+
     }
     return self;
 }
@@ -35,6 +34,12 @@
     [super viewDidLoad];
 	nickname.text = [UserManager userName];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,9 +60,15 @@
 		alertStr = @"昵称不能为空！";
 		[[[UIAlertView alloc] initWithTitle:@"" message:alertStr delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
 	} else {
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didChangeUserName:)
+                                                     name:REPORT_CHANGE_USER_NAME_NOTIFICATION
+                                                   object:nil];
+
 		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
 		[UserManager setUserName:nickname.text];
-		[[ScoreManager alloc] reportScore:0];
+        [[ScoreManager defaultManager] reportTotalScore];
 	}
 }
 
@@ -82,6 +93,26 @@
 -(void) backgroundTap:(id)sender
 {
 	[nickname resignFirstResponder];
+}
+
+#pragma mark - NSNotification
+- (void)didChangeUserName:(NSNotification *)notification
+{
+    NSDictionary * userInfo = [notification userInfo];
+    NSInteger errorCode = [[userInfo objectForKey:@"errorCode"] integerValue];
+
+    NSString *tips = nil;
+	if(errorCode == kUserNameExistError) {
+		tips = @"该昵称已存在！";
+		[UserManager setUserDefaults:@"nickname" value:[UserManager getUserDefaults:@"oldName"]];
+	} else if (errorCode == 0 && [UserManager getUserDefaults:@"oldName"] != nil) {
+		[UserManager setUserDefaults:@"oldName" value:nil];
+		tips = @"昵称设置成功！";
+	}
+
+	if(tips != nil) {
+		[[[UIAlertView alloc] initWithTitle:@"" message:tips delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+	}
 }
 
 @end
