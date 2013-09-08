@@ -31,6 +31,10 @@ typedef enum _GameState {
     CGFloat _checkDelay;
     CFAbsoluteTime _startTick;
     CFAbsoluteTime _endTick;
+    NSInteger _score;
+    CGFloat _minPlayTime;
+    NSInteger _maxScore;
+    NSInteger _stoneCount;
 }
 
 @property (nonatomic) GameState state;
@@ -43,10 +47,13 @@ typedef enum _GameState {
 @property (nonatomic) CGFloat timeScale;
 @property (nonatomic) CGFloat verticalScale;
 @property (nonatomic) CGPoint speedScale;
+@property (nonatomic) NSInteger score;
+@property (nonatomic) CGFloat checkDelay;
 
 - (void) updateData: (CFTimeInterval) delta;
 - (void) gameDraw;
 - (void) startGame;
+- (void) restartGame;
 - (void) gameOver;
 - (void) victory;
 - (void) checkResult;

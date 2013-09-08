@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		971427DE17DB45CA003D4E15 /* btn_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427DA17DB45CA003D4E15 /* btn_back.png */; };
+		971427DF17DB45CA003D4E15 /* btn_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427DB17DB45CA003D4E15 /* btn_back@2x.png */; };
+		971427E017DB45CA003D4E15 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427DC17DB45CA003D4E15 /* button.png */; };
+		971427E117DB45CA003D4E15 /* button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 971427DD17DB45CA003D4E15 /* button@2x.png */; };
 		9733AAF317DA156600791D4D /* RankViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9733AAF217DA156600791D4D /* RankViewController.xib */; };
 		9733AAF717DA19F300791D4D /* BaseBall.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF617DA19F300791D4D /* BaseBall.m */; };
 		9733AAFA17DA221000791D4D /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9733AAF917DA221000791D4D /* CommonType.m */; };
@@ -31,6 +35,10 @@
 		ED107F6F17DB16F00006A030 /* GameResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED107F6E17DB16F00006A030 /* GameResultView.m */; };
 		ED107F7217DB2F340006A030 /* score_orange_sun.png in Resources */ = {isa = PBXBuildFile; fileRef = ED107F7017DB2F340006A030 /* score_orange_sun.png */; };
 		ED107F7317DB2F340006A030 /* score_orange_sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ED107F7117DB2F340006A030 /* score_orange_sun@2x.png */; };
+		ED107F7617DB396B0006A030 /* ScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED107F7517DB396B0006A030 /* ScoreManager.m */; };
+		ED107F7B17DB3AE90006A030 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ED107F7A17DB3AE90006A030 /* UserManager.m */; };
+		ED107F7E17DB3E600006A030 /* CommonUtility.mm in Sources */ = {isa = PBXBuildFile; fileRef = ED107F7D17DB3E600006A030 /* CommonUtility.mm */; };
+		ED107F8217DB406E0006A030 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED107F8117DB406D0006A030 /* SystemConfiguration.framework */; };
 		ED4C01A817DACDAB002DA400 /* CatchPowerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED4C01A717DACDAB002DA400 /* CatchPowerView.m */; };
 		ED8AA0F117D8135C0070BFF0 /* StoneWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */; };
 		ED8AA0F417D813790070BFF0 /* StoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8AA0F317D813790070BFF0 /* StoneView.m */; };
@@ -83,6 +91,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		971427DA17DB45CA003D4E15 /* btn_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_back.png; sourceTree = "<group>"; };
+		971427DB17DB45CA003D4E15 /* btn_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_back@2x.png"; sourceTree = "<group>"; };
+		971427DC17DB45CA003D4E15 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
+		971427DD17DB45CA003D4E15 /* button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button@2x.png"; sourceTree = "<group>"; };
 		9733AAF217DA156600791D4D /* RankViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RankViewController.xib; sourceTree = "<group>"; };
 		9733AAF517DA19F300791D4D /* BaseBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseBall.h; sourceTree = "<group>"; };
 		9733AAF617DA19F300791D4D /* BaseBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseBall.m; sourceTree = "<group>"; };
@@ -115,6 +127,13 @@
 		ED107F6E17DB16F00006A030 /* GameResultView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultView.m; sourceTree = "<group>"; };
 		ED107F7017DB2F340006A030 /* score_orange_sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_orange_sun.png; sourceTree = "<group>"; };
 		ED107F7117DB2F340006A030 /* score_orange_sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "score_orange_sun@2x.png"; sourceTree = "<group>"; };
+		ED107F7417DB396B0006A030 /* ScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreManager.h; sourceTree = "<group>"; };
+		ED107F7517DB396B0006A030 /* ScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreManager.m; sourceTree = "<group>"; };
+		ED107F7917DB3AE90006A030 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		ED107F7A17DB3AE90006A030 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		ED107F7C17DB3E600006A030 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		ED107F7D17DB3E600006A030 /* CommonUtility.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CommonUtility.mm; sourceTree = "<group>"; };
+		ED107F8117DB406D0006A030 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		ED4C01A517DACB79002DA400 /* StoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoneView.h; sourceTree = "<group>"; };
 		ED4C01A617DACDAB002DA400 /* CatchPowerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatchPowerView.h; sourceTree = "<group>"; };
 		ED4C01A717DACDAB002DA400 /* CatchPowerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatchPowerView.m; sourceTree = "<group>"; };
@@ -185,6 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED107F8217DB406E0006A030 /* SystemConfiguration.framework in Frameworks */,
 				EDE4F6EF17D9D25B004F3057 /* AudioToolbox.framework in Frameworks */,
 				EDE4F6ED17D9CC07004F3057 /* AVFoundation.framework in Frameworks */,
 				EDA60D5617D72C0000B0A63C /* QuartzCore.framework in Frameworks */,
@@ -220,6 +240,10 @@
 		9733AB0517DA37FC00791D4D /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				971427DA17DB45CA003D4E15 /* btn_back.png */,
+				971427DB17DB45CA003D4E15 /* btn_back@2x.png */,
+				971427DC17DB45CA003D4E15 /* button.png */,
+				971427DD17DB45CA003D4E15 /* button@2x.png */,
 				ED107F7017DB2F340006A030 /* score_orange_sun.png */,
 				ED107F7117DB2F340006A030 /* score_orange_sun@2x.png */,
 				ED107F6917DB12C50006A030 /* orange_sun.png */,
@@ -270,6 +294,7 @@
 		EDA60D2C17D71C1400B0A63C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ED107F8117DB406D0006A030 /* SystemConfiguration.framework */,
 				EDE4F6EE17D9D25B004F3057 /* AudioToolbox.framework */,
 				EDE4F6EC17D9CC07004F3057 /* AVFoundation.framework */,
 				EDA60D5517D72C0000B0A63C /* QuartzCore.framework */,
@@ -319,6 +344,12 @@
 				ED8AA0EF17D8135C0070BFF0 /* StoneWallViewController.h */,
 				ED8AA0F017D8135C0070BFF0 /* StoneWallViewController.m */,
 				EDA60D3417D71C1400B0A63C /* Supporting Files */,
+				ED107F7417DB396B0006A030 /* ScoreManager.h */,
+				ED107F7517DB396B0006A030 /* ScoreManager.m */,
+				ED107F7917DB3AE90006A030 /* UserManager.h */,
+				ED107F7A17DB3AE90006A030 /* UserManager.m */,
+				ED107F7C17DB3E600006A030 /* CommonUtility.h */,
+				ED107F7D17DB3E600006A030 /* CommonUtility.mm */,
 			);
 			path = SmallStone;
 			sourceTree = "<group>";
@@ -477,6 +508,10 @@
 				9733AB1317DA37FC00791D4D /* Bomb4.png in Resources */,
 				9733AB1417DA37FC00791D4D /* Bomb5.png in Resources */,
 				9733AB1517DA37FC00791D4D /* Bomb6.png in Resources */,
+				971427DE17DB45CA003D4E15 /* btn_back.png in Resources */,
+				971427DF17DB45CA003D4E15 /* btn_back@2x.png in Resources */,
+				971427E017DB45CA003D4E15 /* button.png in Resources */,
+				971427E117DB45CA003D4E15 /* button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,8 +526,10 @@
 				ED0D70B517D8D0D4002D3353 /* StoneWallView.m in Sources */,
 				ED8AA0F817D813CB0070BFF0 /* Stone.m in Sources */,
 				EDA60D3A17D71C1400B0A63C /* main.m in Sources */,
+				ED107F7B17DB3AE90006A030 /* UserManager.m in Sources */,
 				EDE4F6BD17D987D0004F3057 /* StoneLinkView.m in Sources */,
 				EDA60D3E17D71C1400B0A63C /* AppDelegate.m in Sources */,
+				ED107F7E17DB3E600006A030 /* CommonUtility.mm in Sources */,
 				EDA60D5317D7296000B0A63C /* GameViewController.m in Sources */,
 				EDA60D4717D71C1400B0A63C /* MainViewController.m in Sources */,
 				ED8AA0F117D8135C0070BFF0 /* StoneWallViewController.m in Sources */,
@@ -505,6 +542,7 @@
 				ED107F6F17DB16F00006A030 /* GameResultView.m in Sources */,
 				9733AAFD17DA254A00791D4D /* GameSetting.m in Sources */,
 				ED4C01A817DACDAB002DA400 /* CatchPowerView.m in Sources */,
+				ED107F7617DB396B0006A030 /* ScoreManager.m in Sources */,
 				9733AB0417DA30B200791D4D /* BaseLevel.m in Sources */,
 				9733AB1817DA384200791D4D /* Level1.m in Sources */,
 			);

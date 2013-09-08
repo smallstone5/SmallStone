@@ -23,6 +23,10 @@
         _timeScale = kDefaultTimeScale;
         _verticalScale = kDefaultVerticalScale;
         _speedScale = CGPointMake(0.5f, 1.0f);
+        _stoneCount = 1;
+        _minPlayTime = kStoneTapScale * (_stoneCount + 1);
+        _maxScore = kScoreScale * (_stoneCount + 1) * (_speedScale.x / kMinSpeedScale) * (_speedScale.x / kMinSpeedScale);
+        
         
         //创建小球
         _ball = [[BaseBall alloc] initWithFrame: CGRectMake(0.0f, 0.0f, _ballSize, _ballSize)];
@@ -44,7 +48,7 @@
         StoneWall * wall = [[StoneWall alloc] init];
         wall.matrixRow = 3;
         wall.matrixColumn = 4;
-        [wall generateRandStones:1];
+        [wall generateRandStones:_stoneCount];
         
         _stoneWall = [[StoneWallView alloc] initWithStoneWall:wall];
         _stoneWall.frame = CGRectMake((g_rcScreen.size.width - _stoneWall.frame.size.width)/2,
@@ -67,6 +71,12 @@
     [self.stoneWall resume];
 }
 
+- (void) restartGame
+{
+    [super restartGame];
+    _ball.image = [UIImage imageNamed: @"ball.png"];
+}
+
 - (void) gameOver
 {
     [super gameOver];
@@ -84,16 +94,7 @@
 - (void) checkResult
 {
     [super checkResult];
-    if (_state == GS_Victory)
-    {
-        //成功
-        NSLog(@"Duration: %f\n", _endTick - _startTick);
-        
-    }
-    else if (_state == GS_Loser)
-    {
-        //失败
-    }
+    
 }
 
 @end

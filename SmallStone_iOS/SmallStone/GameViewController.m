@@ -93,6 +93,7 @@
         [_level gameOver];
         
         [self.displayLink setPaused: YES];
+        [self performSelector: @selector(showGameResult) withObject: nil afterDelay: _level.checkDelay];
     }
 }
 
@@ -120,6 +121,7 @@
                 [_level gameOver];
             
             [self.displayLink setPaused: YES];
+            [self performSelector: @selector(showGameResult) withObject: nil afterDelay: _level.checkDelay];
         }
         
         return;
@@ -169,6 +171,8 @@
 - (void)restartAction:(id)sender
 {
     [self.resultView hideResultView];
+    _lastTimeStamp = 0.0f;
+    [_level restartGame];
 }
 
 - (void)nextLevelAction:(id)sender
@@ -188,11 +192,8 @@
 
 - (void)showGameResult
 {
-//    [self.resultView showScore:2000 onView:self.view];
+    [self.resultView showScore:_level.score onView:self.view];
 }
-
-
-
 
 #pragma mark - StoneWallViewDelegate
 - (void)stoneWallView:(StoneWallView *)wallView didClearStoneViews:(NSArray *)stoneViews

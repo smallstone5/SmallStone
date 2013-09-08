@@ -7,6 +7,8 @@
 //
 
 #import "SettingViewController.h"
+#import "UserManager.h"
+#import "ScoreManager.h"
 
 @interface SettingViewController ()
 
@@ -31,8 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	NSUserDefaults *Setting = [NSUserDefaults standardUserDefaults];
-	nickname.text = [Setting objectForKey:@"nickname"];
+	nickname.text = [UserManager userName];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -49,16 +50,21 @@
 
 -(void) saveButtonAction:(id)sender
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:nickname.text forKey:@"nickname"];
-	[defaults synchronize];
+	NSString *alertStr = nil;
+	if([nickname.text length] == 0) {
+		alertStr = @"昵称不能为空！";
+		[[[UIAlertView alloc] initWithTitle:@"" message:alertStr delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
+	} else {
+		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
+		[UserManager setUserName:nickname.text];
+		[[ScoreManager alloc] reportScore:0];
+		alertStr = @"昵称设置成功！";
+	}
 	//NSLog(@"%@", [defaults objectForKey:@"serviceIp"]);
 	//请求后台创建该用户名
 	//NSString *appUrl = [[NSString alloc] initWithFormat:@"%@", saveNicknameURL];
-	NSMutableString *appUrl = [[NSMutableString alloc] initWithString:saveNicknameURL];
-	[appUrl appendString:@"&id="];
-	//[appUrl appendString:@""]
-	NSLog(@"%@", appUrl, [self getDeviceId]);
+	
+	
 	
 }
 
@@ -84,19 +90,5 @@
 {
 	[nickname resignFirstResponder];
 }
--(NSString *)getDeviceId
-{
-    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
-    NSString *uniqueId;
-    if (version <= 5.0)
-    {
-        uniqueId = [[UIDevice currentDevice]  uniqueIdentifier];
-    }
-    else
-    {
-        uniqueId = [[UIDevice currentDevice] identifierForVendor];
-    }
-    
-    return uniqueId;
-}
+
 @end
