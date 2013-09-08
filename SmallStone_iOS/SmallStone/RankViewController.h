@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RankViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+{
+    BOOL endDataFlag;
+}
 
 @property (strong, nonatomic) IBOutlet UITableView *rankTable;
 @property (strong, nonatomic) NSArray *rankData;

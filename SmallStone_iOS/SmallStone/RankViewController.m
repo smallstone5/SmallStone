@@ -13,7 +13,6 @@
 @end
 
 #define BASE_URL @"http://180.153.0.208/index.php?o=rank"
-#define TITLE @"排行榜"
 
 @implementation RankViewController
 
@@ -21,8 +20,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UIBarButtonItem * backBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"返回", @"返回") style:UIBarButtonItemStyleBordered target:self action:@selector(goBack:)];
-        self.navigationItem.leftBarButtonItem = backBarButton;
+        UIButton *backButton = [UIButton buttonWithType:101];
+        [backButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+        [backButton setTitle:@"返回" forState:UIControlStateNormal];
+        
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+        self.navigationItem.leftBarButtonItem = backItem;
     }
     return self;
 }
@@ -33,6 +36,7 @@
     
     //[self initData];
     [self getAllData];
+    endDataFlag = NO;
 }
 
 
@@ -103,6 +107,7 @@
 {
     self.navigationItem.titleView = nil;
     self.title = @"排行榜";
+    endDataFlag = YES;
 }
 
 //实现连接失败的委托方法
@@ -175,7 +180,7 @@
 //元素个数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.rankData) {
+    if (endDataFlag && self.rankData) {
         return [self.rankData count];
     }
     return 1;
@@ -236,29 +241,31 @@
     }
     
     NSUInteger row = [indexPath row];
-    if (!self.rankData && 0 == row) {
+    if (endDataFlag && !self.rankData && 0 == row) {
+        cell.detailTextLabel.text = nil;
         cell.textLabel.text = @"暂无排名数据.";
         return cell;
-    }        
+    }
     
-    cell.accessoryView = nil;
-    NSDictionary *userData = [self.rankData objectAtIndex:row];
+    if (endDataFlag) {
+        cell.accessoryView = nil;
+        NSDictionary *userData = [self.rankData objectAtIndex:row];
         
-    NSInteger index = [[userData valueForKey:@"num"] intValue];
-    UIView *accessoryView = [self customAccessoryView:index];
-    cell.accessoryView = accessoryView;
+        NSInteger index = [[userData valueForKey:@"num"] intValue];
+        UIView *accessoryView = [self customAccessoryView:index];
+        cell.accessoryView = accessoryView;
 
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", [userData valueForKey:@"name"]];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@", [userData valueForKey:@"name"]];
     
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[userData valueForKey:@"pic"]]];
-    cell.imageView.image = [UIImage imageWithData:imageData];
-    float scale = 40.0/cell.imageView.image.size.width;
-    cell.imageView.transform = CGAffineTransformMakeScale(scale, scale);
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数: %@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[userData valueForKey:@"pic"]]];
+        cell.imageView.image = [UIImage imageWithData:imageData];
+        float scale = 40.0/cell.imageView.image.size.width;
+        cell.imageView.transform = CGAffineTransformMakeScale(scale, scale);
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数: %@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
     
-    //选中时不设置颜色
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+        //选中时不设置颜色
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     return cell;
 }
 
@@ -293,6 +300,8 @@
 {
     id view;
     switch (index) {
+        case 0:
+            break;
         case 1:
         case 2:
         case 3:
