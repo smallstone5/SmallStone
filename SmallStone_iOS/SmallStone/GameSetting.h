@@ -22,3 +22,16 @@
 #define kMinSpeedScale                  0.5f                        //最小速度放大系数
 #define kScoreScale                     1000                        //分数放大系数
 #define kStoneTapScale                  0.3f                        //单个石头预估时间
+
+typedef struct _LevelData {
+    NSInteger stoneRow;
+    NSInteger stoneColumn;
+    NSInteger stoneCount;
+    CGPoint acceleration;
+    CGPoint speedScale;
+    CGFloat timeScale;
+    CGFloat verticalScale;
+} LevelData;
+
+extern LevelData g_levelList[];
+extern NSUInteger g_levelCount;

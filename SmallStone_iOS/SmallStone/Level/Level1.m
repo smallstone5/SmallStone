@@ -7,23 +7,22 @@
 //
 
 #import "Level1.h"
-#import "GameSetting.h"
 #import "BaseBall.h"
 #import "StoneWallView.h"
 
 @implementation Level1
 
-- (id) initWithStoneCount: (NSInteger) count
+- (id) initWithLevelData: (LevelData *) data
 {
     if (self = [super init])
     {
         _ballSize = 40.0f;
-        _acceleration = CGPointMake(0.0f, 8000.0f);
+        _acceleration = data->acceleration;
         
-        _timeScale = kDefaultTimeScale;
-        _verticalScale = kDefaultVerticalScale;
-        _speedScale = CGPointMake(0.5f, 1.0f);
-        _stoneCount = count;
+        _timeScale = data->timeScale;
+        _verticalScale = data->verticalScale;
+        _speedScale = data->speedScale;
+        _stoneCount = data->stoneCount;
         _minPlayTime = kStoneTapScale * (_stoneCount + 1);
         _maxScore = kScoreScale * (_stoneCount + 1) * (_speedScale.x / kMinSpeedScale) * (_speedScale.x / kMinSpeedScale);
         
@@ -46,8 +45,8 @@
         
         //创建石头
         StoneWall * wall = [[StoneWall alloc] init];
-        wall.matrixRow = 3;
-        wall.matrixColumn = 4;
+        wall.matrixRow = data->stoneRow;
+        wall.matrixColumn = data->stoneColumn;
         [wall generateRandStones:_stoneCount];
         
         _stoneWall = [[StoneWallView alloc] initWithStoneWall:wall];
