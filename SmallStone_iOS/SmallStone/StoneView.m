@@ -104,7 +104,7 @@ CGFloat DegressToRadians(CGFloat degress)
         {
             [UIView animateWithDuration:0.25
                                   delay:0
-                                options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionTransitionFlipFromTop
+                                options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionAllowUserInteraction
                              animations:^{
                                  self.frame = CGRectMake(self.frame.origin.x + self.frame.size.width/2,
                                                          self.frame.origin.y + self.frame.size.height/2, 0, 0);

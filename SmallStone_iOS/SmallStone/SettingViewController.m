@@ -48,7 +48,8 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
     self.title = NSLocalizedString(@"设置", @"设置");
-	nickname.text = [UserManager userName];
+	self.nickname.text = [UserManager userName];
+    self.nickname.returnKeyType = UIReturnKeyDone;
     // Do any additional setup after loading the view from its nib.
 }
 

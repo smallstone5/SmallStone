@@ -56,10 +56,10 @@
     self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
     self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.levelLabel.backgroundColor = [UIColor clearColor];
-    self.levelLabel.textColor = [UIColor colorWithWhite:1 alpha:0.8];
+    self.levelLabel.textColor = [UIColor darkGrayColor];
     self.levelLabel.textAlignment = UITextAlignmentCenter;
     self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
-    self.levelLabel.font = [UIFont boldSystemFontOfSize:32];
+    self.levelLabel.font = [UIFont boldSystemFontOfSize:30];
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
     [self.powerView addSubview:self.levelLabel];
 
@@ -206,8 +206,9 @@
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
     _level.stoneWall.delegate = self;
     self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"%d", @"%d"), self.level.levelIndex + 1];
-    [self.view addSubview: _level.ball];
+    
     [self.view addSubview: _level.stoneWall];
+    [self.view addSubview: _level.ball];
     [_ballProgress gameDraw: CGPointZero];
 }
 
@@ -262,7 +263,7 @@
 
         [UIView animateWithDuration:0.8
                               delay: i * 0.05
-                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionTransitionFlipFromTop
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseIn | UIViewAnimationOptionTransitionFlipFromTop | UIViewAnimationOptionAllowUserInteraction
                          animations:^{
                              starView.center = powerViewCenter;
                          } completion:^(BOOL finished) {

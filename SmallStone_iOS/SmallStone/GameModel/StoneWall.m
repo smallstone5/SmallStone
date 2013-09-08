@@ -38,6 +38,7 @@
 
 - (void)generateRandStones:(NSUInteger)count;
 {
+    self.stonesCount = count;
     self.matrixIndexSet = [NSMutableIndexSet indexSet];
     NSUInteger minCount = MIN(count, self.matrixColumn * self.matrixRow);
     self.stoneList = [NSMutableArray arrayWithCapacity:minCount];
@@ -50,6 +51,12 @@
         [self markMatrixPoint:aStone.point];
         [self.stoneList addObject:aStone];
     }
+}
+
+
+- (void)reGenerateRandStones
+{
+    [self generateRandStones:self.stonesCount];
 }
 
 
