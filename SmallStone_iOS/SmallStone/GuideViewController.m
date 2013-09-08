@@ -82,7 +82,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setImage:[UIImage imageNamed:@"tiyan.png"] forState:UIControlStateNormal];
-    [button setFrame:CGRectMake(100, 100, 150, 40)];
+    [button setFrame:CGRectMake(self.view.bounds.size.width - 200, self.view.bounds.size.height - 150, 150, 40)];
     [button setTitleColor:[UIColor colorWithRed:255 green:0 blue:0 alpha:1.0] forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor colorWithRed:50 green:50 blue:50 alpha:0.5]];
     [button addTarget:self action:@selector(gotoMain) forControlEvents:UIControlEventTouchUpInside];

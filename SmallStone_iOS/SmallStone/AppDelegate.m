@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     
     //判断是否第一次启动应用，区分是否加载引导页面
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"launchFlag"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"launchFlag"] && 0) {
         self.viewController = [[MainViewController alloc] initWithNibName:nil bundle:nil];
         self.window.rootViewController = self.viewController;
     }else {
