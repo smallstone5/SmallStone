@@ -38,6 +38,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     CGRect buttonFrame = CGRectMake((self.view.frame.size.width - kButtonWidth)/2, 80, kButtonWidth, kButtonHeight);
     
     //排名 Rank
+	/*
     self.rankButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.rankButton.frame = buttonFrame;
     self.rankButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
@@ -47,14 +48,14 @@ static CGFloat const kButtonSpacing =   10.0f;
     [self.rankButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.rankButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
     [self.view addSubview:self.rankButton];
-    
+    */
     //新建游戏 New
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
     self.createGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.createGameButton.frame = buttonFrame;
     self.createGameButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.createGameButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.createGameButton setTitle:NSLocalizedString(@"New", @"New") forState:UIControlStateNormal];
+    [self.createGameButton setTitle:NSLocalizedString(@"新游戏", @"新游戏") forState:UIControlStateNormal];
     [self.createGameButton addTarget:self action:@selector(createGameAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.createGameButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.createGameButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
@@ -62,6 +63,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     
     
     //继续游戏 Continue
+	/*
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
     self.continueButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.continueButton.frame = buttonFrame;
@@ -71,7 +73,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     [self.continueButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.continueButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
     [self.view addSubview:self.continueButton];
-    
+    */
     
     //设置 Setting
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
@@ -79,12 +81,13 @@ static CGFloat const kButtonSpacing =   10.0f;
     self.settingButton.frame = buttonFrame;
     self.settingButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     [self.settingButton setBackgroundImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
-    [self.settingButton setTitle:NSLocalizedString(@"Setting", @"Setting") forState:UIControlStateNormal];
+    [self.settingButton setTitle:NSLocalizedString(@"设置", @"设置") forState:UIControlStateNormal];
 	[self.settingButton addTarget:self action:@selector(settingAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.settingButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.settingButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
     [self.view addSubview:self.settingButton];
     
+	/*
     //难易程度 Level
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
     self.levelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -95,7 +98,7 @@ static CGFloat const kButtonSpacing =   10.0f;
     [self.levelButton setTitleColor: [UIColor darkGrayColor] forState: UIControlStateNormal];
     [self.levelButton setTitleColor: [UIColor whiteColor] forState: UIControlStateHighlighted];
     [self.view addSubview:self.levelButton];
-    
+    */
     //显示排行榜
     buttonFrame.origin.y += buttonFrame.size.height + kButtonSpacing;
     self.ranknewButton = [UIButton buttonWithType:UIButtonTypeCustom];
