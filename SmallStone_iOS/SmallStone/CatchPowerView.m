@@ -60,10 +60,6 @@ static CGFloat const kStrokeWidth = 12.0f;
 #pragma mark - Setter
 - (void)setProgress:(CGFloat)progress
 {
-    if (progress <= _progress && progress != 0) {
-        return;
-    }
-
     _progress = progress;
     [self setNeedsDisplay];
 }

@@ -173,6 +173,7 @@
     [self.resultView hideResultView];
     _lastTimeStamp = 0.0f;
     [_level restartGame];
+    [self resetPowerPogress];
 }
 
 - (void)nextLevelAction:(id)sender
@@ -184,10 +185,20 @@
 #pragma mark - Private
 - (void)updatePowerProgress:(CGFloat)progress
 {
+    if (progress <= self.powerView.progress) {
+        return;
+    }
     self.powerView.progress = progress;
+
     if (progress == 1) {
 //        [self showGameResult];
     }
+}
+
+
+- (void)resetPowerPogress
+{
+    self.powerView.progress = 0;
 }
 
 - (void)showGameResult
