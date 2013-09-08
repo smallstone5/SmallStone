@@ -25,6 +25,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didChangeUserName:)
+                                                     name:REPORT_CHANGE_USER_NAME_NOTIFICATION
+                                                   object:nil];
+
     }
     return self;
 }
@@ -60,12 +65,6 @@
 		alertStr = @"昵称不能为空！";
 		[[[UIAlertView alloc] initWithTitle:@"" message:alertStr delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil] show];
 	} else {
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(didChangeUserName:)
-                                                     name:REPORT_CHANGE_USER_NAME_NOTIFICATION
-                                                   object:nil];
-
 		[UserManager setUserDefaults:@"oldName" value:[UserManager userName]];
 		[UserManager setUserName:nickname.text];
         [[ScoreManager defaultManager] reportTotalScore];
