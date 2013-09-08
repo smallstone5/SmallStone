@@ -40,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-//        [self clearScoreData];  //测试代码
+        [self clearScoreData];  //测试代码
         [self loadScoreList];
     }
 
@@ -73,7 +73,7 @@
 
     } else if (level == self.scoreList.count){
         [self.scoreList addObject:scoreNumber];
-        [self updateTopLevel:level];
+        [self updateCurrentLevel:level];
 
     } else {
 
@@ -122,12 +122,11 @@
     [urlConnection start];
 }
 
-
-
 - (void)clearScoreData
 {
     self.scoreList = [NSMutableArray array];
     _topLevel = 0;
+    _nextLevel = 0;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:SCORE_LIST_KEY];
     [defaults synchronize];
@@ -144,11 +143,13 @@
     }
     NSInteger savedLevel = self.scoreList.count - 1;
     _topLevel = MAX(savedLevel, 0);
+    _nextLevel = self.scoreList.count;
 }
 
 
-- (void)updateTopLevel:(NSUInteger)level
+- (void)updateCurrentLevel:(NSUInteger)level
 {
+    _nextLevel = level + 1;
     if (_topLevel < level) {
         _topLevel = level;
     }
