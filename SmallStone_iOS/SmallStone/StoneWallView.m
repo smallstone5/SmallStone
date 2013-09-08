@@ -141,7 +141,7 @@
 
 - (void)reset
 {
-    _isStopped = NO;
+    _isStopped = YES;
     [self resetWall];
     [self resetStoneViews];
 }

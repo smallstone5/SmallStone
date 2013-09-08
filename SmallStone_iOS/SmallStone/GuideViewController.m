@@ -23,6 +23,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(didChangeUserName:)
+													 name:REPORT_CHANGE_USER_NAME_NOTIFICATION
+												   object:nil];
     }
     return self;
 }
@@ -117,10 +121,6 @@
 //进入游戏主界面
 - (void)gotoMain
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(didChangeUserName:)
-												 name:REPORT_CHANGE_USER_NAME_NOTIFICATION
-											   object:nil];
 	[UserManager setUserName:self.nicknameField.text];
 	[UserManager setUserDefaults:@"oldName" value:nil];
 	[[ScoreManager defaultManager] reportTotalScore];

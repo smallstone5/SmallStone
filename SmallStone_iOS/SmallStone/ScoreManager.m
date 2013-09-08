@@ -111,10 +111,10 @@
         userName = [[UIDevice currentDevice] name];
     }
 
-    NSString * encodeUserName = [userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    const char * cUserName = [[userName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] UTF8String];
     NSString * encodeDeviceId = [[CommonUtility getDeviceId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *appUrl = [NSString stringWithFormat:@"http://180.153.0.208/index.php?o=save"
-                        @"&id=%@&name=%@&score=%d&level=%d", encodeDeviceId, encodeUserName, self.totalScore, self.topLevel];
+                        @"&id=%@&name=%s&score=%d&level=%d", encodeDeviceId, cUserName, self.totalScore, self.topLevel];
     NSURL *url = [NSURL URLWithString:appUrl];
 	NSLog(@"%@", url);
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
