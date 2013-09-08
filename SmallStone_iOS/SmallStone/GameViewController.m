@@ -21,6 +21,7 @@
 
 @interface GameViewController () <StoneWallViewDelegate>
 
+@property (nonatomic, strong) UILabel *             levelLabel;
 @property (nonatomic, strong) CatchPowerView *      powerView;
 @property (nonatomic, strong) GameResultView *      resultView;
 @end
@@ -42,6 +43,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+
+    CGRect resultLabelFrame = CGRectMake(0, 10, self.view.bounds.size.width, 40);
+    self.levelLabel= [[UILabel alloc] initWithFrame:resultLabelFrame];
+    self.levelLabel.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    self.levelLabel.backgroundColor = [UIColor clearColor];
+    self.levelLabel.textColor = [UIColor darkTextColor];
+    self.levelLabel.textAlignment = UITextAlignmentCenter;
+    self.levelLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
+    self.levelLabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:36];
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
+    [self.view addSubview:self.levelLabel];
 
     self.powerView = [[CatchPowerView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 80, 10, 64, 64)];
     self.powerView.backgroundColor = [UIColor clearColor];
@@ -188,6 +201,7 @@
     
     _level = [[LevelManager sharedInstance] makeCurrentLevel];
     _level.stoneWall.delegate = self;
+    self.levelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"第%d关", @"第%d关"), self.level.levelIndex + 1];
     [self.view addSubview: _level.ball];
     [self.view addSubview: _level.stoneWall];
 }

@@ -22,7 +22,7 @@
     if (self) {
         self.backgroundColor = nil;
         _pointList = [NSMutableArray array];
-        _linkColor = [UIColor colorWithWhite:0.6 alpha:0.6];
+        _linkColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
     }
     return self;
 }
