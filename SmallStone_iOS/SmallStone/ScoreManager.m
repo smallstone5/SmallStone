@@ -9,11 +9,11 @@
 #import "ScoreManager.h"
 #import "UserManager.h"
 #import "CommonUtility.h"
+#import "GameSetting.h"
 
 
 #define SCORE_LIST_KEY           @"ScoreList"
 
-static NSUInteger const kMaxLevel   =   200;
 
 @interface ScoreManager() <NSURLConnectionDelegate>
 
@@ -62,6 +62,11 @@ static NSUInteger const kMaxLevel   =   200;
 #pragma mark - Public
 - (BOOL)saveScore:(NSUInteger)score atLevel:(NSUInteger)level
 {
+    if (level >= g_levelCount) {
+        NSLog(@"level(%d) over max level(%d)", level + 1, g_levelCount);
+        return NO;
+    }
+
     NSNumber * scoreNumber = [NSNumber numberWithInt:score];
     if (level > self.scoreList.count) {
         return NO;
