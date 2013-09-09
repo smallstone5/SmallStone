@@ -46,6 +46,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
         
     self.rankTable.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.rankTable.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, self.rankTable.contentSize.height+50, 0 );
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -259,6 +260,7 @@
     
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[userData valueForKey:@"pic"]]];
         cell.imageView.image = [UIImage imageWithData:imageData];
+        //cell.imageView.image = [UIImage imageNamed:@"ball.png"];
         float scale = 40.0/cell.imageView.image.size.width;
         cell.imageView.transform = CGAffineTransformMakeScale(scale, scale);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"分数:%@, 通关数:%@", [userData valueForKey:@"point"], [userData valueForKey:@"block"]];
